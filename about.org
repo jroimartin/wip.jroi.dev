@@ -1,4 +1,4 @@
-#+title: About this site
+#+title: About This Site
 #+date: <2024-05-28 Tue>
 #+html_link_home: index.html
 #+html_link_up: index.html
