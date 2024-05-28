@@ -15,7 +15,16 @@
 - [[https://mitpress.mit.edu/9780262560993/][The Little Schemer, fourth edition]] by Daniel P. Friedman and Matthias Felleisen
 - [[https://mitpress.mit.edu/9780262535519/][The Reasoned Schemer, second edition]] by Daniel P. Friedman, William E. Byrd, Oleg Kiselyov and Jason Hemann
 
-** Videos
+** Talks
 
 - [[https://youtu.be/DDROSL-gGOo?feature=shared][Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour]] by Christine Lemmer-Webber
+
+#+begin_export html
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DDROSL-gGOo?si=OXiu2a4UkKUx5MZl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+#+end_export
+
 - [[https://youtu.be/OyfBQmvr2Hc?feature=shared][The Most Beautiful Program Ever Written]] by William Byrd
+
+#+begin_export html
+<div style="text-align: center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OyfBQmvr2Hc?si=rKV1CiZ_g2qtcOr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+#+end_export
