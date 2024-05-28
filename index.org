@@ -1,5 +1,5 @@
 #+title: Work In Progress
-#+subtitle: Forever-work-in-progress notes
+#+subtitle: My forever-work-in-progress notes
 #+date: <2024-05-28 Tue>
 #+options: toc:nil num:nil
 #+html_link_home: index.html
@@ -13,5 +13,5 @@
 
 * About
 
-- [[file:about.org][What is this site?]]
+- [[file:about.org][About this]]
 - [[file:license.org][LICENSE]]
