@@ -15,7 +15,7 @@ iterative way and tend to jump from one project to another.  Which,
 
 Also, I like to take notes while learning new things, so I thought
 that publishing these notes could be useful for others and fits me
-better.  This site contains my always-work-in-progress notes.
+better.  This site contains my forever-work-in-progress notes.
 
 You can find me in [[https://github.com/jroimartin][GitHub]], where I publish most of my projects, and
 [[https://fosstodon.org/@jroimartin][Mastodon]].
