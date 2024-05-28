@@ -4,5 +4,6 @@
 				    :base-directory "."
 				    :publishing-directory "."
 				    :publishing-function org-html-publish-to-html
-				    :exclude "README.org"))))
+				    :exclude "README.org"
+				    :recursive t))))
   (org-publish-all))
