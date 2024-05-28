@@ -1,3 +1,9 @@
 #+title: Work In Progress
 
 Source code of https://wip.jroi.dev.
+
+Eval the following elisp snippet to export all org files to HTML:
+
+#+begin_src emacs-lisp
+  (load-file "publish.el")
+#+end_src
