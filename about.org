@@ -1,0 +1,21 @@
+#+title: What is this site?
+#+date: <2024-05-28 Tue>
+#+html_link_home: index.html
+#+html_link_up: index.html
+
+My name is Roi Martin.  I am a programmer and a security enthusiast
+that has been lucky enough to make a living out of combining both
+passions.
+
+Time has shown me that blogs do not work for me.  Their chronological
+nature and having to wait until you finish a blog post to publish it
+does not fit my personality.  I like to approach problems in an
+iterative way and tend to jump from one project to another.  Which,
+*for me*, is incompatible with writing a blog.
+
+Also, I like to take notes while learning new things, so I thought
+that publishing these notes could be useful for others and fits me
+better.  This site contains my always-work-in-progress notes.
+
+You can find me in [[https://github.com/jroimartin][GitHub]], where I publish most of my projects, and
+[[https://fosstodon.org/@jroimartin][Mastodon]].
