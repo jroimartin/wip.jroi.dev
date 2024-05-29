@@ -11,7 +11,7 @@ share links that I found interesting with my friends. However, I never
 really liked that way of sharing content. So, now that I have this
 site, I decided to move them here.
 
-If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.org.atom][RSS feed]].
+If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
 
 * December 2023
 
