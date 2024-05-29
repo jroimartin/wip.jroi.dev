@@ -1,4 +1,5 @@
 #+title: Work In Progress
+#+author: Roi Martin
 
 Source code of https://wip.jroi.dev.
 
@@ -17,4 +18,4 @@ Eval the following elisp snippet to export all org files to HTML:
 #+end_src
 
 #+results:
-: Last update: Tue May 28 20:54:11 2024
+: Last update: Wed May 29 10:44:40 2024
