@@ -1,0 +1,95 @@
+#+title: /home/n/links
+#+date: <2024-05-29 Wed>
+#+author: Roi Martin
+#+options: toc:nil num:nil
+#+html_link_home: index.html
+#+html_link_up: index.html
+#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+In October 2018 I started a Telegram channel named "/home/n/links" to
+share links that I found interesting with my friends. However, I never
+really liked that way of sharing content. So, now that I have this
+site, I decided to move them here.
+
+If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.org.atom][RSS feed]].
+
+* December 2023
+
+- [[https://commandcenter.blogspot.com/2023/12/simplicity.html][Simplicity]] by Rob Pike
+- [[https://youtu.be/6H-V-0oQvCA][Open Source Supply Chain Security at Google]] by Russ Cox
+
+* October 2023
+
+- [[https://journal.stuffwithstuff.com/2023/10/19/does-go-have-subtyping/][Does Go Have Subtyping?]] by Robert Nystrom
+
+* July 2023
+
+- [[https://research.swtch.com/pcdata][Storing Data in Control Flow]] by Russ Cox
+- [[https://research.swtch.com/coro][Coroutines for Go]] by Russ Cox
+
+* February 2023
+
+- [[https://youtu.be/1I1WmeSjRSw][Pardon the Interruption: Loop Preemption in Go 1.14]] by Austin Clements
+- [[https://youtube.com/playlist?list=PLxNYxgaZ8Rsf8PLPWeUPRA3iZoK9uu3lU][Go Day 2022]] on Google Open Source Live
+
+* December 2022
+
+- [[https://youtu.be/g4SYTOc8fL0][Procedural Macros vs Sliced Bread]] by Alex Crichton
+
+* November 2022
+
+- [[https://youtu.be/RqubKSF3wig][SQLite and Go]] by David Crawshaw
+- [[https://craftinginterpreters.com/][Crafting Interpreters]] by Robert Nystrom ([[https://craftinginterpreters.com/contents.html][Read online]], [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/][Crafting "Crafting Interpreters"]])
+
+* October 2022
+
+- [[https://youtu.be/v24wrd3RwGo][Compatibility: How Go Programs Keep Working]] by Russ Cox
+
+* September 2022
+
+- [[https://youtu.be/T4rKaqjUXXs][Hash Salehi Outsmarts His Smart Meter]] on Remoticon 2021
+- [[https://youtu.be/XmaT8bMssyQ][Uri Shaked Reverse Engineers ESP32 WiFi]] on Remoticon 2021
+
+* August 2022
+
+- [[https://blog.benjojo.co.uk/post/bgp-battleships][Playing battleships over BGP]] by Ben Cox
+- [[https://youtu.be/30jNsCVLpAE][Debugging Under Fire: Keep your Head when Systems have Lost their Mind]] by Bryan Cantrill
+- [[https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html][A Regular Expression Matcher]] by Rob Pike and Brian Kernighan
+
+* July 2022
+
+- [[https://youtu.be/_2NI6t2r_Hs][The History of Unix]] by Rob Pike
+- [[https://youtube.com/playlist?list=PLrwpzH1_9ufMLOB6BAdzO08Qx-9jHGfGg]["Unusual" solutions to Advent of Code]] by Russ Cox
+- [[https://youtu.be/oV9rvDllKEg][Concurrency is not Parallelism]] by Rob Pike
+- [[https://go.dev/blog/supply-chain][How Go Mitigates Supply Chain Attacks]] by Filippo Valsorda
+
+* June 2022
+
+- [[https://youtu.be/HxaD_trXwRE][Lexical Scanning in Go]] by Rob Pike ([[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/][CL]])
+- [[https://mazzo.li/posts/fast-pipes.html][How fast are Linux pipes anyway?]] by Francesco Mazzoli
+- [[https://research.swtch.com/mm][Memory Models]] by Russ Cox
+- [[https://youtu.be/xxDZuPEgbBU][Profiling & Optimizing in Go]] by Brad Fitzpatrick
+- [[https://youtu.be/EY6q5dv_B-o][Brian Kernighan interviews Ken Thompson]]
+
+* June 2019
+
+- [[https://youtu.be/ZmZ_tvbhJ0I][A Keynote in Praise of Junk Hacking]] by Travis Goodspeed
+
+* January 2019
+
+- Detecting integer constant expressions in macros ([[https://lkml.org/lkml/2018/3/20/805][Mail-1]], [[https://lkml.org/lkml/2018/3/20/845][Mail-2]])
+- [[https://youtu.be/RIvL2ONhFBI][Go 2 Draft Specifications]] by Rob Pike
+
+* November 2018
+
+- [[https://youtu.be/_eSAF_qT_FY][GOD MODE UNLOCKED - Hardware Backdoors in x86 CPUs]] by Christopher Domas
+
+* October 2018
+
+- [[https://youtu.be/cQ7STILAS0M][Why Golang is Successful]] by Rob Pike ([[https://talks.golang.org/2015/simplicity-is-complicated.slide][Slides]])
+- [[https://www.youtube.com/watch?v=OyfBQmvr2Hc][The Most Beautiful Program Ever Written]] by William Byrd
+- [[https://youtu.be/KINIAgRpkDA][The Design of the Go Assembler]] by Rob Pike ([[https://talks.golang.org/2016/asm.slide][Slides]])
+- [[https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html][Error handling in Upspin]] by Rob Pike
+- [[http://doc.cat-v.org/bell_labs/good_bad_ugly/slides.pdf][The Good, the Bad, and the Ugly: The Unix Legacy]] by Rob Pike
+- [[https://youtu.be/FITJMJjASUs][Y Not- Adventures in Functional Programming]] by Jim Weirich
+- [[https://lkml.org/lkml/2017/11/21/356][On hardening]] by Linus Torvalds

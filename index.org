@@ -12,6 +12,10 @@
 
 - [[file:lisp.org][Lisp]]
 
+* Misc
+
+- [[file:home-n-links.org][/home/n/links]]
+
 * About
 
 - [[file:about.org][About This Site]]
