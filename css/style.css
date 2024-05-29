@@ -6,6 +6,21 @@ body {
   line-height: 1.5;
 }
 
+h1, h2, h3, h4, h5, h6, .title {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.title {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
 a {
   color: #0969da;
   text-decoration: none;
@@ -15,19 +30,19 @@ a:hover {
   text-decoration: underline;
 }
 
-p {
-  text-align: justify;
-  text-justify: inter-word;
+code {
+  background-color: #f2f2f2;
+  border: 1px solid #e6e6e6;
+  font-family: monospace;
+  padding: 1px;
+  border-radius: 3px;
 }
 
-h1 {
-  border-bottom: 1px solid #e6e6e6;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  margin-top: 24px;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
+blockquote {
+  color: #666666;
+  padding-left: 20px;
+  font-style: italic;
+  border-left: thick solid #e6e6e6;
 }
 
 table {
@@ -35,33 +50,33 @@ table {
   margin-right: auto;
 }
 
-code {
-  background-color: #f2f2f2;
-  border: 1px solid #e6e6e6;
-  font-family: monospace;
-  padding: 2px;
-  border-radius: 3px;
+.figure {
+  padding: 0;
 }
 
-blockquote {
-  color: #666666;
-  margin: 0;
-  padding: 0 20px;
-  font-style: italic;
-  border-left: thick solid #e6e6e6;
-}
-
-iframe.yt-video {
-  display: block;
-  margin: 0 auto;
+img {
   max-width: 100%;
-  width: 560px;
-  height: 315px;
+}
+
+#org-div-home-and-up {
+  font-size: 0.8em;
 }
 
 #postamble {
-  margin-top: 48px;
+  margin-top: 24px;
+}
+
+#postamble p {
   font-size: 0.8em;
-  line-height: 1;
+  margin: 0;
   color: #666666;
+}
+
+.yt-video {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  width: 560px;
+  height: 315px;
 }
