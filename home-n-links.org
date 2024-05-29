@@ -6,12 +6,13 @@
 #+html_link_up: index.html
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-In October 2018 I started a Telegram channel named "/home/n/links" to
-share links that I found interesting with my friends. However, I never
-really liked that way of sharing content. So, now that I have this
-site, I decided to move them here.
+In October 2018 I started a Telegram channel named */home/n/links* to
+share interesting links with my friends. However, I never really liked
+that way of sharing content. So, I decided to close the Telegram
+channel and start using this page.
 
-If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
+If you want to receive notifications when this page is updated, use
+this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
 
 * December 2023
 
@@ -86,7 +87,7 @@ If you want to subscribe to this page, use this [[https://github.com/jroimartin/
 
 * October 2018
 
-- [[https://youtu.be/cQ7STILAS0M][Why Golang is Successful]] by Rob Pike ([[https://talks.golang.org/2015/simplicity-is-complicated.slide][Slides]])
+- [[https://youtu.be/rFejpH_tAHM][Simplicity is Complicated]] by Rob Pike ([[https://talks.golang.org/2015/simplicity-is-complicated.slide][Slides]])
 - [[https://www.youtube.com/watch?v=OyfBQmvr2Hc][The Most Beautiful Program Ever Written]] by William Byrd
 - [[https://youtu.be/KINIAgRpkDA][The Design of the Go Assembler]] by Rob Pike ([[https://talks.golang.org/2016/asm.slide][Slides]])
 - [[https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html][Error handling in Upspin]] by Rob Pike
