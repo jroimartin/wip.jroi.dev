@@ -11,8 +11,7 @@ share interesting links with my friends. However, I never really liked
 that way of sharing content. So, I decided to close the Telegram
 channel and start using this page.
 
-If you want to receive notifications when this page is updated, use
-this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
+If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
 
 * May 2024
 
