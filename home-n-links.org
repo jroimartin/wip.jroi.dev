@@ -14,6 +14,10 @@ channel and start using this page.
 If you want to receive notifications when this page is updated, use
 this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
 
+* May 2024
+
+- [[https://youtu.be/DDROSL-gGOo?feature=shared][Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour]] by Christine Lemmer-Webber
+
 * December 2023
 
 - [[https://commandcenter.blogspot.com/2023/12/simplicity.html][Simplicity]] by Rob Pike
