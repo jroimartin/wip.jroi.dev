@@ -17,6 +17,7 @@ this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html
 * May 2024
 
 - [[https://youtu.be/DDROSL-gGOo?feature=shared][Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour]] by Christine Lemmer-Webber
+- [[https://spritely.institute/static/papers/scheme-primer.html][A Scheme Primer]] by Christine Lemmer-Webber and the Spritely Institute
 
 * December 2023
 
