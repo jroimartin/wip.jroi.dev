@@ -13,11 +13,14 @@ channel and start using this page.
 
 If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/home-n-links.html.atom][RSS feed]].
 
+* June 2024
+
+- [[https://youtu.be/vMDHpPN_p08?feature=shared][From Here To Lambda And Back Again]] by Douglas Crockford
+
 * May 2024
 
 - [[https://youtu.be/DDROSL-gGOo?feature=shared][Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour]] by Christine Lemmer-Webber
 - [[https://spritely.institute/static/papers/scheme-primer.html][A Scheme Primer]] by Christine Lemmer-Webber and the Spritely Institute
-- [[https://youtu.be/vMDHpPN_p08?feature=shared][From Here To Lambda And Back Again]] by Douglas Crockford
 
 * December 2023
 
