@@ -17,6 +17,7 @@ If you want to subscribe to this page, use this [[https://github.com/jroimartin/
 
 - [[https://youtu.be/DDROSL-gGOo?feature=shared][Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour]] by Christine Lemmer-Webber
 - [[https://spritely.institute/static/papers/scheme-primer.html][A Scheme Primer]] by Christine Lemmer-Webber and the Spritely Institute
+- [[https://youtu.be/vMDHpPN_p08?feature=shared][From Here To Lambda And Back Again]] by Douglas Crockford
 
 * December 2023
 
