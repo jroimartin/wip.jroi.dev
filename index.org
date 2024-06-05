@@ -8,6 +8,10 @@
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 #+html_head_extra: <link rel="me" href="https://fosstodon.org/@jroimartin" />
 
+* Programming
+
+- [[file:maxwell-equations.org][Maxwell’s Equations of Software]]
+
 * Misc
 
 - [[file:home-n-links.org][/home/n/links]]

@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2024-06-11 Tue 17:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Maxwell’s Equations of Software</title>
+<meta name="author" content="Roi Martin" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="index.html"> UP </a>
+ |
+ <a accesskey="H" href="index.html"> HOME </a>
+</div><div id="content" class="content">
+<h1 class="title">Maxwell’s Equations of Software</h1>
+<p>
+On December 27, 2004 ACM Queue published an <a href="https://queue.acm.org/detail.cfm?id=1039523">interview</a> with <a href="https://en.wikipedia.org/wiki/Alan_Kay">Alan Kay</a>,
+the creator of <a href="https://en.wikipedia.org/wiki/Smalltalk">Smalltalk</a>.  In this interview, he pronounced the famous
+words:
+</p>
+
+<blockquote>
+<p>
+That was the big revelation to me when I was in graduate school—when I
+finally understood that the half page of code on the bottom of page 13
+of the Lisp 1.5 manual was Lisp in itself.  These were "Maxwell’s
+Equations of Software!" This is the whole world of programming in a
+few lines that I can put my hand over.
+</p>
+
+<p>
+&#x2013; Alan Kay
+</p>
+</blockquote>
+
+<p>
+So, what is on the bottom of page 13 of the
+<a href="https://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf">LISP 1.5 Programmers Manual</a>?
+</p>
+
+
+<div id="org3625e00" class="figure">
+<p><img src="maxwell-equations/page13.png" alt="page13.png" width="650px" />
+</p>
+</div>
+
+<p>
+This small piece of code is a <b>universal LISP function</b>.  In other
+words, <code>evalquote</code> can compute the value of any given function applied
+to its arguments when given a description of that function.  A LISP
+interpreter written in LISP itself that fits in a flashcard!
+</p>
+
+<p>
+The syntax might look quite different to what we expect from LISP.
+The reason is that it uses <a href="https://en.wikipedia.org/wiki/M-expression">M-expressions</a> instead of <a href="https://en.wikipedia.org/wiki/S-expression">S-expressions</a>.
+</p>
+
+<p>
+As the Lisp 1.5 programmers manual explains on page 1:
+</p>
+
+<blockquote>
+<p>
+The second important part of the LISP language is the source language
+itself which specifies in what way the S-expressions are to be
+processed.  This consists of recursive functions of S-expressions.
+Since the notation for the writing of recursive functions of
+S-expressions is itself outside the S-expression notation, it will be
+called the meta language.  These expressions will therefore be called
+M-expressions.
+</p>
+</blockquote>
+
+<p>
+The manual also explains how to translate an M-expression to its
+equivalent S-expression:
+</p>
+
+
+<div id="org784918d" class="figure">
+<p><img src="maxwell-equations/mexp-sexp.png" alt="mexp-sexp.png" width="750px" />
+</p>
+</div>
+
+<p>
+As you can imagine, I could not resist to write my own implementation.
+The following is a the complete <a href="https://racket-lang.org/">Racket</a> implementation (<a href="maxwell-equations/evalquote.rkt">evalquote.rkt</a>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr"> 1: </span><span style="color: #a020f0;">#lang</span> racket
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">atom</span> e)
+<span class="linenr"> 4: </span>  (not (cons? e)))
+<span class="linenr"> 5: </span>
+<span class="linenr"> 6: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">pairlis</span> x y a)
+<span class="linenr"> 7: </span>  (<span style="color: #a020f0;">cond</span> [(null? x) a]
+<span class="linenr"> 8: </span>        [<span style="color: #a020f0;">else</span> (cons (cons (car x) (car y)) (pairlis (cdr x) (cdr y) a))]))
+<span class="linenr"> 9: </span>
+<span class="linenr">10: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evcon</span> c a)
+<span class="linenr">11: </span>  (<span style="color: #a020f0;">cond</span> [(eval (caar c) a) (eval (cadar c) a)]
+<span class="linenr">12: </span>        [<span style="color: #a020f0;">else</span> (evcon (cdr c) a)]))
+<span class="linenr">13: </span>
+<span class="linenr">14: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evlis</span> m a)
+<span class="linenr">15: </span>  (<span style="color: #a020f0;">cond</span> [(null? m) null]
+<span class="linenr">16: </span>        [<span style="color: #a020f0;">else</span> (cons (eval (car m) a) (evlis (cdr m) a))]))
+<span class="linenr">17: </span>
+<span class="linenr">18: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">eval</span> e a)
+<span class="linenr">19: </span>  (<span style="color: #a020f0;">cond</span> [(atom e) (cdr (assoc e a))]
+<span class="linenr">20: </span>        [(atom (car e)) (<span style="color: #a020f0;">cond</span> [(eq? (car e) 'QUOTE) (cadr e)]
+<span class="linenr">21: </span>                              [(eq? (car e) 'COND) (evcon (cdr e) a)]
+<span class="linenr">22: </span>                              [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)])]
+<span class="linenr">23: </span>        [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)]))
+<span class="linenr">24: </span>
+<span class="linenr">25: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">apply</span> fn x a)
+<span class="linenr">26: </span>  (<span style="color: #a020f0;">cond</span> [(atom fn) (<span style="color: #a020f0;">cond</span> [(eq? fn 'CAR) (caar x)]
+<span class="linenr">27: </span>                         [(eq? fn 'CDR) (cdar x)]
+<span class="linenr">28: </span>                         [(eq? fn 'CONS) (cons (car x) (cadr x))]
+<span class="linenr">29: </span>                         [(eq? fn 'ATOM) (atom (car x))]
+<span class="linenr">30: </span>                         [(eq? fn 'EQ) (eq? (car x) (cadr x))]
+<span class="linenr">31: </span>                         [<span style="color: #a020f0;">else</span> (apply (eval fn a) x a)])]
+<span class="linenr">32: </span>        [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
+<span class="linenr">33: </span>        [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+<span class="linenr">34: </span>
+<span class="linenr">35: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (apply fn x null))
+</pre>
+</div>
+
+<p>
+And the same code after commenting every single bit
+(<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commented.rkt</a>):
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">  1: </span><span style="color: #a020f0;">#lang</span> racket
+<span class="linenr">  2: </span>
+<span class="linenr">  3: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Distinction between forms and functions.</span>
+<span class="linenr">  4: </span><span style="color: #b22222;">;;</span>
+<span class="linenr">  5: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">It is usual to use the word "function" imprecisely, and to apply it</span>
+<span class="linenr">  6: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">to forms such as y*2+x.  Because we shall compute with expressions</span>
+<span class="linenr">  7: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">that stand for functions, we need a notation that expresses the</span>
+<span class="linenr">  8: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">distinction between functions and forms.  The notation that we</span>
+<span class="linenr">  9: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">shall use is the lambda notation of Alonzo Church.</span>
+<span class="linenr"> 10: </span><span style="color: #b22222;">;;</span>
+<span class="linenr"> 11: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Let f be an expression that stands for a function of two integer</span>
+<span class="linenr"> 12: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variables.  It should make sense to write f[3;4] and to be able to</span>
+<span class="linenr"> 13: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">determine the value of this expression.  For example, sum[3;4]=7.</span>
+<span class="linenr"> 14: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The expression y*2+x does not meet this requirement.  It is not at</span>
+<span class="linenr"> 15: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">all clear whether the value of y*2+x[3;4] is 10 or 11.  An</span>
+<span class="linenr"> 16: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">expression such as y*2+x will be called a form rather than a</span>
+<span class="linenr"> 17: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">function.  A form can be converted to a function by specifying the</span>
+<span class="linenr"> 18: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">correspondence between the variables in the form and the arguments</span>
+<span class="linenr"> 19: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">of the desired function.</span>
+<span class="linenr"> 20: </span>
+<span class="linenr"> 21: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">cons returns #t if e is an atomic symbol, #f otherwise.</span>
+<span class="linenr"> 22: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">atom</span> e)
+<span class="linenr"> 23: </span>  (not (cons? e)))
+<span class="linenr"> 24: </span>
+<span class="linenr"> 25: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">pairlis gives the list of pairs of corresponding elements of the</span>
+<span class="linenr"> 26: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">lists x and y, and appends this to the list a.  The resultant list</span>
+<span class="linenr"> 27: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">of pairs, which is like a table with two columns, is called an</span>
+<span class="linenr"> 28: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">association list.</span>
+<span class="linenr"> 29: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">pairlis</span> x y a)
+<span class="linenr"> 30: </span>  (<span style="color: #a020f0;">cond</span> [(null? x) a]
+<span class="linenr"> 31: </span>        [<span style="color: #a020f0;">else</span> (cons (cons (car x) (car y)) (pairlis (cdr x) (cdr y) a))]))
+<span class="linenr"> 32: </span>
+<span class="linenr"> 33: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evcon handles the COND form.  It evaluates the list of</span>
+<span class="linenr"> 34: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">propositional terms c in order, and chooses the form following the</span>
+<span class="linenr"> 35: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">first true predicate.  a is an association list of names and</span>
+<span class="linenr"> 36: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">definitions.</span>
+<span class="linenr"> 37: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evcon</span> c a)
+<span class="linenr"> 38: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the conditional expression</span>
+<span class="linenr"> 39: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(COND ((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))</span>
+<span class="linenr"> 40: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">c is</span>
+<span class="linenr"> 41: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'(((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))</span>
+<span class="linenr"> 42: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Thus,</span>
+<span class="linenr"> 43: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caar c) returns '(ATOM (QUOTE A))</span>
+<span class="linenr"> 44: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadar c) returns '(QUOTE B)</span>
+<span class="linenr"> 45: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdr c) returns '(((QUOTE T) (QUOTE C)))</span>
+<span class="linenr"> 46: </span>  (<span style="color: #a020f0;">cond</span> [(eval (caar c) a) (eval (cadar c) a)]
+<span class="linenr"> 47: </span>        [<span style="color: #a020f0;">else</span> (evcon (cdr c) a)]))
+<span class="linenr"> 48: </span>
+<span class="linenr"> 49: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evlis evaluates the list of arguments m of a function.  a is an</span>
+<span class="linenr"> 50: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">association list of names and definitions.</span>
+<span class="linenr"> 51: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evlis</span> m a)
+<span class="linenr"> 52: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the function call</span>
+<span class="linenr"> 53: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(CONS (QUOTE A) (QUOTE B))</span>
+<span class="linenr"> 54: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">m is</span>
+<span class="linenr"> 55: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((QUOTE B) (QUOTE C))</span>
+<span class="linenr"> 56: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Thus,</span>
+<span class="linenr"> 57: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car m) returns '(QUOTE B)</span>
+<span class="linenr"> 58: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdr m) returns '((QUOTE C))</span>
+<span class="linenr"> 59: </span>  (<span style="color: #a020f0;">cond</span> [(null? m) null]
+<span class="linenr"> 60: </span>        [<span style="color: #a020f0;">else</span> (cons (eval (car m) a) (evlis (cdr m) a))]))
+<span class="linenr"> 61: </span>
+<span class="linenr"> 62: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">eval handles a form.  a is an association list of names and</span>
+<span class="linenr"> 63: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">definitions.</span>
+<span class="linenr"> 64: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">eval</span> e a)
+<span class="linenr"> 65: </span>  (<span style="color: #a020f0;">cond</span>
+<span class="linenr"> 66: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If e is an atomic, then it must be a variable, and its value is</span>
+<span class="linenr"> 67: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">looked up on the association list.</span>
+<span class="linenr"> 68: </span>   [(atom e) (cdr (assoc e a))]
+<span class="linenr"> 69: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If e is a list that begins with an atomic symbol, then it can be</span>
+<span class="linenr"> 70: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">a quote expressions, a conditional expression or a function</span>
+<span class="linenr"> 71: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">call.</span>
+<span class="linenr"> 72: </span>   [(atom (car e))
+<span class="linenr"> 73: </span>    (<span style="color: #a020f0;">cond</span>
+<span class="linenr"> 74: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">If car of the form is QUOTE, then it is a constant.</span>
+<span class="linenr"> 75: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expression</span>
+<span class="linenr"> 76: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(QUOTE A)</span>
+<span class="linenr"> 77: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr"> 78: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr e) returns 'A</span>
+<span class="linenr"> 79: </span>     [(eq? (car e) 'QUOTE) (cadr e)]
+<span class="linenr"> 80: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">If car of the form is COND, then it is a conditional</span>
+<span class="linenr"> 81: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">expression, and evcon handles it.</span>
+<span class="linenr"> 82: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expression</span>
+<span class="linenr"> 83: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(COND ((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))</span>
+<span class="linenr"> 84: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr"> 85: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdr e) returns '(((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))</span>
+<span class="linenr"> 86: </span>     [(eq? (car e) 'COND) (evcon (cdr e) a)]
+<span class="linenr"> 87: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Otherwise, the form must be a function followed by its</span>
+<span class="linenr"> 88: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">arguments.  The arguments are then evaluated, and the function</span>
+<span class="linenr"> 89: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">is given to apply.</span>
+<span class="linenr"> 90: </span>     [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)])]
+<span class="linenr"> 91: </span>   [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)]))
+<span class="linenr"> 92: </span>
+<span class="linenr"> 93: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">apply handles a function and its arguments.</span>
+<span class="linenr"> 94: </span><span style="color: #b22222;">;;</span>
+<span class="linenr"> 95: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is a function.  If it is an atomic symbol, there are two</span>
+<span class="linenr"> 96: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">possibilities:</span>
+<span class="linenr"> 97: </span><span style="color: #b22222;">;;</span>
+<span class="linenr"> 98: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">- fn is an elementary function: CAR, CDR, CONS, ATOM or EQ.</span>
+<span class="linenr"> 99: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">- fn is an atom.</span>
+<span class="linenr">100: </span><span style="color: #b22222;">;;</span>
+<span class="linenr">101: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">In each case, the appropriate function is applied to the arguments.</span>
+<span class="linenr">102: </span><span style="color: #b22222;">;;</span>
+<span class="linenr">103: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">x is a list of S-expressions used as arguments.  a is an</span>
+<span class="linenr">104: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">association list of names and definitions.</span>
+<span class="linenr">105: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">apply</span> fn x a)
+<span class="linenr">106: </span>  (<span style="color: #a020f0;">cond</span>
+<span class="linenr">107: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is an atomic symbol.</span>
+<span class="linenr">108: </span>   [(atom fn)
+<span class="linenr">109: </span>    (<span style="color: #a020f0;">cond</span>
+<span class="linenr">110: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function CAR.</span>
+<span class="linenr">111: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
+<span class="linenr">112: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A B C))</span>
+<span class="linenr">113: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">114: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caar x) returns 'A</span>
+<span class="linenr">115: </span>     [(eq? fn 'CAR) (caar x)]
+<span class="linenr">116: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function CDR.</span>
+<span class="linenr">117: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
+<span class="linenr">118: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A B C))</span>
+<span class="linenr">119: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">120: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdar x) returns '(B C)</span>
+<span class="linenr">121: </span>     [(eq? fn 'CDR) (cdar x)]
+<span class="linenr">122: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function CONS.</span>
+<span class="linenr">123: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
+<span class="linenr">124: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'(A B)</span>
+<span class="linenr">125: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">126: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car x) returns 'A</span>
+<span class="linenr">127: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr x) returns 'B</span>
+<span class="linenr">128: </span>     [(eq? fn 'CONS) (cons (car x) (cadr x))]
+<span class="linenr">129: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function ATOM.</span>
+<span class="linenr">130: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
+<span class="linenr">131: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A . B))</span>
+<span class="linenr">132: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">133: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car x) returns '(A . B)</span>
+<span class="linenr">134: </span>     [(eq? fn 'ATOM) (atom (car x))]
+<span class="linenr">135: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function EQ.</span>
+<span class="linenr">136: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
+<span class="linenr">137: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'(A B)</span>
+<span class="linenr">138: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">139: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car x) returns 'A</span>
+<span class="linenr">140: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr x) returns 'B</span>
+<span class="linenr">141: </span>     [(eq? fn 'EQ) (eq? (car x) (cadr x))]
+<span class="linenr">142: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Otherwise, fn must be looked up in the association list.</span>
+<span class="linenr">143: </span>     [<span style="color: #a020f0;">else</span> (apply (eval fn a) x a)])]
+<span class="linenr">144: </span>
+<span class="linenr">145: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If fn begins with LAMBDA, then the arguments are paired with the</span>
+<span class="linenr">146: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">bound variables and the form is given to eval to evaluate.</span>
+<span class="linenr">147: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expression</span>
+<span class="linenr">148: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(LAMBDA (X) (CDR X))</span>
+<span class="linenr">149: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">And the arguments</span>
+<span class="linenr">150: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A B C))</span>
+<span class="linenr">151: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">152: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(CDR X)</span>
+<span class="linenr">153: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns '(X)</span>
+<span class="linenr">154: </span>   [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
+<span class="linenr">155: </span>
+<span class="linenr">156: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If fn begins with LABEL, then the function name and definition are</span>
+<span class="linenr">157: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">added to the association list, and the inside function is evaluated</span>
+<span class="linenr">158: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">by apply.</span>
+<span class="linenr">159: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expresion</span>
+<span class="linenr">160: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(LABEL FF (LAMBDA (X) (FF (CONS (QUOTE A) X))))</span>
+<span class="linenr">161: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">And the arguments,</span>
+<span class="linenr">162: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((B))</span>
+<span class="linenr">163: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">164: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(LAMBDA (X) (FF (CONS (QUOTE A) X)))</span>
+<span class="linenr">165: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns 'FF</span>
+<span class="linenr">166: </span>   [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+<span class="linenr">167: </span>
+<span class="linenr">168: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evalquote is a universal LISP function.  In other words, it can</span>
+<span class="linenr">169: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">compute the value of any given function applied to its arguments</span>
+<span class="linenr">170: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">when given a description of that function.</span>
+<span class="linenr">171: </span><span style="color: #b22222;">;;</span>
+<span class="linenr">172: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the function to be applied represented as a S-expression.  x</span>
+<span class="linenr">173: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is a list of S-expressions used as arguments.</span>
+<span class="linenr">174: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (apply fn x null))
+</pre>
+</div>
+
+<p>
+So, let's run it!
+</p>
+
+<pre class="example" id="org648d693">
+racket@maxwell-equations/evalquote&gt; (evalquote 'CAR '((A B C)))
+'A
+racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CDR X)) '((A B C)))
+'(B C)
+racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CONS (QUOTE FIRST) (CDR X))) '((A B C)))
+'(FIRST B C)
+</pre>
+
+<p>
+The code is so short and simple that extending it is trivial. For
+intance, the following two lines patch allows to call procedures
+passed from the environment:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-diff"><span style="background-color: #d9d9d9;">--- </span><span style="background-color: #bfbfbf; font-weight: bold;">evalquote.rkt</span><span style="background-color: #d9d9d9;">       2024-06-11 16:56:44.247229249 +0200</span>
+<span style="background-color: #d9d9d9;">+++ </span><span style="background-color: #bfbfbf; font-weight: bold;">evalquote-proc.rkt</span><span style="background-color: #d9d9d9;">  2024-06-11 17:14:09.789565784 +0200</span>
+<span style="background-color: #d9d9d9;">@@ -1,5 +1,7 @@</span>
+ #lang racket
+
+<span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">(require (only-in racket/base [apply rapply]))</span>
+<span style="color: #22aa22; background-color: #eeffee;">+</span>
+ (define (atom e)
+   (not (cons? e)))
+
+<span style="background-color: #d9d9d9;">@@ -28,6 +30,7 @@</span>
+                         [(eq? fn 'CONS) (cons (car x) (cadr x))]
+                         [(eq? fn 'ATOM) (atom (car x))]
+                         [(eq? fn 'EQ) (eq? (car x) (cadr x))]
+<span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">                        [(and (assoc fn a) (procedure? (cdr (assoc fn a)))) (rapply (cdr (assoc fn a)) x)]</span>
+                         [else (apply (eval fn a) x a)])]
+        [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
+        [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+</pre>
+</div>
+
+<p>
+We can add, for instance, the <code>*</code> operator into the context of the
+LISP interpreter:
+</p>
+
+<pre class="example" id="org6942ccc">
+racket@maxwell-equations/evalquote-proc&gt; (apply '(LAMBDA (X Y) (* X Y)) '(2 21) `((* . ,*)))
+42
+</pre>
+
+<p>
+If you like this topic, then stop everything are doing and go watch
+the wonderful talk "<a href="https://www.youtube.com/watch?v=OyfBQmvr2Hc">The Most Beautiful Program Ever Written</a>" by
+William Byrd.
+</p>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: 2024-05-31 Fri 00:00</p>
+<p class="author">Author: Roi Martin</p>
+<p class="date">Created: 2024-06-11 Tue 17:25</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

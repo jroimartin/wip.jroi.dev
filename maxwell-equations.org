@@ -1,0 +1,110 @@
+#+title: Maxwell’s Equations of Software
+#+author: Roi Martin
+#+date: <2024-05-31 Fri>
+#+html_link_home: index.html
+#+html_link_up: index.html
+#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+On December 27, 2004 ACM Queue published an [[https://queue.acm.org/detail.cfm?id=1039523][interview]] with [[https://en.wikipedia.org/wiki/Alan_Kay][Alan Kay]],
+the creator of [[https://en.wikipedia.org/wiki/Smalltalk][Smalltalk]].  In this interview, he pronounced the famous
+words:
+
+#+begin_quote
+That was the big revelation to me when I was in graduate school—when I
+finally understood that the half page of code on the bottom of page 13
+of the Lisp 1.5 manual was Lisp in itself.  These were "Maxwell’s
+Equations of Software!" This is the whole world of programming in a
+few lines that I can put my hand over.
+
+-- Alan Kay
+#+end_quote
+
+So, what is on the bottom of page 13 of the
+[[https://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf][LISP 1.5 Programmers Manual]]?
+
+#+attr_html: :width 650px
+[[file:maxwell-equations/page13.png]]
+
+This small piece of code is a *universal LISP function*.  In other
+words, ~evalquote~ can compute the value of any given function applied
+to its arguments when given a description of that function.  A LISP
+interpreter written in LISP itself that fits in a flashcard!
+
+The syntax might look quite different to what we expect from LISP.
+The reason is that it uses [[https://en.wikipedia.org/wiki/M-expression][M-expressions]] instead of [[https://en.wikipedia.org/wiki/S-expression][S-expressions]].
+
+As the Lisp 1.5 programmers manual explains on page 1:
+
+#+begin_quote
+The second important part of the LISP language is the source language
+itself which specifies in what way the S-expressions are to be
+processed.  This consists of recursive functions of S-expressions.
+Since the notation for the writing of recursive functions of
+S-expressions is itself outside the S-expression notation, it will be
+called the meta language.  These expressions will therefore be called
+M-expressions.
+#+end_quote
+
+The manual also explains how to translate an M-expression to its
+equivalent S-expression:
+
+#+attr_html: :width 750px
+[[file:maxwell-equations/mexp-sexp.png]]
+
+As you can imagine, I could not resist to write my own implementation.
+The following is a the complete [[https://racket-lang.org/][Racket]] implementation ([[file:maxwell-equations/evalquote.rkt][evalquote.rkt]]):
+
+#+include: "maxwell-equations/evalquote.rkt" src scheme -n
+
+And the same code after commenting every single bit
+([[file:maxwell-equations/evalquote-commented.rkt][evalquote-commented.rkt]]):
+
+#+include: "maxwell-equations/evalquote-commented.rkt" src scheme -n
+
+So, let's run it!
+
+#+begin_example
+racket@maxwell-equations/evalquote> (evalquote 'CAR '((A B C)))
+'A
+racket@maxwell-equations/evalquote> (evalquote '(LAMBDA (X) (CDR X)) '((A B C)))
+'(B C)
+racket@maxwell-equations/evalquote> (evalquote '(LAMBDA (X) (CONS (QUOTE FIRST) (CDR X))) '((A B C)))
+'(FIRST B C)
+#+end_example
+
+The code is so short and simple that extending it is trivial. For
+intance, the following two lines patch allows to call procedures
+passed from the environment:
+
+#+begin_src diff
+--- evalquote.rkt	2024-06-11 16:56:44.247229249 +0200
++++ evalquote-proc.rkt	2024-06-11 17:14:09.789565784 +0200
+@@ -1,5 +1,7 @@
+ #lang racket
+
++(require (only-in racket/base [apply rapply]))
++
+ (define (atom e)
+   (not (cons? e)))
+
+@@ -28,6 +30,7 @@
+ 			 [(eq? fn 'CONS) (cons (car x) (cadr x))]
+ 			 [(eq? fn 'ATOM) (atom (car x))]
+ 			 [(eq? fn 'EQ) (eq? (car x) (cadr x))]
++			 [(and (assoc fn a) (procedure? (cdr (assoc fn a)))) (rapply (cdr (assoc fn a)) x)]
+ 			 [else (apply (eval fn a) x a)])]
+ 	[(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
+ 	[(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+#+end_src
+
+We can add, for instance, the ~*~ operator into the context of the
+LISP interpreter:
+
+#+begin_example
+racket@maxwell-equations/evalquote-proc> (apply '(LAMBDA (X Y) (* X Y)) '(2 21) `((* . ,*)))
+42
+#+end_example
+
+If you like this topic, then stop everything are doing and go watch
+the wonderful talk "[[https://www.youtube.com/watch?v=OyfBQmvr2Hc][The Most Beautiful Program Ever Written]]" by
+William Byrd.
