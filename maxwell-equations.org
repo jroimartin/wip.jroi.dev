@@ -105,6 +105,6 @@ racket@maxwell-equations/evalquote-proc> (apply '(LAMBDA (X Y) (* X Y)) '(2 21) 
 42
 #+end_example
 
-If you like this topic, then stop everything are doing and go watch
-the wonderful talk "[[https://www.youtube.com/watch?v=OyfBQmvr2Hc][The Most Beautiful Program Ever Written]]" by
+If you like this topic, then stop everything you are doing and go
+watch the wonderful talk "[[https://www.youtube.com/watch?v=OyfBQmvr2Hc][The Most Beautiful Program Ever Written]]" by
 William Byrd.

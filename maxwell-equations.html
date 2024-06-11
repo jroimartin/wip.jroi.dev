@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-06-11 Tue 17:28 -->
+<!-- 2024-06-11 Tue 17:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Maxwell’s Equations of Software</title>
@@ -228,7 +228,7 @@ So, what is on the bottom of page 13 of the
 </p>
 
 
-<div id="orgc5ebfb7" class="figure">
+<div id="org58d4a23" class="figure">
 <p><img src="maxwell-equations/page13.png" alt="page13.png" width="650px" />
 </p>
 </div>
@@ -267,7 +267,7 @@ equivalent S-expression:
 </p>
 
 
-<div id="orge895092" class="figure">
+<div id="orgdc430aa" class="figure">
 <p><img src="maxwell-equations/mexp-sexp.png" alt="mexp-sexp.png" width="750px" />
 </p>
 </div>
@@ -503,7 +503,7 @@ And the same code after commenting every single bit
 So, let's run it!
 </p>
 
-<pre class="example" id="orgba1eddb">
+<pre class="example" id="org4d9502d">
 racket@maxwell-equations/evalquote&gt; (evalquote 'CAR '((A B C)))
 'A
 racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CDR X)) '((A B C)))
@@ -545,21 +545,21 @@ We can add, for instance, the <code>*</code> operator into the context of the
 LISP interpreter:
 </p>
 
-<pre class="example" id="org7740147">
+<pre class="example" id="org2952a32">
 racket@maxwell-equations/evalquote-proc&gt; (apply '(LAMBDA (X Y) (* X Y)) '(2 21) `((* . ,*)))
 42
 </pre>
 
 <p>
-If you like this topic, then stop everything are doing and go watch
-the wonderful talk "<a href="https://www.youtube.com/watch?v=OyfBQmvr2Hc">The Most Beautiful Program Ever Written</a>" by
+If you like this topic, then stop everything you are doing and go
+watch the wonderful talk "<a href="https://www.youtube.com/watch?v=OyfBQmvr2Hc">The Most Beautiful Program Ever Written</a>" by
 William Byrd.
 </p>
 </div>
 <div id="postamble" class="status">
 <p class="date">Date: 2024-05-31 Fri 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-06-11 Tue 17:28</p>
+<p class="date">Created: 2024-06-11 Tue 17:33</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
