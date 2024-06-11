@@ -74,7 +74,7 @@ racket@maxwell-equations/evalquote> (evalquote '(LAMBDA (X) (CONS (QUOTE FIRST) 
 
 The code is so short and simple that extending it is trivial. For
 intance, the following two lines patch allows to call procedures
-passed from the environment:
+passed from the environment ([[file:maxwell-equations/evalquote-proc.rkt][evalquote-proc.rkt]]):
 
 #+begin_src diff
 --- evalquote.rkt	2024-06-11 16:56:44.247229249 +0200
