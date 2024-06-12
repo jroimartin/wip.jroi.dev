@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-06-11 Tue 17:33 -->
+<!-- 2024-06-12 Wed 09:42 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Maxwell’s Equations of Software</title>
@@ -228,7 +228,7 @@ So, what is on the bottom of page 13 of the
 </p>
 
 
-<div id="org58d4a23" class="figure">
+<div id="orgc917aec" class="figure">
 <p><img src="maxwell-equations/page13.png" alt="page13.png" width="650px" />
 </p>
 </div>
@@ -242,11 +242,8 @@ interpreter written in LISP itself that fits in a flashcard!
 
 <p>
 The syntax might look quite different to what we expect from LISP.
-The reason is that it uses <a href="https://en.wikipedia.org/wiki/M-expression">M-expressions</a> instead of <a href="https://en.wikipedia.org/wiki/S-expression">S-expressions</a>.
-</p>
-
-<p>
-As the Lisp 1.5 programmers manual explains on page 1:
+The reason is the usage of <a href="https://en.wikipedia.org/wiki/M-expression">M-expressions</a> instead of <a href="https://en.wikipedia.org/wiki/S-expression">S-expressions</a>. The
+Lisp 1.5 programmers manual explains why on page 1:
 </p>
 
 <blockquote>
@@ -267,14 +264,14 @@ equivalent S-expression:
 </p>
 
 
-<div id="orgdc430aa" class="figure">
+<div id="org592ac3c" class="figure">
 <p><img src="maxwell-equations/mexp-sexp.png" alt="mexp-sexp.png" width="750px" />
 </p>
 </div>
 
 <p>
 As you can imagine, I could not resist to write my own implementation.
-The following is a the complete <a href="https://racket-lang.org/">Racket</a> implementation (<a href="maxwell-equations/evalquote.rkt">evalquote.rkt</a>):
+The following is the complete <a href="https://racket-lang.org/">Racket</a> implementation (<a href="maxwell-equations/evalquote.rkt">evalquote.rkt</a>):
 </p>
 
 <div class="org-src-container">
@@ -317,8 +314,8 @@ The following is a the complete <a href="https://racket-lang.org/">Racket</a> im
 </div>
 
 <p>
-And the same code after commenting every single bit
-(<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commented.rkt</a>):
+And the following is the same Racket code after commenting every
+single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commented.rkt</a>):
 </p>
 
 <div class="org-src-container">
@@ -470,32 +467,28 @@ And the same code after commenting every single bit
 <span class="linenr">146: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">bound variables and the form is given to eval to evaluate.</span>
 <span class="linenr">147: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expression</span>
 <span class="linenr">148: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(LAMBDA (X) (CDR X))</span>
-<span class="linenr">149: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">And the arguments</span>
-<span class="linenr">150: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A B C))</span>
-<span class="linenr">151: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
-<span class="linenr">152: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(CDR X)</span>
-<span class="linenr">153: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns '(X)</span>
-<span class="linenr">154: </span>   [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
-<span class="linenr">155: </span>
-<span class="linenr">156: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If fn begins with LABEL, then the function name and definition are</span>
-<span class="linenr">157: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">added to the association list, and the inside function is evaluated</span>
-<span class="linenr">158: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">by apply.</span>
-<span class="linenr">159: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expresion</span>
-<span class="linenr">160: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(LABEL FF (LAMBDA (X) (FF (CONS (QUOTE A) X))))</span>
-<span class="linenr">161: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">And the arguments,</span>
-<span class="linenr">162: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((B))</span>
-<span class="linenr">163: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
-<span class="linenr">164: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(LAMBDA (X) (FF (CONS (QUOTE A) X)))</span>
-<span class="linenr">165: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns 'FF</span>
-<span class="linenr">166: </span>   [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
-<span class="linenr">167: </span>
-<span class="linenr">168: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evalquote is a universal LISP function.  In other words, it can</span>
-<span class="linenr">169: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">compute the value of any given function applied to its arguments</span>
-<span class="linenr">170: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">when given a description of that function.</span>
-<span class="linenr">171: </span><span style="color: #b22222;">;;</span>
-<span class="linenr">172: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the function to be applied represented as a S-expression.  x</span>
-<span class="linenr">173: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is a list of S-expressions used as arguments.</span>
-<span class="linenr">174: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (apply fn x null))
+<span class="linenr">149: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">150: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(CDR X)</span>
+<span class="linenr">151: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns '(X)</span>
+<span class="linenr">152: </span>   [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
+<span class="linenr">153: </span>
+<span class="linenr">154: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If fn begins with LABEL, then the function name and definition are</span>
+<span class="linenr">155: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">added to the association list, and the inside function is evaluated</span>
+<span class="linenr">156: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">by apply.</span>
+<span class="linenr">157: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expresion</span>
+<span class="linenr">158: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(LABEL FF (LAMBDA (X) (FF (CONS (QUOTE A) X))))</span>
+<span class="linenr">159: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
+<span class="linenr">160: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(LAMBDA (X) (FF (CONS (QUOTE A) X)))</span>
+<span class="linenr">161: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns 'FF</span>
+<span class="linenr">162: </span>   [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+<span class="linenr">163: </span>
+<span class="linenr">164: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evalquote is a universal LISP function.  In other words, it can</span>
+<span class="linenr">165: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">compute the value of any given function applied to its arguments</span>
+<span class="linenr">166: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">when given a description of that function.</span>
+<span class="linenr">167: </span><span style="color: #b22222;">;;</span>
+<span class="linenr">168: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the function to be applied represented as a S-expression.  x</span>
+<span class="linenr">169: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is a list of S-expressions used as arguments.</span>
+<span class="linenr">170: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (apply fn x null))
 </pre>
 </div>
 
@@ -503,7 +496,7 @@ And the same code after commenting every single bit
 So, let's run it!
 </p>
 
-<pre class="example" id="org4d9502d">
+<pre class="example" id="org1b84d13">
 racket@maxwell-equations/evalquote&gt; (evalquote 'CAR '((A B C)))
 'A
 racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CDR X)) '((A B C)))
@@ -514,7 +507,7 @@ racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CONS (QUOTE FIRS
 
 <p>
 The code is so short and simple that extending it is trivial. For
-intance, the following two lines patch allows to call procedures
+example, the following two lines patch allows to call procedures
 passed from the environment (<a href="maxwell-equations/evalquote-proc.rkt">evalquote-proc.rkt</a>):
 </p>
 
@@ -545,7 +538,7 @@ We can add, for instance, the <code>*</code> operator into the context of the
 LISP interpreter:
 </p>
 
-<pre class="example" id="org2952a32">
+<pre class="example" id="org1390e40">
 racket@maxwell-equations/evalquote-proc&gt; (apply '(LAMBDA (X Y) (* X Y)) '(2 21) `((* . ,*)))
 42
 </pre>
@@ -559,7 +552,7 @@ William Byrd.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-05-31 Fri 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-06-11 Tue 17:33</p>
+<p class="date">Created: 2024-06-12 Wed 09:42</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

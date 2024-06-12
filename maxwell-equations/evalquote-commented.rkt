@@ -146,8 +146,6 @@
    ;; bound variables and the form is given to eval to evaluate.
    ;; Given the expression
    ;;   (LAMBDA (X) (CDR X))
-   ;; And the arguments
-   ;;   '((A B C))
    ;; Then,
    ;;   (caddr fn) returns '(CDR X)
    ;;   (cadr fn) returns '(X)
@@ -158,8 +156,6 @@
    ;; by apply.
    ;; Given the expresion
    ;;   (LABEL FF (LAMBDA (X) (FF (CONS (QUOTE A) X))))
-   ;; And the arguments,
-   ;;   '((B))
    ;; Then,
    ;;   (caddr fn) returns '(LAMBDA (X) (FF (CONS (QUOTE A) X)))
    ;;   (cadr fn) returns 'FF
