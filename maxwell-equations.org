@@ -31,9 +31,8 @@ to its arguments when given a description of that function.  A LISP
 interpreter written in LISP itself that fits in a flashcard!
 
 The syntax might look quite different to what we expect from LISP.
-The reason is that it uses [[https://en.wikipedia.org/wiki/M-expression][M-expressions]] instead of [[https://en.wikipedia.org/wiki/S-expression][S-expressions]].
-
-As the Lisp 1.5 programmers manual explains on page 1:
+The reason is the usage of [[https://en.wikipedia.org/wiki/M-expression][M-expressions]] instead of [[https://en.wikipedia.org/wiki/S-expression][S-expressions]]. The
+Lisp 1.5 programmers manual explains why on page 1:
 
 #+begin_quote
 The second important part of the LISP language is the source language
@@ -52,12 +51,12 @@ equivalent S-expression:
 [[file:maxwell-equations/mexp-sexp.png]]
 
 As you can imagine, I could not resist to write my own implementation.
-The following is a the complete [[https://racket-lang.org/][Racket]] implementation ([[file:maxwell-equations/evalquote.rkt][evalquote.rkt]]):
+The following is the complete [[https://racket-lang.org/][Racket]] implementation ([[file:maxwell-equations/evalquote.rkt][evalquote.rkt]]):
 
 #+include: "maxwell-equations/evalquote.rkt" src scheme -n
 
-And the same code after commenting every single bit
-([[file:maxwell-equations/evalquote-commented.rkt][evalquote-commented.rkt]]):
+And the following is the same Racket code after commenting every
+single bit ([[file:maxwell-equations/evalquote-commented.rkt][evalquote-commented.rkt]]):
 
 #+include: "maxwell-equations/evalquote-commented.rkt" src scheme -n
 
@@ -73,7 +72,7 @@ racket@maxwell-equations/evalquote> (evalquote '(LAMBDA (X) (CONS (QUOTE FIRST) 
 #+end_example
 
 The code is so short and simple that extending it is trivial. For
-intance, the following two lines patch allows to call procedures
+example, the following two lines patch allows to call procedures
 passed from the environment ([[file:maxwell-equations/evalquote-proc.rkt][evalquote-proc.rkt]]):
 
 #+begin_src diff
