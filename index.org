@@ -8,6 +8,13 @@
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 #+html_head_extra: <link rel="me" href="https://fosstodon.org/@jroimartin" />
 
+In this site I publish the notes I take as part of my learning
+process.  I usually jump from one project to another and eventually
+come back to a previous one, so all the notes here are
+work-in-progress and can change.  If you want to follow my work, you
+can subscribe to this [[https://github.com/jroimartin/wip.jroi.dev/commits/main.atom][RSS feed]] or watch my [[https://github.com/jroimartin/wip.jroi.dev][jroimartin/wip.jroi.dev]]
+GitHub repository.
+
 * Programming
 
 - [[file:maxwell-equations.org][Maxwell’s Equations of Software]]
