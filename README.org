@@ -12,10 +12,11 @@ Eval the following elisp snippet to export all org files to HTML:
 				      :publishing-directory "."
 				      :publishing-function org-html-publish-to-html
 				      :exclude "README.org"
-				      :recursive t))))
+				      :recursive t)))
+	(geiser-scheme-implementation 'racket))
     (org-publish-all)
     (message "Last update: %s" (current-time-string)))
 #+end_src
 
 #+results:
-: Last update: Thu Jun 13 16:41:30 2024
+: Last update: Fri Jun 14 06:15:22 2024
