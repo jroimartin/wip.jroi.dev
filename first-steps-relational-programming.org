@@ -21,6 +21,12 @@ relations.
 
 * Resources
 
-- [[http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf][μKanren: A Minimal Functional Core for Relational Programming]] by Jason Hemann and Daniel P. Friedman
+** Papers
+
 - [[https://raw.githubusercontent.com/webyrd/dissertation-single-spaced/master/thesis.pdf][Relational Programming in miniKanren: Techniques, Applications, and Implementations]] by William E. Byrd
+- [[http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf][μKanren: A Minimal Functional Core for Relational Programming]] by Jason Hemann and Daniel P. Friedman
+
+** Talks
+
+- [[https://youtu.be/RVDCRlW1f1Y?feature=shared][Relational Interpreters, Program Synthesis and Barliman]] by William E. Byrd
 - [[https://youtu.be/0FwIwewHC3o?feature=shared][Implementing a microKanren]] by Jason Hemann and Daniel P. Friedman
