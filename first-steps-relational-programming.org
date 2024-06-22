@@ -30,3 +30,10 @@ relations.
 
 - [[https://youtu.be/RVDCRlW1f1Y?feature=shared][Relational Interpreters, Program Synthesis and Barliman]] by William E. Byrd
 - [[https://youtu.be/0FwIwewHC3o?feature=shared][Implementing a microKanren]] by Jason Hemann and Daniel P. Friedman
+
+** Books
+
+- "Introduction to Logic" by Patrick Suppes
+- "The Little Lisper" by Daniel P. Friedman
+- "The Little Schemer, Fourth Edition" by Daniel P. Friedman and Matthias Felleisen
+- "The Reasoned Schemer, Second Edition" by Daniel P. Friedman, William E. Byrd, Oleg Kiselyov and Jason Hemann
