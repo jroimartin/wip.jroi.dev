@@ -18,6 +18,7 @@ GitHub repository.
 * Programming
 
 - [[file:maxwell-equations.org][Maxwell’s Equations of Software]]
+- [[file:first-steps-relational-programming.org][First Steps In Relational Programming]]
 
 * Misc
 

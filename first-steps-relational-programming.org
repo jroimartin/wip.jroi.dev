@@ -1,0 +1,26 @@
+#+title: First Steps In Relational Programming
+#+author: Roi Martin
+#+date: <2024-06-22 Sat>
+#+html_link_home: index.html
+#+html_link_up: index.html
+#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+I'm at the very beginning of learning about logic, relational
+programming, miniKanren, Prolog, etc.  So, for now, this page is just
+a collection of links to papers and talks plus some raw notes.
+
+* Scratch pad
+
+Definition from Wikipedia in relation to [[https://en.wikipedia.org/wiki/Logic_programming][logic programming]]:
+
+#+begin_quote
+The term relational programming has been used to cover a variety of
+programming languages that treat functions as a special case of
+relations.
+#+end_quote
+
+* Resources
+
+- [[http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf][μKanren: A Minimal Functional Core for Relational Programming]] by Jason Hemann and Daniel P. Friedman
+- [[https://raw.githubusercontent.com/webyrd/dissertation-single-spaced/master/thesis.pdf][Relational Programming in miniKanren: Techniques, Applications, and Implementations]] by William E. Byrd
+- [[https://youtu.be/0FwIwewHC3o?feature=shared][Implementing a microKanren]] by Jason Hemann and Daniel P. Friedman
