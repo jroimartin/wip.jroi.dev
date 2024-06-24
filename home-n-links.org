@@ -17,6 +17,7 @@ If you want to subscribe to this page, use this [[https://github.com/jroimartin/
 
 - [[https://youtu.be/vMDHpPN_p08?feature=shared][From Here To Lambda And Back Again]] by Douglas Crockford
 - [[https://queue.acm.org/detail.cfm?id=1039523][A Conversation with Alan Kay]] in ACM Queue Volume 2, issue 9
+- [[https://youtu.be/umSuLpjFUf8?feature=shared][Concatenative programming and stack-based languages]] by Douglas Creager
 
 * May 2024
 
