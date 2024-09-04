@@ -16,6 +16,7 @@ If you want to subscribe to this page, use this [[https://github.com/jroimartin/
 * September 2024
 
 - [[https://youtu.be/IroPQ150F6c][Practical Data Oriented Design]] by Andrew Kelley
+- [[https://youtu.be/rX0ItVEVjHc][Data-Oriented Design and C++]] by Mike Acton
 
 
 * June 2024
