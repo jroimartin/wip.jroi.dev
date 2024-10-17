@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-16 Wed 20:54 -->
+<!-- 2024-10-17 Thu 13:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Maxwell’s Equations of Software</title>
@@ -228,7 +228,7 @@ So, what is on the bottom of page 13 of the
 </p>
 
 
-<div id="org2f9299b" class="figure">
+<div id="orgda402c2" class="figure">
 <p><img src="maxwell-equations/page13.png" alt="page13.png" width="650px" />
 </p>
 </div>
@@ -242,8 +242,8 @@ interpreter written in LISP itself that fits in a flashcard!
 
 <p>
 The syntax might look quite different to what we expect from LISP.
-The reason is the usage of <a href="https://en.wikipedia.org/wiki/M-expression">M-expressions</a> instead of <a href="https://en.wikipedia.org/wiki/S-expression">S-expressions</a>. The
-Lisp 1.5 programmers manual explains why on page 1:
+The reason is the usage of <a href="https://en.wikipedia.org/wiki/M-expression">M-expressions</a> instead of <a href="https://en.wikipedia.org/wiki/S-expression">S-expressions</a>.
+The Lisp 1.5 programmers manual explains why on page 1:
 </p>
 
 <blockquote>
@@ -264,7 +264,7 @@ equivalent S-expression:
 </p>
 
 
-<div id="org35056a0" class="figure">
+<div id="orgf04537e" class="figure">
 <p><img src="maxwell-equations/mexp-sexp.png" alt="mexp-sexp.png" width="750px" />
 </p>
 </div>
@@ -496,7 +496,7 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 So, let's run it!
 </p>
 
-<pre class="example" id="orged5b756">
+<pre class="example" id="orgfb4f2b8">
 racket@maxwell-equations/evalquote&gt; (evalquote 'CAR '((A B C)))
 'A
 racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CDR X)) '((A B C)))
@@ -506,7 +506,7 @@ racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CONS (QUOTE FIRS
 </pre>
 
 <p>
-The code is so short and simple that extending it is trivial. For
+The code is so short and simple that extending it is trivial.  For
 example, the following two lines patch allows to call procedures
 passed from the environment (<a href="maxwell-equations/evalquote-proc.rkt">evalquote-proc.rkt</a>):
 </p>
@@ -538,7 +538,7 @@ We can add, for instance, the <code>*</code> operator into the context of the
 LISP interpreter:
 </p>
 
-<pre class="example" id="orgdcb9db7">
+<pre class="example" id="orgdb34f67">
 racket@maxwell-equations/evalquote-proc&gt; (apply '(LAMBDA (X Y) (* X Y)) '(2 21) `((* . ,*)))
 42
 </pre>
@@ -552,7 +552,7 @@ William Byrd.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-05-31 Fri 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-16 Wed 20:54</p>
+<p class="date">Created: 2024-10-17 Thu 13:08</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -31,8 +31,8 @@ to its arguments when given a description of that function.  A LISP
 interpreter written in LISP itself that fits in a flashcard!
 
 The syntax might look quite different to what we expect from LISP.
-The reason is the usage of [[https://en.wikipedia.org/wiki/M-expression][M-expressions]] instead of [[https://en.wikipedia.org/wiki/S-expression][S-expressions]]. The
-Lisp 1.5 programmers manual explains why on page 1:
+The reason is the usage of [[https://en.wikipedia.org/wiki/M-expression][M-expressions]] instead of [[https://en.wikipedia.org/wiki/S-expression][S-expressions]].
+The Lisp 1.5 programmers manual explains why on page 1:
 
 #+begin_quote
 The second important part of the LISP language is the source language
@@ -71,7 +71,7 @@ racket@maxwell-equations/evalquote> (evalquote '(LAMBDA (X) (CONS (QUOTE FIRST) 
 '(FIRST B C)
 #+end_example
 
-The code is so short and simple that extending it is trivial. For
+The code is so short and simple that extending it is trivial.  For
 example, the following two lines patch allows to call procedures
 passed from the environment ([[file:maxwell-equations/evalquote-proc.rkt][evalquote-proc.rkt]]):
 
