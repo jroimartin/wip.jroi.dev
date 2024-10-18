@@ -5,9 +5,9 @@
 #+html_link_up: index.html
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-I'm at the very beginning of learning about logic, Relational
-Programming, miniKanren, Prolog, etc.  So, for now, this page is just
-a collection of links to papers and talks plus some notes.
+I'm at the very beginning of learning about logic, relational
+programming, miniKanren, Prolog, etc.  This page contains my personal
+notes as well as links to papers and talks I found interesting.
 
 * Introduction to Relational Programming
 
