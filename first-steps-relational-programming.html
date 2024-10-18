@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-18 Fri 13:32 -->
+<!-- 2024-10-18 Fri 13:40 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>First Steps In Relational Programming</title>
@@ -219,9 +219,9 @@
 </div>
 </div>
 <p>
-I'm at the very beginning of learning about logic, Relational
-Programming, miniKanren, Prolog, etc.  So, for now, this page is just
-a collection of links to papers and talks plus some notes.
+I'm at the very beginning of learning about logic, relational
+programming, miniKanren, Prolog, etc.  This page contains my personal
+notes as well as links to papers and talks I found interesting.
 </p>
 
 <div id="outline-container-org863e482" class="outline-2">
@@ -251,7 +251,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org49a3429">
+<pre class="example" id="org2b8587b">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -275,7 +275,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org9a6d64b">
+<pre class="example" id="org21821ca">
 (+o 3 4 7)
 </pre>
 
@@ -297,7 +297,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org24bbc2e">
+<pre class="example" id="org6cba9ff">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -305,7 +305,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org6b8eb09">
+<pre class="example" id="orgad609dc">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -313,7 +313,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org2ca28e8">
+<pre class="example" id="org2edf8b5">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -374,7 +374,7 @@ TODO
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-18 Fri 13:32</p>
+<p class="date">Created: 2024-10-18 Fri 13:40</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
