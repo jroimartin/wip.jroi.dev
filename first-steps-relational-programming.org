@@ -5,19 +5,83 @@
 #+html_link_up: index.html
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-I'm at the very beginning of learning about logic, relational
-programming, miniKanren, Prolog, etc.  So, for now, this page is just
-a collection of links to papers and talks plus some raw notes.
+I'm at the very beginning of learning about logic, Relational
+Programming, miniKanren, Prolog, etc.  So, for now, this page is just
+a collection of links to papers and talks plus some notes.
 
-* Scratch pad
+* Introduction to Relational Programming
 
-Definition from Wikipedia in relation to [[https://en.wikipedia.org/wiki/Logic_programming][logic programming]]:
+According to Wikipedia in relation to [[https://en.wikipedia.org/wiki/Logic_programming][logic programming]]:
 
 #+begin_quote
 The term relational programming has been used to cover a variety of
 programming languages that treat functions as a special case of
 relations.
 #+end_quote
+
+William E. Byrd provides a great introduction to relation programming
+during his talk [[https://youtu.be/AdKXXN5-ApQ][A New Relational Language]] at the Houston FPUG
+(Functional Programming Users Group).  I tried to summarize it bellow
+these lines.
+
+In functional programming, given the following expression in Lisp
+syntax:
+
+#+begin_example
+  (+ 3 4) => 7
+#+end_example
+
+We say that ~+~ is a function that takes the numbers ~3~ and ~4~ and
+returns their sum, which is ~7~.
+
+In other words, there is the notion of:
+
+- Function (~+~)
+- Inputs (~3~ and ~4~)
+- Output (~7~)
+
+Meanwhile, in relational programming, this is expressed in terms of
+relations.  Our previous example becomes the following relation:
+
+#+begin_example
+  (+o 3 4 7)
+#+end_example
+
+Which is a 4-place relation where functional programming's dichotomy
+between inputs and outputs is gone.  Note that ~+o~ in relational
+programming is equivalent to ~+~ in functional programming.
+
+Relations are very flexible because, in addition to the notion of a
+relation, we are going to think of in terms of algebra and algebraic
+reasoning.  So, we can replace any position in a relation with a
+variable.  Then, we can query the system for possible values of those
+variables.
+
+For instance,
+
+#+begin_example
+  (+o 3 4 Z) => Z = 7
+#+end_example
+
+or,
+
+#+begin_example
+  (+o 3 Y 7) => Y = 4
+#+end_example
+
+or,
+
+#+begin_example
+  (+o X Y 7) => X = 0; Y = 7
+                X = 1; Y = 6
+		...
+#+end_example
+
+In short, relational programming removes the idea of input vs output.
+
+* μKanren
+
+TODO
 
 * Resources
 

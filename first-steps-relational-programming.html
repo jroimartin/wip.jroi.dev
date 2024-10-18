@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-06-22 Sat 19:47 -->
+<!-- 2024-10-18 Fri 13:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>First Steps In Relational Programming</title>
@@ -206,28 +206,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgc04a551">1. Scratch pad</a></li>
-<li><a href="#orgcd5540b">2. Resources</a>
+<li><a href="#org863e482">1. Introduction to Relational Programming</a></li>
+<li><a href="#org32c35c3">2. μKanren</a></li>
+<li><a href="#orgcd5540b">3. Resources</a>
 <ul>
-<li><a href="#orgeadf0d6">2.1. Papers</a></li>
-<li><a href="#org8395fc6">2.2. Talks</a></li>
-<li><a href="#org883108c">2.3. Books</a></li>
+<li><a href="#orgeadf0d6">3.1. Papers</a></li>
+<li><a href="#org8395fc6">3.2. Talks</a></li>
+<li><a href="#org883108c">3.3. Books</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 <p>
-I'm at the very beginning of learning about logic, relational
-programming, miniKanren, Prolog, etc.  So, for now, this page is just
-a collection of links to papers and talks plus some raw notes.
+I'm at the very beginning of learning about logic, Relational
+Programming, miniKanren, Prolog, etc.  So, for now, this page is just
+a collection of links to papers and talks plus some notes.
 </p>
 
-<div id="outline-container-orgc04a551" class="outline-2">
-<h2 id="orgc04a551"><span class="section-number-2">1.</span> Scratch pad</h2>
+<div id="outline-container-org863e482" class="outline-2">
+<h2 id="org863e482"><span class="section-number-2">1.</span> Introduction to Relational Programming</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Definition from Wikipedia in relation to <a href="https://en.wikipedia.org/wiki/Logic_programming">logic programming</a>:
+According to Wikipedia in relation to <a href="https://en.wikipedia.org/wiki/Logic_programming">logic programming</a>:
 </p>
 
 <blockquote>
@@ -237,16 +238,109 @@ programming languages that treat functions as a special case of
 relations.
 </p>
 </blockquote>
+
+<p>
+William E. Byrd provides a great introduction to relation programming
+during his talk <a href="https://youtu.be/AdKXXN5-ApQ">A New Relational Language</a> at the Houston FPUG
+(Functional Programming Users Group).  I tried to summarize it bellow
+these lines.
+</p>
+
+<p>
+In functional programming, given the following expression in Lisp
+syntax:
+</p>
+
+<pre class="example" id="org49a3429">
+(+ 3 4) =&gt; 7
+</pre>
+
+<p>
+We say that <code>+</code> is a function that takes the numbers <code>3</code> and <code>4</code> and
+returns their sum, which is <code>7</code>.
+</p>
+
+<p>
+In other words, there is the notion of:
+</p>
+
+<ul class="org-ul">
+<li>Function (<code>+</code>)</li>
+<li>Inputs (<code>3</code> and <code>4</code>)</li>
+<li>Output (<code>7</code>)</li>
+</ul>
+
+<p>
+Meanwhile, in relational programming, this is expressed in terms of
+relations.  Our previous example becomes the following relation:
+</p>
+
+<pre class="example" id="org9a6d64b">
+(+o 3 4 7)
+</pre>
+
+<p>
+Which is a 4-place relation where functional programming's dichotomy
+between inputs and outputs is gone.  Note that <code>+o</code> in relational
+programming is equivalent to <code>+</code> in functional programming.
+</p>
+
+<p>
+Relations are very flexible because, in addition to the notion of a
+relation, we are going to think of in terms of algebra and algebraic
+reasoning.  So, we can replace any position in a relation with a
+variable.  Then, we can query the system for possible values of those
+variables.
+</p>
+
+<p>
+For instance,
+</p>
+
+<pre class="example" id="org24bbc2e">
+(+o 3 4 Z) =&gt; Z = 7
+</pre>
+
+<p>
+or,
+</p>
+
+<pre class="example" id="org6b8eb09">
+(+o 3 Y 7) =&gt; Y = 4
+</pre>
+
+<p>
+or,
+</p>
+
+<pre class="example" id="org2ca28e8">
+(+o X Y 7) =&gt; X = 0; Y = 7
+              X = 1; Y = 6
+	      ...
+</pre>
+
+<p>
+In short, relational programming removes the idea of input vs output.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org32c35c3" class="outline-2">
+<h2 id="org32c35c3"><span class="section-number-2">2.</span> μKanren</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+TODO
+</p>
 </div>
 </div>
 
 <div id="outline-container-orgcd5540b" class="outline-2">
-<h2 id="orgcd5540b"><span class="section-number-2">2.</span> Resources</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="orgcd5540b"><span class="section-number-2">3.</span> Resources</h2>
+<div class="outline-text-2" id="text-3">
 </div>
 <div id="outline-container-orgeadf0d6" class="outline-3">
-<h3 id="orgeadf0d6"><span class="section-number-3">2.1.</span> Papers</h3>
-<div class="outline-text-3" id="text-2-1">
+<h3 id="orgeadf0d6"><span class="section-number-3">3.1.</span> Papers</h3>
+<div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li><a href="https://raw.githubusercontent.com/webyrd/dissertation-single-spaced/master/thesis.pdf">Relational Programming in miniKanren: Techniques, Applications, and Implementations</a> by William E. Byrd</li>
 <li><a href="http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf">μKanren: A Minimal Functional Core for Relational Programming</a> by Jason Hemann and Daniel P. Friedman</li>
@@ -255,8 +349,8 @@ relations.
 </div>
 
 <div id="outline-container-org8395fc6" class="outline-3">
-<h3 id="org8395fc6"><span class="section-number-3">2.2.</span> Talks</h3>
-<div class="outline-text-3" id="text-2-2">
+<h3 id="org8395fc6"><span class="section-number-3">3.2.</span> Talks</h3>
+<div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
 <li><a href="https://youtu.be/RVDCRlW1f1Y?feature=shared">Relational Interpreters, Program Synthesis and Barliman</a> by William E. Byrd</li>
 <li><a href="https://youtu.be/0FwIwewHC3o?feature=shared">Implementing a microKanren</a> by Jason Hemann and Daniel P. Friedman</li>
@@ -265,8 +359,8 @@ relations.
 </div>
 
 <div id="outline-container-org883108c" class="outline-3">
-<h3 id="org883108c"><span class="section-number-3">2.3.</span> Books</h3>
-<div class="outline-text-3" id="text-2-3">
+<h3 id="org883108c"><span class="section-number-3">3.3.</span> Books</h3>
+<div class="outline-text-3" id="text-3-3">
 <ul class="org-ul">
 <li>"Introduction to Logic" by Patrick Suppes</li>
 <li>"The Little Lisper" by Daniel P. Friedman</li>
@@ -280,7 +374,7 @@ relations.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-06-22 Sat 19:47</p>
+<p class="date">Created: 2024-10-18 Fri 13:32</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
