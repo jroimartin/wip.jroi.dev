@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-18 Fri 13:40 -->
+<!-- 2024-10-18 Fri 13:44 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>First Steps In Relational Programming</title>
@@ -240,10 +240,10 @@ relations.
 </blockquote>
 
 <p>
-William E. Byrd provides a great introduction to relation programming
-during his talk <a href="https://youtu.be/AdKXXN5-ApQ">A New Relational Language</a> at the Houston FPUG
-(Functional Programming Users Group).  I tried to summarize it bellow
-these lines.
+William E. Byrd provides a great introduction to relational
+programming during his talk <a href="https://youtu.be/AdKXXN5-ApQ">A New Relational Language</a> at the Houston
+FPUG (Functional Programming Users Group).  I tried to summarize it
+bellow these lines.
 </p>
 
 <p>
@@ -251,7 +251,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org2b8587b">
+<pre class="example" id="org0124c55">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -275,7 +275,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org21821ca">
+<pre class="example" id="orgc0ee4c3">
 (+o 3 4 7)
 </pre>
 
@@ -297,7 +297,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org6cba9ff">
+<pre class="example" id="org2021c4b">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -305,7 +305,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="orgad609dc">
+<pre class="example" id="org1e181ce">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -313,7 +313,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org2edf8b5">
+<pre class="example" id="org6a2a1dc">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -352,8 +352,9 @@ TODO
 <h3 id="org8395fc6"><span class="section-number-3">3.2.</span> Talks</h3>
 <div class="outline-text-3" id="text-3-2">
 <ul class="org-ul">
-<li><a href="https://youtu.be/RVDCRlW1f1Y?feature=shared">Relational Interpreters, Program Synthesis and Barliman</a> by William E. Byrd</li>
-<li><a href="https://youtu.be/0FwIwewHC3o?feature=shared">Implementing a microKanren</a> by Jason Hemann and Daniel P. Friedman</li>
+<li><a href="https://youtu.be/RVDCRlW1f1Y">Relational Interpreters, Program Synthesis and Barliman</a> by William E. Byrd</li>
+<li><a href="https://youtu.be/AdKXXN5-ApQ">A New Relational Language</a> by William E. Byrd</li>
+<li><a href="https://youtu.be/0FwIwewHC3o">Implementing a microKanren</a> by Jason Hemann and Daniel P. Friedman</li>
 </ul>
 </div>
 </div>
@@ -374,7 +375,7 @@ TODO
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-18 Fri 13:40</p>
+<p class="date">Created: 2024-10-18 Fri 13:44</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
