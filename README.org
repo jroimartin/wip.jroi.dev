@@ -5,7 +5,7 @@ Source code of https://wip.jroi.dev.
 
 Eval the following elisp snippet to export all org files to HTML:
 
-#+begin_src emacs-lisp
+#+begin_src emacs-lisp :exports both
   (require 'ox-publish)
   (let ((org-publish-project-alist '(("org"
 				      :base-directory "."
@@ -13,10 +13,11 @@ Eval the following elisp snippet to export all org files to HTML:
 				      :publishing-function org-html-publish-to-html
 				      :exclude "README.org"
 				      :recursive t)))
+	(org-confirm-babel-evaluate nil)
 	(geiser-mode-auto-p nil))
     (org-publish-all)
     (message "Last update: %s" (current-time-string)))
 #+end_src
 
 #+results:
-: Last update: Fri Oct 18 13:44:53 2024
+: Last update: Mon Oct 21 16:33:23 2024

@@ -1,15 +1,20 @@
-#+title: First Steps In Relational Programming
+#+title: Relational Programming
 #+author: Roi Martin
 #+date: <2024-06-22 Sat>
+#+options: num:nil
 #+html_link_home: index.html
 #+html_link_up: index.html
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 
+* Introduction
+
 I'm at the very beginning of learning about logic, relational
 programming, miniKanren, Prolog, etc.  This page contains my personal
-notes as well as links to papers and talks I found interesting.
+notes as well as links to papers and talks I found interesting.  At
+the end of the page there is a list of related books for those that
+want to dig deeper.
 
-* Introduction to Relational Programming
+* What is relational programming?
 
 According to Wikipedia in relation to [[https://en.wikipedia.org/wiki/Logic_programming][logic programming]]:
 
@@ -20,7 +25,7 @@ relations.
 #+end_quote
 
 William E. Byrd provides a great introduction to relational
-programming during his talk [[https://youtu.be/AdKXXN5-ApQ][A New Relational Language]] at the Houston
+programming during his talk "[[https://youtu.be/AdKXXN5-ApQ][A New Relational Language]]" at the Houston
 FPUG (Functional Programming Users Group).  I tried to summarize it
 bellow these lines.
 
@@ -77,26 +82,53 @@ or,
 		...
 #+end_example
 
-In short, relational programming removes the idea of input vs output.
+In short, relational programming removes the idea of input vs
+output.
 
 * μKanren
 
-TODO
+μKanren is a minimalist language in the miniKanren family of
+relational programming languages.
 
-* Resources
+The miniKanren family of languages is detailed in the thesis
+"[[https://raw.githubusercontent.com/webyrd/dissertation-single-spaced/master/thesis.pdf][Relational Programming in miniKanren: Techniques, Applications, and
+Implementations]]" by William E. Byrd.
 
-** Papers
+What follows is the μKanren implementation exposed on the paper
+"[[http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf][μKanren: A Minimal Functional Core for Relational Programming]]" by
+Jason Hemann and Daniel P. Friedman.  The code has been commented with
+the relevant parts of the paper and is available [[file:relational-programming/ukanren.ss][here]].
 
-- [[https://raw.githubusercontent.com/webyrd/dissertation-single-spaced/master/thesis.pdf][Relational Programming in miniKanren: Techniques, Applications, and Implementations]] by William E. Byrd
-- [[http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf][μKanren: A Minimal Functional Core for Relational Programming]] by Jason Hemann and Daniel P. Friedman
+#+include: "relational-programming/ukanren.ss" src scheme -n
 
-** Talks
+μKanren was also shown in the talk "[[https://youtu.be/0FwIwewHC3o][Implementing a microKanren]]" that
+Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 
-- [[https://youtu.be/RVDCRlW1f1Y][Relational Interpreters, Program Synthesis and Barliman]] by William E. Byrd
-- [[https://youtu.be/AdKXXN5-ApQ][A New Relational Language]] by William E. Byrd
-- [[https://youtu.be/0FwIwewHC3o][Implementing a microKanren]] by Jason Hemann and Daniel P. Friedman
+Let's play with μKanren!
 
-** Books
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define empty-state '(() . 0))
+  ((call/fresh (lambda (q) (≡ q 5))) empty-state)
+#+end_src
+
+#+RESULTS:
+: '((((#(0) . 5)) . 1))
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define empty-state '(() . 0))
+  (define a-and-b
+    (conj
+     (call/fresh (lambda (a) (≡ a 7)))
+     (call/fresh (lambda (b) (disj (≡ b 5) (≡ b 6))))))
+  (a-and-b empty-state)
+#+end_src
+
+#+RESULTS:
+: '((((#(1) . 5) (#(0) . 7)) . 2) (((#(1) . 6) (#(0) . 7)) . 2))
+
+* Related books
 
 - "Introduction to Logic" by Patrick Suppes
 - "The Little Lisper" by Daniel P. Friedman
