@@ -14,6 +14,8 @@ notes as well as links to papers and talks I found interesting.  At
 the end of the page there is a list of related books for those that
 want to dig deeper.
 
+If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/relational-programming.html.atom][RSS feed]].
+
 * What is relational programming?
 
 According to Wikipedia in relation to [[https://en.wikipedia.org/wiki/Logic_programming][logic programming]]:

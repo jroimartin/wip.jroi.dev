@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-21 Mon 16:33 -->
+<!-- 2024-10-21 Mon 16:52 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -224,6 +224,10 @@ notes as well as links to papers and talks I found interesting.  At
 the end of the page there is a list of related books for those that
 want to dig deeper.
 </p>
+
+<p>
+If you want to subscribe to this page, use this <a href="https://github.com/jroimartin/wip.jroi.dev/commits/main/relational-programming.html.atom">RSS feed</a>.
+</p>
 </div>
 </div>
 
@@ -254,7 +258,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org3f8eb05">
+<pre class="example" id="org7427be9">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -278,7 +282,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orgf298b94">
+<pre class="example" id="orge37e420">
 (+o 3 4 7)
 </pre>
 
@@ -300,7 +304,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org2d7786d">
+<pre class="example" id="org6b33675">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -308,7 +312,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org5a57e2a">
+<pre class="example" id="org0c8a0e5">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -316,7 +320,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="orgb60b257">
+<pre class="example" id="org9fdd780">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -508,7 +512,7 @@ Let's play with μKanren!
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-21 Mon 16:33</p>
+<p class="date">Created: 2024-10-21 Mon 16:52</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
