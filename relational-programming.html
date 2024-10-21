@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-21 Mon 16:52 -->
+<!-- 2024-10-21 Mon 21:23 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -209,6 +209,7 @@
 <li><a href="#org70c12a3">Introduction</a></li>
 <li><a href="#orgdf34656">What is relational programming?</a></li>
 <li><a href="#orgc5fabc4">μKanren</a></li>
+<li><a href="#orgf23da00">Playing with μKanren</a></li>
 <li><a href="#org538db23">Related books</a></li>
 </ul>
 </div>
@@ -258,7 +259,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org7427be9">
+<pre class="example" id="orgf64ecb0">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -282,7 +283,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orge37e420">
+<pre class="example" id="org37bf8a9">
 (+o 3 4 7)
 </pre>
 
@@ -304,7 +305,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org6b33675">
+<pre class="example" id="org5723b1d">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -312,7 +313,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org0c8a0e5">
+<pre class="example" id="orgd957a34">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -320,7 +321,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org9fdd780">
+<pre class="example" id="org6fe1041">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -463,11 +464,12 @@ the relevant parts of the paper and is available <a href="relational-programming
 μKanren was also shown in the talk "<a href="https://youtu.be/0FwIwewHC3o">Implementing a microKanren</a>" that
 Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 </p>
+</div>
+</div>
 
-<p>
-Let's play with μKanren!
-</p>
-
+<div id="outline-container-orgf23da00" class="outline-2">
+<h2 id="orgf23da00">Playing with μKanren</h2>
+<div class="outline-text-2" id="text-orgf23da00">
 <div class="org-src-container">
 <pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
@@ -512,7 +514,7 @@ Let's play with μKanren!
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-21 Mon 16:52</p>
+<p class="date">Created: 2024-10-21 Mon 21:23</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

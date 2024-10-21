@@ -106,7 +106,7 @@ the relevant parts of the paper and is available [[file:relational-programming/u
 μKanren was also shown in the talk "[[https://youtu.be/0FwIwewHC3o][Implementing a microKanren]]" that
 Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 
-Let's play with μKanren!
+* Playing with μKanren
 
 #+begin_src scheme -n :scheme chez :exports both
   (load "relational-programming/ukanren.ss")
