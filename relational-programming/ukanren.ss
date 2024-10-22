@@ -32,7 +32,7 @@
 ;; state.
 (define (unit s/c) (cons s/c mzero))
 
-;; mzero is the empty state.
+;; mzero is the empty stream.
 (define mzero '())
 
 ;; Terms of the language are defined by the unify operator.  Here,
