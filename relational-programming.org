@@ -106,7 +106,92 @@ the relevant parts of the paper and is available [[file:relational-programming/u
 μKanren was also shown in the talk "[[https://youtu.be/0FwIwewHC3o][Implementing a microKanren]]" that
 Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 
-* Playing with μKanren
+* Dissecting the μKanren implementation
+
+*TODO: document the rest of the internals.*
+
+** Variables
+
+Variables are represented as vectors:
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (var 0)
+#+end_src
+
+#+RESULTS:
+: #(0)
+
+The 0-th index of the vector is the variable index.
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define x (var 0))
+  (vector-ref x 0)
+#+end_src
+
+#+RESULTS:
+: 0
+
+Two variables are equal if their indices are equal.
+
+#+begin_src scheme -n :scheme chez :exports both :results output
+  (load "relational-programming/ukanren.ss")
+  (define x (var 0))
+  (define y (var 0))
+  (define z (var 1))
+  (printf "x == y => ~a == ~a => ~a" x y (var=? x y))
+  (newline)
+  (printf "x == z => ~a == ~a => ~a" x z (var=? x z))
+#+end_src
+
+#+RESULTS:
+: x == y => #(0) == #(0) => #t
+: x == z => #(0) == #(1) => #f
+
+** Substitution
+
+A substitution is an association list that binds variables to concrete
+values or to other variables.  A substitution can be extended using
+the ~ext-s~ operator.
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define s '())
+  (define s (ext-s (var 0) 'arbitrary-term s))
+  (define s (ext-s (var 1) (var 0) s))
+  s
+#+end_src
+
+#+RESULTS:
+: '((#(1) . #(0)) (#(0) . arbitrary-term))
+
+The ~walk~ operator searches for a variable's value in the
+substitution recursively.
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define s '((#(1) . #(0)) (#(0) . arbitrary-term)))
+  (walk (var 1) s)
+#+end_src
+
+#+RESULTS:
+: arbitrary-term
+
+When a variable is not bound, the variable itself is returned.
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define s '((#(1) . #(0))))
+  (walk (var 1) s)
+#+end_src
+
+#+RESULTS:
+: #(0)
+
+* μKanren in practice
+
+*TODO: add complex examples and document all of them.*
 
 #+begin_src scheme -n :scheme chez :exports both
   (load "relational-programming/ukanren.ss")

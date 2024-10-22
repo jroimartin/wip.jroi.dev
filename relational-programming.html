@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-21 Mon 21:23 -->
+<!-- 2024-10-22 Tue 17:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -209,7 +209,13 @@
 <li><a href="#org70c12a3">Introduction</a></li>
 <li><a href="#orgdf34656">What is relational programming?</a></li>
 <li><a href="#orgc5fabc4">μKanren</a></li>
-<li><a href="#orgf23da00">Playing with μKanren</a></li>
+<li><a href="#org0c3cfd6">Dissecting the μKanren implementation</a>
+<ul>
+<li><a href="#org3a26d54">Variables</a></li>
+<li><a href="#org73f146a">Substitution</a></li>
+</ul>
+</li>
+<li><a href="#org9942fde">μKanren in practice</a></li>
 <li><a href="#org538db23">Related books</a></li>
 </ul>
 </div>
@@ -259,7 +265,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="orgf64ecb0">
+<pre class="example" id="orgbab349f">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -283,7 +289,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org37bf8a9">
+<pre class="example" id="orgde6965c">
 (+o 3 4 7)
 </pre>
 
@@ -305,7 +311,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org5723b1d">
+<pre class="example" id="orgbf0b57c">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -313,7 +319,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="orgd957a34">
+<pre class="example" id="orga0fa4e3">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -321,7 +327,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org6fe1041">
+<pre class="example" id="orgd579fe0">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -390,7 +396,7 @@ the relevant parts of the paper and is available <a href="relational-programming
 <span class="linenr"> 32: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state.</span>
 <span class="linenr"> 33: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">unit</span> s/c) (cons s/c mzero))
 <span class="linenr"> 34: </span>
-<span class="linenr"> 35: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">mzero is the empty state.</span>
+<span class="linenr"> 35: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">mzero is the empty stream.</span>
 <span class="linenr"> 36: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">mzero</span> '())
 <span class="linenr"> 37: </span>
 <span class="linenr"> 38: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Terms of the language are defined by the unify operator.  Here,</span>
@@ -467,9 +473,135 @@ Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 </div>
 </div>
 
-<div id="outline-container-orgf23da00" class="outline-2">
-<h2 id="orgf23da00">Playing with μKanren</h2>
-<div class="outline-text-2" id="text-orgf23da00">
+<div id="outline-container-org0c3cfd6" class="outline-2">
+<h2 id="org0c3cfd6">Dissecting the μKanren implementation</h2>
+<div class="outline-text-2" id="text-org0c3cfd6">
+<p>
+<b>TODO: document the rest of the internals.</b>
+</p>
+</div>
+
+<div id="outline-container-org3a26d54" class="outline-3">
+<h3 id="org3a26d54">Variables</h3>
+<div class="outline-text-3" id="text-org3a26d54">
+<p>
+Variables are represented as vectors:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(var 0)
+</pre>
+</div>
+
+<pre class="example">
+#(0)
+</pre>
+
+
+<p>
+The 0-th index of the vector is the variable index.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> (var 0))
+<span class="linenr">3: </span>(vector-ref x 0)
+</pre>
+</div>
+
+<pre class="example">
+0
+</pre>
+
+
+<p>
+Two variables are equal if their indices are equal.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> (var 0))
+<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">y</span> (var 0))
+<span class="linenr">4: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">z</span> (var 1))
+<span class="linenr">5: </span>(printf <span style="color: #8b2252;">"x == y =&gt; ~a == ~a =&gt; ~a"</span> x y (var=? x y))
+<span class="linenr">6: </span>(newline)
+<span class="linenr">7: </span>(printf <span style="color: #8b2252;">"x == z =&gt; ~a == ~a =&gt; ~a"</span> x z (var=? x z))
+</pre>
+</div>
+
+<pre class="example">
+x == y =&gt; #(0) == #(0) =&gt; #t
+x == z =&gt; #(0) == #(1) =&gt; #f
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org73f146a" class="outline-3">
+<h3 id="org73f146a">Substitution</h3>
+<div class="outline-text-3" id="text-org73f146a">
+<p>
+A substitution is an association list that binds variables to concrete
+values or to other variables.  A substitution can be extended using
+the <code>ext-s</code> operator.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '())
+<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> (ext-s (var 0) 'arbitrary-term s))
+<span class="linenr">4: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> (ext-s (var 1) (var 0) s))
+<span class="linenr">5: </span>s
+</pre>
+</div>
+
+<pre class="example">
+'((#(1) . #(0)) (#(0) . arbitrary-term))
+</pre>
+
+
+<p>
+The <code>walk</code> operator searches for a variable's value in the
+substitution recursively.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(1) . #(0)) (#(0) . arbitrary-term)))
+<span class="linenr">3: </span>(walk (var 1) s)
+</pre>
+</div>
+
+<pre class="example">
+arbitrary-term
+</pre>
+
+
+<p>
+When a variable is not bound, the variable itself is returned.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(1) . #(0))))
+<span class="linenr">3: </span>(walk (var 1) s)
+</pre>
+</div>
+
+<pre class="example">
+#(0)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9942fde" class="outline-2">
+<h2 id="org9942fde">μKanren in practice</h2>
+<div class="outline-text-2" id="text-org9942fde">
+<p>
+<b>TODO: add complex examples and document all of them.</b>
+</p>
+
 <div class="org-src-container">
 <pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
@@ -514,7 +646,7 @@ Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-21 Mon 21:23</p>
+<p class="date">Created: 2024-10-22 Tue 17:36</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
