@@ -106,9 +106,12 @@ the relevant parts of the paper and is available [[file:relational-programming/u
 μKanren was also shown in the talk "[[https://youtu.be/0FwIwewHC3o][Implementing a microKanren]]" that
 Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 
-* Dissecting the μKanren implementation
+* Dissecting μKanren
 
-*TODO: document the rest of the internals.*
+This μKanren implementation weights 39 lines of code.  Being so short
+makes easier to experiment with it.  However, it also hides lots of
+details.  In this section I try to analyze every single bit of it to
+get a better understanding.
 
 ** Variables
 
@@ -396,6 +399,14 @@ Unification fails otherwise.
 
 #+RESULTS:
 : #f
+
+** mplus operator
+
+*TODO: add details.*
+
+** bind operator
+
+*TODO: add details.*
 
 * μKanren in practice
 
