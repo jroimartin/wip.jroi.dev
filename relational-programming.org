@@ -149,7 +149,7 @@ Two variables are equal if their indices are equal.
 : x == y => #(0) == #(0) => #t
 : x == z => #(0) == #(1) => #f
 
-** Substitution
+** Substitutions
 
 A substitution is an association list that binds variables to concrete
 values or to other variables.  A substitution can be extended using
@@ -189,9 +189,92 @@ When a variable is not bound, the variable itself is returned.
 #+RESULTS:
 : #(0)
 
+** Goals
+
+A goal is represented as a function that takes a state a returns a
+stream.  A state is a pair of a substitution and a non-negative
+integer representing a fresh variable counter.  A stream is a sequence
+of states.
+
+μKanren provides the following goal constructors: ~≡~, ~disj~ and
+~conj~.
+
+The ≡ goal constructor takes two terms as arguments and returns a goal
+that succeeds if those two terms unify in the received state.  If
+those two terms fail to unify in that state, the empty stream is
+instead returned.
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  (define g (≡ (var 0) 5))
+  (g s/c)
+#+end_src
+
+#+RESULTS:
+: '((((#(0) . 5)) . 0))
+
+Note that the goal does not increment the fresh variable counter.
+That is why the ~call/fresh~ goal constructor exists.
+
+The ~call/fresh~ goal constructor takes a unary function ~f~ whose
+body is a goal, and itself returns a goal.  This returned goal, when
+provided a state ~s/c~, binds the formal parameter of ~f~ to a new
+logic variable, and passes a state, with the substitution it
+originally received and a newly incremented fresh-variable counter to
+the goal that is the body of ~f~.
+
+#+begin_src scheme -n :scheme chez :exports both
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  (define f (lambda (q) (≡ q 5)))
+  ((call/fresh f) s/c)
+#+end_src
+
+#+RESULTS:
+: '((((#(0) . 5)) . 1))
+
+If the two terms of ~≡~ fail to unify, the empty stream should be
+returned.
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  (define f (lambda (q) (≡ 3 5)))
+  ((call/fresh f) s/c)
+#+end_src
+
+#+RESULTS:
+: ()
+
+The unification of ~3~ and ~5~ fails because these terms are not
+identical.  We can also verify that the unification of ~5~ and
+~5~---or ~q~ and ~q~ in general---succeeds but do not extend the
+stream.
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  (define f (lambda (q) (≡ 5 5)))
+  ((call/fresh f) s/c)
+#+end_src
+
+#+RESULTS:
+: ((() . 1))
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  (define f (lambda (q) (≡ q q)))
+  ((call/fresh f) s/c)
+#+end_src
+
+#+RESULTS:
+: ((() . 1))
+
 * μKanren in practice
 
-*TODO: add complex examples and document all of them.*
+*TODO: add complex examples and document them.*
 
 #+begin_src scheme -n :scheme chez :exports both
   (load "relational-programming/ukanren.ss")
