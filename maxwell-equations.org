@@ -10,7 +10,7 @@ the creator of [[https://en.wikipedia.org/wiki/Smalltalk][Smalltalk]].  In this 
 words:
 
 #+begin_quote
-That was the big revelation to me when I was in graduate school—when I
+That was the big revelation to me when I was in graduate school---when I
 finally understood that the half page of code on the bottom of page 13
 of the Lisp 1.5 manual was Lisp in itself.  These were "Maxwell’s
 Equations of Software!" This is the whole world of programming in a
