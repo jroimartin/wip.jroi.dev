@@ -272,6 +272,34 @@ stream.
 #+RESULTS:
 : ((() . 1))
 
+The ~disj~ goal constructor takes two goals as arguments and returns a
+goal that succeeds if either of the two subgoals succeed.
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  ((disj
+    (call/fresh (lambda (q) (≡ q 3)))
+    (call/fresh (lambda (q) (≡ q 5)))) s/c)
+#+end_src
+
+#+RESULTS:
+: ((((#(0) . 3)) . 1) (((#(0) . 5)) . 1))
+
+The ~conj~ goal constructor similarly takes two goals as arguments and
+returns a goal that succeeds if both goals succeed for that state.
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define s/c '(() . 0))
+  ((conj
+    (call/fresh (lambda (q) (≡ q 3)))
+    (call/fresh (lambda (q) (≡ q 5)))) s/c)
+#+end_src
+
+#+RESULTS:
+: ((((#(1) . 5) (#(0) . 3)) . 2))
+
 ** Unification
 
 Unification is determined by the ~unify~ operator of the μKanren
