@@ -35,19 +35,16 @@
 
 ;; Terms of the language are defined by the unify operator.  Here,
 ;; terms of the language consist of variables, objects deemed
-;; identical under eqv?, and pairs of the foregoing.
-;; To unify two terms in a substitution, both are walked in that
-;; substitution.
-;; If the two terms walk to the same variable, the original
-;; substitution is returned unchanged.
-;; When one of the two terms walks to a variable, the substitution is
-;; extended, bindings the variable to which that term walks with the
-;; value of which the other term walks.
+;; identical under eqv?, and pairs of the foregoing.  To unify two
+;; terms in a substitution, both are walked in that substitution.  If
+;; the two terms walk to the same variable, the original substitution
+;; is returned unchanged.  When one of the two terms walks to a
+;; variable, the substitution is extended, bindings the variable to
+;; which that term walks with the value of which the other term walks.
 ;; If both terms walk to pairs, the cars and then cdrs are unifed
 ;; recursively, succeeding if unification succeeds in the one and then
-;; the other.
-;; Finally, non-variable, non-pair terms unify if they are identical
-;; under eqv?, and unification fails otherwise.
+;; the other.  Finally, non-variable, non-pair terms unify if they are
+;; identical under eqv?, and unification fails otherwise.
 (define (unify u v s)
   (let ((u (walk u s)) (v (walk v s)))
     (cond
