@@ -19,10 +19,8 @@
 
 ;; The ≡ goal constructor takes two terms as arguments and returns a
 ;; goal that succeeds if those two terms unify in the received state.
-;; If they unify, a substitution, possibly extended is returned.  In
-;; this case, ≡ passes this new substitution, paired with the variable
-;; counter to comprise a state, to unit.  If those two terms fail to
-;; unify in that state, the empty stream is instead returned.
+;; If those two terms fail to unify in that state, the empty stream is
+;; instead returned.
 (define (≡ u v)
   (lambda (s/c)
     (let ((s (unify u v (car s/c))))
