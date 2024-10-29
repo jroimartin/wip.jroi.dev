@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-29 Tue 20:54 -->
+<!-- 2024-10-29 Tue 22:22 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -268,7 +268,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org25ca2bb">
+<pre class="example" id="org6050c63">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -292,7 +292,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orgb942599">
+<pre class="example" id="org594b77e">
 (+o 3 4 7)
 </pre>
 
@@ -314,7 +314,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="orgb4f213e">
+<pre class="example" id="org12ff3a7">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -322,7 +322,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org29d86db">
+<pre class="example" id="orgaae6c64">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -330,7 +330,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org15366d3">
+<pre class="example" id="orgedb5e27">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -525,9 +525,8 @@ Two variables are equal if their indices are equal.
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> (var 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">y</span> (var 0))
 <span class="linenr">4: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">z</span> (var 1))
-<span class="linenr">5: </span>(printf <span style="color: #8b2252;">"x == y =&gt; ~a == ~a =&gt; ~a"</span> x y (var=? x y))
-<span class="linenr">6: </span>(newline)
-<span class="linenr">7: </span>(printf <span style="color: #8b2252;">"x == z =&gt; ~a == ~a =&gt; ~a"</span> x z (var=? x z))
+<span class="linenr">5: </span>(printf <span style="color: #8b2252;">"x == y =&gt; ~a == ~a =&gt; ~a\n"</span> x y (var=? x y))
+<span class="linenr">6: </span>(printf <span style="color: #8b2252;">"x == z =&gt; ~a == ~a =&gt; ~a\n"</span> x z (var=? x z))
 </pre>
 </div>
 
@@ -1027,7 +1026,7 @@ to represent infinite streams.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-29 Tue 20:54</p>
+<p class="date">Created: 2024-10-29 Tue 22:22</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

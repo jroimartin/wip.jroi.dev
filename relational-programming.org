@@ -143,9 +143,8 @@ Two variables are equal if their indices are equal.
   (define x (var 0))
   (define y (var 0))
   (define z (var 1))
-  (printf "x == y => ~a == ~a => ~a" x y (var=? x y))
-  (newline)
-  (printf "x == z => ~a == ~a => ~a" x z (var=? x z))
+  (printf "x == y => ~a == ~a => ~a\n" x y (var=? x y))
+  (printf "x == z => ~a == ~a => ~a\n" x z (var=? x z))
 #+end_src
 
 #+RESULTS:
