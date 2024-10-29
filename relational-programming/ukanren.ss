@@ -83,7 +83,7 @@
 (define (mplus $1 $2)
   (cond
    ((null? $1) $2)
-   ((procedure? $1) (lambda () (mplus ($1) $2)))
+   ((procedure? $1) (lambda () (mplus $2 ($1))))
    (else (cons (car $1) (mplus (cdr $1) $2)))))
 
 ;; bind invokes the goal g on each element of the stream $.  If the
