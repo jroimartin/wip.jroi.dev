@@ -452,17 +452,23 @@ to represent infinite streams.
   (define empty-state '(() . 0))
   (define (fives x)
     (disj (≡ x 5) (lambda (s/c) (lambda () ((fives x) s/c)))))
-  (define stream ((call/fresh (lambda (x) (fives x))) empty-state))
+  (define (sixes x)
+    (disj (≡ x 6) (lambda (s/c) (lambda () ((sixes x) s/c)))))
+  (define fives-and-sixes
+    (call/fresh (lambda (x) (disj (fives x) (sixes x)))))
+  (define stream (fives-and-sixes empty-state))
 
   (printf "~a\n" stream)
   (printf "~a\n" ((cdr stream)))
   (printf "~a\n" ((cdr ((cdr stream)))))
+  (printf "~a\n" ((cdr ((cdr ((cdr stream)))))))
 #+end_src
 
 #+RESULTS:
-: ((((#(0) . 5)) . 1) . #<procedure>)
-: ((((#(0) . 5)) . 1) . #<procedure>)
-: ((((#(0) . 5)) . 1) . #<procedure>)
+: ((((#(0) . 5)) . 1) . #<procedure at ukanren.ss:3505>)
+: ((((#(0) . 6)) . 1) . #<procedure at ukanren.ss:3505>)
+: ((((#(0) . 5)) . 1) . #<procedure at ukanren.ss:3505>)
+: ((((#(0) . 6)) . 1) . #<procedure at ukanren.ss:3505>)
 
 * μKanren in practice
 

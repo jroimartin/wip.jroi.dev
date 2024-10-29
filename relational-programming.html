@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-29 Tue 20:38 -->
+<!-- 2024-10-29 Tue 20:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -268,7 +268,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="orgc9a950e">
+<pre class="example" id="org25ca2bb">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -292,7 +292,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orgd5affb4">
+<pre class="example" id="orgb942599">
 (+o 3 4 7)
 </pre>
 
@@ -314,7 +314,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org12048f6">
+<pre class="example" id="orgb4f213e">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -322,7 +322,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="orga3952af">
+<pre class="example" id="org29d86db">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -330,7 +330,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org6a13304">
+<pre class="example" id="org15366d3">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -949,22 +949,28 @@ to represent infinite streams.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
-<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
-<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">fives</span> x)
-<span class="linenr">4: </span>  (disj (&#8801; x 5) (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((fives x) s/c)))))
-<span class="linenr">5: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">stream</span> ((call/fresh (<span style="color: #a020f0;">lambda</span> (x) (fives x))) empty-state))
-<span class="linenr">6: </span>
-<span class="linenr">7: </span>(printf <span style="color: #8b2252;">"~a\n"</span> stream)
-<span class="linenr">8: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr stream)))
-<span class="linenr">9: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr stream)))))
+<pre class="src src-scheme"><span class="linenr"> 1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr"> 2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
+<span class="linenr"> 3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">fives</span> x)
+<span class="linenr"> 4: </span>  (disj (&#8801; x 5) (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((fives x) s/c)))))
+<span class="linenr"> 5: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">sixes</span> x)
+<span class="linenr"> 6: </span>  (disj (&#8801; x 6) (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((sixes x) s/c)))))
+<span class="linenr"> 7: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">fives-and-sixes</span>
+<span class="linenr"> 8: </span>  (call/fresh (<span style="color: #a020f0;">lambda</span> (x) (disj (fives x) (sixes x)))))
+<span class="linenr"> 9: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">stream</span> (fives-and-sixes empty-state))
+<span class="linenr">10: </span>
+<span class="linenr">11: </span>(printf <span style="color: #8b2252;">"~a\n"</span> stream)
+<span class="linenr">12: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr stream)))
+<span class="linenr">13: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr stream)))))
+<span class="linenr">14: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr ((cdr stream)))))))
 </pre>
 </div>
 
 <pre class="example">
-((((#(0) . 5)) . 1) . #&lt;procedure&gt;)
-((((#(0) . 5)) . 1) . #&lt;procedure&gt;)
-((((#(0) . 5)) . 1) . #&lt;procedure&gt;)
+((((#(0) . 5)) . 1) . #&lt;procedure at ukanren.ss:3505&gt;)
+((((#(0) . 6)) . 1) . #&lt;procedure at ukanren.ss:3505&gt;)
+((((#(0) . 5)) . 1) . #&lt;procedure at ukanren.ss:3505&gt;)
+((((#(0) . 6)) . 1) . #&lt;procedure at ukanren.ss:3505&gt;)
 </pre>
 </div>
 </div>
@@ -1021,7 +1027,7 @@ to represent infinite streams.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-29 Tue 20:38</p>
+<p class="date">Created: 2024-10-29 Tue 20:54</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
