@@ -400,7 +400,7 @@ Unification fails otherwise.
 #+RESULTS:
 : #f
 
-** ~mplus~ and ~bind~ operators
+** The ~mplus~ and ~bind~ operators
 
 The ~mplus~ operator is responsible for merging streams.
 
