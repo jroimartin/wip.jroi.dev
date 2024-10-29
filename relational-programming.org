@@ -400,13 +400,69 @@ Unification fails otherwise.
 #+RESULTS:
 : #f
 
-** mplus operator
+** ~mplus~ and ~bind~ operators
 
-*TODO: add details.*
+The ~mplus~ operator is responsible for merging streams.
 
-** bind operator
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define $1 '((((#(0) . 3)) . 1) (((#(0) . 5)) . 1)))
+  (define $2 '((((#(0) . 7)) . 1)))
+  (mplus $1 $2)
+#+end_src
 
-*TODO: add details.*
+#+RESULTS:
+: ((((#(0) . 3)) . 1) (((#(0) . 5)) . 1) (((#(0) . 7)) . 1))
+
+The ~disj~ constructor is defined in terms of the ~mplus~ operator.
+It takes two goals---~g1~ and ~g2~---and returns the stream that
+results from merging ~(g1 s/c)~ and ~(g2 s/c)~.
+
+#+begin_src scheme :scheme chez
+  (define (disj g1 g2) (lambda (s/c) (mplus (g1 s/c) (g2 s/c))))
+#+end_src
+
+The ~bind~ operator invokes a goal on each element on a stream.
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define $ '((((#(0) . 3)) . 1) (((#(0) . 5)) . 1)))
+  (define g (call/fresh (lambda (q) (≡ q 7))))
+  (bind $ g)
+#+end_src
+
+#+RESULTS:
+: ((((#(1) . 7) (#(0) . 3)) . 2) (((#(1) . 7) (#(0) . 5)) . 2))
+
+The ~conj~ constructor is defined in terms of the ~bind~ operator.  It
+takes two goals---~g1~ and ~g2~---and returns the stream that results
+from invoking ~g2~ on each element of the stream returned by ~(g1
+s/c)~.
+
+#+begin_src scheme :scheme chez
+  (define (conj g1 g2) (lambda (s/c) (bind (g1 s/c) g2)))
+#+end_src
+
+Both ~mplus~ and ~bind~ are able to return a stream without computing
+the answers it contains.  These are called inmature streams and allow
+to represent infinite streams.
+
+#+begin_src scheme -n :scheme chez :exports both :results output verbatim
+  (load "relational-programming/ukanren.ss")
+  (define empty-state '(() . 0))
+  (define (fives x)
+    (disj (≡ x 5) (lambda (s/c) (lambda () ((fives x) s/c)))))
+  (define stream ((call/fresh (lambda (x) (fives x))) empty-state))
+
+  (printf "~a\n" stream)
+  (printf "~a\n" ((cdr stream)))
+  (printf "~a\n" ((cdr ((cdr stream)))))
+#+end_src
+
+#+RESULTS:
+: ((((#(0) . 5)) . 1) . #<procedure>)
+: ((((#(0) . 5)) . 1) . #<procedure>)
+: ((((#(0) . 5)) . 1) . #<procedure>)
 
 * μKanren in practice
 

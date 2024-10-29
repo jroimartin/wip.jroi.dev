@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-23 Wed 22:35 -->
+<!-- 2024-10-29 Tue 20:29 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -215,8 +215,7 @@
 <li><a href="#orgc024530">Substitutions</a></li>
 <li><a href="#org79881bd">Goals</a></li>
 <li><a href="#orgd01b859">Unification</a></li>
-<li><a href="#org803d721">mplus operator</a></li>
-<li><a href="#orged49412">bind operator</a></li>
+<li><a href="#org1f9c145"><code>mplus</code> and <code>bind</code> operators</a></li>
 </ul>
 </li>
 <li><a href="#org9942fde">μKanren in practice</a></li>
@@ -269,7 +268,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="orgec7775a">
+<pre class="example" id="orgd913f5e">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -293,7 +292,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org88c604f">
+<pre class="example" id="org6d1600d">
 (+o 3 4 7)
 </pre>
 
@@ -315,7 +314,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org9f8cdfa">
+<pre class="example" id="org0af4b48">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -323,7 +322,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org812e4b5">
+<pre class="example" id="org7b9ed1e">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -331,7 +330,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org46c4bf8">
+<pre class="example" id="org41067aa">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -451,7 +450,7 @@ the relevant parts of the paper and is available <a href="relational-programming
 <span class="linenr">83: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">mplus</span> $1 $2)
 <span class="linenr">84: </span>  (<span style="color: #a020f0;">cond</span>
 <span class="linenr">85: </span>   ((null? $1) $2)
-<span class="linenr">86: </span>   ((procedure? $1) (<span style="color: #a020f0;">lambda</span> () (mplus ($1) $2)))
+<span class="linenr">86: </span>   ((procedure? $1) (<span style="color: #a020f0;">lambda</span> () (mplus $2 ($1))))
 <span class="linenr">87: </span>   (<span style="color: #a020f0;">else</span> (cons (car $1) (mplus (cdr $1) $2)))))
 <span class="linenr">88: </span>
 <span class="linenr">89: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">bind invokes the goal g on each element of the stream $.  If the</span>
@@ -883,21 +882,90 @@ Unification fails otherwise.
 </div>
 </div>
 
-<div id="outline-container-org803d721" class="outline-3">
-<h3 id="org803d721">mplus operator</h3>
-<div class="outline-text-3" id="text-org803d721">
+<div id="outline-container-org1f9c145" class="outline-3">
+<h3 id="org1f9c145"><code>mplus</code> and <code>bind</code> operators</h3>
+<div class="outline-text-3" id="text-org1f9c145">
 <p>
-<b>TODO: add details.</b>
+The <code>mplus</code> operator is responsible for merging streams.
 </p>
-</div>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">$1</span> '((((#(0) . 3)) . 1) (((#(0) . 5)) . 1)))
+<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">$2</span> '((((#(0) . 7)) . 1)))
+<span class="linenr">4: </span>(mplus $1 $2)
+</pre>
 </div>
 
-<div id="outline-container-orged49412" class="outline-3">
-<h3 id="orged49412">bind operator</h3>
-<div class="outline-text-3" id="text-orged49412">
+<pre class="example">
+((((#(0) . 3)) . 1) (((#(0) . 5)) . 1) (((#(0) . 7)) . 1))
+</pre>
+
+
 <p>
-<b>TODO: add details.</b>
+The <code>disj</code> constructor is defined in terms of the <code>mplus</code> operator.
+It takes two goals---<code>g1</code> and <code>g2</code>&#x2014;and returns the stream that
+results from merging <code>(g1 s/c)</code> and <code>(g2 s/c)</code>.
 </p>
+
+<div class="org-src-container">
+<pre class="src src-scheme">(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">disj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (mplus (g1 s/c) (g2 s/c))))
+</pre>
+</div>
+
+<p>
+The <code>bind</code> operator invokes a goal on each element on a stream.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">$</span> '((((#(0) . 3)) . 1) (((#(0) . 5)) . 1)))
+<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">g</span> (call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 7))))
+<span class="linenr">4: </span>(bind $ g)
+</pre>
+</div>
+
+<pre class="example">
+((((#(1) . 7) (#(0) . 3)) . 2) (((#(1) . 7) (#(0) . 5)) . 2))
+</pre>
+
+
+<p>
+The <code>conj</code> constructor is defined in terms of the <code>bind</code> operator.  It
+takes two goals---<code>g1</code> and <code>g2</code>&#x2014;and returns the stream that results
+from invoking <code>g2</code> on each element of the stream returned by <code>(g1
+s/c)</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme">(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">conj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (bind (g1 s/c) g2)))
+</pre>
+</div>
+
+<p>
+Both <code>mplus</code> and <code>bind</code> are able to return a stream without computing
+the answers it contains.  These are called inmature streams and allow
+to represent infinite streams.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
+<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">fives</span> x)
+<span class="linenr">4: </span>  (disj (&#8801; x 5) (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((fives x) s/c)))))
+<span class="linenr">5: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">stream</span> ((call/fresh (<span style="color: #a020f0;">lambda</span> (x) (fives x))) empty-state))
+<span class="linenr">6: </span>
+<span class="linenr">7: </span>(printf <span style="color: #8b2252;">"~a\n"</span> stream)
+<span class="linenr">8: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr stream)))
+<span class="linenr">9: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr stream)))))
+</pre>
+</div>
+
+<pre class="example">
+((((#(0) . 5)) . 1) . #&lt;procedure&gt;)
+((((#(0) . 5)) . 1) . #&lt;procedure&gt;)
+((((#(0) . 5)) . 1) . #&lt;procedure&gt;)
+</pre>
 </div>
 </div>
 </div>
@@ -953,7 +1021,7 @@ Unification fails otherwise.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-23 Wed 22:35</p>
+<p class="date">Created: 2024-10-29 Tue 20:29</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
