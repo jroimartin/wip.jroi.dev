@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-30 Wed 14:00 -->
+<!-- 2024-10-30 Wed 20:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -268,7 +268,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org33de42d">
+<pre class="example" id="org09493c8">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -292,7 +292,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org21ab841">
+<pre class="example" id="orgdde5b77">
 (+o 3 4 7)
 </pre>
 
@@ -314,7 +314,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="orgb2877ec">
+<pre class="example" id="org7e475b2">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -322,7 +322,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org3262a5c">
+<pre class="example" id="org64e2af1">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -330,7 +330,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="orga5e8b97">
+<pre class="example" id="org2a77879">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -997,6 +997,61 @@ functionality of μKanren:
 <pre class="example">
 ((((#(1) . 5) (#(0) . 7)) . 2) (((#(1) . 6) (#(0) . 7)) . 2))
 </pre>
+
+
+<p>
+Now let's implement <code>appendo</code>, which is considered the "Hello, world"
+of the relational programming languages.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr"> 1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr"> 2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
+<span class="linenr"> 3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">appendo</span> l s o)
+<span class="linenr"> 4: </span>  (disj
+<span class="linenr"> 5: </span>   (conj (&#8801; l '()) (&#8801; s o))
+<span class="linenr"> 6: </span>   (call/fresh
+<span class="linenr"> 7: </span>    (<span style="color: #a020f0;">lambda</span> (a)
+<span class="linenr"> 8: </span>      (call/fresh
+<span class="linenr"> 9: </span>       (<span style="color: #a020f0;">lambda</span> (d)
+<span class="linenr">10: </span>         (conj
+<span class="linenr">11: </span>          (&#8801; l `(,a . ,d))
+<span class="linenr">12: </span>          (call/fresh
+<span class="linenr">13: </span>           (<span style="color: #a020f0;">lambda</span> (r)
+<span class="linenr">14: </span>             (conj
+<span class="linenr">15: </span>              (&#8801; `(,a . ,r) o)
+<span class="linenr">16: </span>              (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((appendo d s r) s/c)))))))))))))
+<span class="linenr">17: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">query</span> (call/fresh
+<span class="linenr">18: </span>               (<span style="color: #a020f0;">lambda</span> (x)
+<span class="linenr">19: </span>                 (call/fresh
+<span class="linenr">20: </span>                  (<span style="color: #a020f0;">lambda</span> (y)
+<span class="linenr">21: </span>                    (appendo x y '(a b c)))))))
+<span class="linenr">22: </span>(printf <span style="color: #8b2252;">"~a\n"</span> (query empty-state))
+<span class="linenr">23: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr (query empty-state))))
+<span class="linenr">24: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr (query empty-state))))))
+<span class="linenr">25: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr ((cdr (query empty-state))))))))
+</pre>
+</div>
+
+<pre class="example">
+((((#(1) a b c) (#(0))) . 2) . #&lt;procedure at ukanren.ss:3505&gt;)
+((((#(1) b c) (#(3)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 5) . #&lt;procedure at ukanren.ss:3505&gt;)
+((((#(1) c) (#(6)) (#(7) c) (#(5) . b) (#(3) #(5) . #(6)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 8) . #&lt;procedure at ukanren.ss:3505&gt;)
+((((#(1)) (#(9)) (#(10)) (#(8) . c) (#(6) #(8) . #(9)) (#(7) c) (#(5) . b) (#(3) #(5) . #(6)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 11))
+</pre>
+
+
+<p>
+A closer look at the results shows that the values found for <code>x</code> and
+<code>y</code> are:
+</p>
+
+<pre class="example" id="org848b0e9">
+x = ()       y = (a b c)
+x = (a)      y = (b c)
+x = (a b)    y = (c)
+x = (a b c)  y = ()
+</pre>
 </div>
 </div>
 
@@ -1015,7 +1070,7 @@ functionality of μKanren:
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-30 Wed 14:00</p>
+<p class="date">Created: 2024-10-30 Wed 20:45</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

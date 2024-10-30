@@ -487,6 +487,53 @@ functionality of μKanren:
 #+RESULTS:
 : ((((#(1) . 5) (#(0) . 7)) . 2) (((#(1) . 6) (#(0) . 7)) . 2))
 
+Now let's implement ~appendo~, which is considered the "Hello, world"
+of the relational programming languages.
+
+#+begin_src scheme -n :scheme chez :exports both :results output verbatim
+  (load "relational-programming/ukanren.ss")
+  (define empty-state '(() . 0))
+  (define (appendo l s o)
+    (disj
+     (conj (≡ l '()) (≡ s o))
+     (call/fresh
+      (lambda (a)
+	(call/fresh
+	 (lambda (d)
+	   (conj
+	    (≡ l `(,a . ,d))
+	    (call/fresh
+	     (lambda (r)
+	       (conj
+		(≡ `(,a . ,r) o)
+		(lambda (s/c) (lambda () ((appendo d s r) s/c)))))))))))))
+  (define query (call/fresh
+		 (lambda (x)
+		   (call/fresh
+		    (lambda (y)
+		      (appendo x y '(a b c)))))))
+  (printf "~a\n" (query empty-state))
+  (printf "~a\n" ((cdr (query empty-state))))
+  (printf "~a\n" ((cdr ((cdr (query empty-state))))))
+  (printf "~a\n" ((cdr ((cdr ((cdr (query empty-state))))))))
+#+end_src
+
+#+RESULTS:
+: ((((#(1) a b c) (#(0))) . 2) . #<procedure at ukanren.ss:3505>)
+: ((((#(1) b c) (#(3)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 5) . #<procedure at ukanren.ss:3505>)
+: ((((#(1) c) (#(6)) (#(7) c) (#(5) . b) (#(3) #(5) . #(6)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 8) . #<procedure at ukanren.ss:3505>)
+: ((((#(1)) (#(9)) (#(10)) (#(8) . c) (#(6) #(8) . #(9)) (#(7) c) (#(5) . b) (#(3) #(5) . #(6)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 11))
+
+A closer look at the results shows that the values found for ~x~ and
+~y~ are:
+
+#+begin_example
+x = ()       y = (a b c)
+x = (a)      y = (b c)
+x = (a b)    y = (c)
+x = (a b c)  y = ()
+#+end_example
+
 * Related books
 
 - "Introduction to Logic" by Patrick Suppes
