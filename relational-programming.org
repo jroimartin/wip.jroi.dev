@@ -469,32 +469,6 @@ to represent infinite streams.
 : ((((#(0) . 5)) . 1) . #<procedure at ukanren.ss:3505>)
 : ((((#(0) . 6)) . 1) . #<procedure at ukanren.ss:3505>)
 
-* μKanren in practice
-
-*TODO: add complex examples and document them.*
-
-#+begin_src scheme -n :scheme chez :exports both :results verbatim
-  (load "relational-programming/ukanren.ss")
-  (define empty-state '(() . 0))
-  ((call/fresh (lambda (q) (≡ q 5))) empty-state)
-#+end_src
-
-#+RESULTS:
-: ((((#(0) . 5)) . 1))
-
-#+begin_src scheme -n :scheme chez :exports both :results verbatim
-  (load "relational-programming/ukanren.ss")
-  (define empty-state '(() . 0))
-  (define a-and-b
-    (conj
-     (call/fresh (lambda (a) (≡ a 7)))
-     (call/fresh (lambda (b) (disj (≡ b 5) (≡ b 6))))))
-  (a-and-b empty-state)
-#+end_src
-
-#+RESULTS:
-: ((((#(1) . 5) (#(0) . 7)) . 2) (((#(1) . 6) (#(0) . 7)) . 2))
-
 * Related books
 
 - "Introduction to Logic" by Patrick Suppes

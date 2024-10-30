@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-29 Tue 22:22 -->
+<!-- 2024-10-30 Wed 13:32 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -218,7 +218,6 @@
 <li><a href="#org7e2976c">The <code>mplus</code> and <code>bind</code> operators</a></li>
 </ul>
 </li>
-<li><a href="#org9942fde">μKanren in practice</a></li>
 <li><a href="#org538db23">Related books</a></li>
 </ul>
 </div>
@@ -268,7 +267,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org6050c63">
+<pre class="example" id="org5bf8bce">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -292,7 +291,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org594b77e">
+<pre class="example" id="org752c56d">
 (+o 3 4 7)
 </pre>
 
@@ -314,7 +313,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org12ff3a7">
+<pre class="example" id="orga554de0">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -322,7 +321,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="orgaae6c64">
+<pre class="example" id="orgc20b878">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -330,7 +329,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="orgedb5e27">
+<pre class="example" id="org4d06845">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -975,42 +974,6 @@ to represent infinite streams.
 </div>
 </div>
 
-<div id="outline-container-org9942fde" class="outline-2">
-<h2 id="org9942fde">μKanren in practice</h2>
-<div class="outline-text-2" id="text-org9942fde">
-<p>
-<b>TODO: add complex examples and document them.</b>
-</p>
-
-<div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
-<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
-<span class="linenr">3: </span>((call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 5))) empty-state)
-</pre>
-</div>
-
-<pre class="example">
-((((#(0) . 5)) . 1))
-</pre>
-
-
-<div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
-<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
-<span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">a-and-b</span>
-<span class="linenr">4: </span>  (conj
-<span class="linenr">5: </span>   (call/fresh (<span style="color: #a020f0;">lambda</span> (a) (&#8801; a 7)))
-<span class="linenr">6: </span>   (call/fresh (<span style="color: #a020f0;">lambda</span> (b) (disj (&#8801; b 5) (&#8801; b 6))))))
-<span class="linenr">7: </span>(a-and-b empty-state)
-</pre>
-</div>
-
-<pre class="example">
-((((#(1) . 5) (#(0) . 7)) . 2) (((#(1) . 6) (#(0) . 7)) . 2))
-</pre>
-</div>
-</div>
-
 <div id="outline-container-org538db23" class="outline-2">
 <h2 id="org538db23">Related books</h2>
 <div class="outline-text-2" id="text-org538db23">
@@ -1026,7 +989,7 @@ to represent infinite streams.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-29 Tue 22:22</p>
+<p class="date">Created: 2024-10-30 Wed 13:32</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
