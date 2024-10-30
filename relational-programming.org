@@ -507,15 +507,15 @@ of the relational programming languages.
 	       (conj
 		(≡ `(,a . ,r) o)
 		(lambda (s/c) (lambda () ((appendo d s r) s/c)))))))))))))
-  (define query (call/fresh
+  (define stream (call/fresh
 		 (lambda (x)
 		   (call/fresh
 		    (lambda (y)
 		      (appendo x y '(a b c)))))))
-  (printf "~a\n" (query empty-state))
-  (printf "~a\n" ((cdr (query empty-state))))
-  (printf "~a\n" ((cdr ((cdr (query empty-state))))))
-  (printf "~a\n" ((cdr ((cdr ((cdr (query empty-state))))))))
+  (printf "~a\n" (stream empty-state))
+  (printf "~a\n" ((cdr (stream empty-state))))
+  (printf "~a\n" ((cdr ((cdr (stream empty-state))))))
+  (printf "~a\n" ((cdr ((cdr ((cdr (stream empty-state))))))))
 #+end_src
 
 #+RESULTS:
