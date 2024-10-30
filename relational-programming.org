@@ -537,6 +537,22 @@ x = (a b)    y = (c)
 x = (a b c)  y = ()
 #+end_example
 
+Note that if we remove the boilerplate, it is quite easy to see the
+correspondence between the ~append~ and ~appendo~ implementations:
+
+#+begin_src scheme :scheme chez
+(define (appendo l s o)
+  (disj (conj (≡ l '()) (≡ s o))
+	(conj (≡ l `(,a . ,d))
+	      (conj (≡ `(,a . ,r) o)
+		    (appendo d s r) s/c))))
+
+(define (append l s)
+  (cond ((null? l) s)
+	(else (cons (car l)
+		    (append (cdr l) s)))))
+#+end_src
+
 * Related books
 
 - "Introduction to Logic" by Patrick Suppes
