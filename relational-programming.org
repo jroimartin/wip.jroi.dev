@@ -493,6 +493,7 @@ of the relational programming languages.
 #+begin_src scheme -n :scheme chez :exports both :results output verbatim
   (load "relational-programming/ukanren.ss")
   (define empty-state '(() . 0))
+
   (define (appendo l s o)
     (disj
      (conj (≡ l '()) (≡ s o))
@@ -507,11 +508,13 @@ of the relational programming languages.
 	       (conj
 		(≡ `(,a . ,r) o)
 		(lambda (s/c) (lambda () ((appendo d s r) s/c)))))))))))))
+
   (define stream (call/fresh
 		 (lambda (x)
 		   (call/fresh
 		    (lambda (y)
 		      (appendo x y '(a b c)))))))
+
   (printf "~a\n" (stream empty-state))
   (printf "~a\n" ((cdr (stream empty-state))))
   (printf "~a\n" ((cdr ((cdr (stream empty-state))))))
