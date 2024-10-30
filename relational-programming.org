@@ -193,7 +193,7 @@ When a variable is not bound, the variable itself is returned.
 
 ** Goals
 
-A goal is represented as a function that takes a state a returns a
+A goal is represented as a function that takes a state and returns a
 stream.  A state is a pair of a substitution and a non-negative
 integer representing a fresh variable counter.  A stream is a sequence
 of states.
@@ -201,8 +201,8 @@ of states.
 μKanren provides the following goal constructors: ~≡~, ~disj~ and
 ~conj~.
 
-The ≡ goal constructor takes two terms as arguments and returns a goal
-that succeeds if those two terms unify in the received state.  If
+The ~≡~ goal constructor takes two terms as arguments and returns a
+goal that succeeds if those two terms unify in the received state.  If
 those two terms fail to unify in that state, the empty stream is
 instead returned.
 
@@ -414,8 +414,8 @@ The ~mplus~ operator is responsible for merging streams.
 : ((((#(0) . 3)) . 1) (((#(0) . 5)) . 1) (((#(0) . 7)) . 1))
 
 The ~disj~ constructor is defined in terms of the ~mplus~ operator.
-It takes two goals---~g1~ and ~g2~---and returns the stream that
-results from merging ~(g1 s/c)~ and ~(g2 s/c)~.
+It takes two goals--- ~g1~ and ~g2~ ---and returns the stream that results
+from merging ~(g1 s/c)~ and ~(g2 s/c)~.
 
 #+begin_src scheme :scheme chez
   (define (disj g1 g2) (lambda (s/c) (mplus (g1 s/c) (g2 s/c))))
@@ -434,7 +434,7 @@ The ~bind~ operator invokes a goal on each element on a stream.
 : ((((#(1) . 7) (#(0) . 3)) . 2) (((#(1) . 7) (#(0) . 5)) . 2))
 
 The ~conj~ constructor is defined in terms of the ~bind~ operator.  It
-takes two goals---~g1~ and ~g2~---and returns the stream that results
+takes two goals--- ~g1~ and ~g2~ ---and returns the stream that results
 from invoking ~g2~ on each element of the stream returned by ~(g1
 s/c)~.
 

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-30 Wed 13:43 -->
+<!-- 2024-10-30 Wed 14:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -268,7 +268,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org84d0ccf">
+<pre class="example" id="org33de42d">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -292,7 +292,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org54ca9b6">
+<pre class="example" id="org21ab841">
 (+o 3 4 7)
 </pre>
 
@@ -314,7 +314,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org42262fb">
+<pre class="example" id="orgb2877ec">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -322,7 +322,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="orgb310147">
+<pre class="example" id="org3262a5c">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -330,7 +330,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org3de5e56">
+<pre class="example" id="orga5e8b97">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -598,7 +598,7 @@ When a variable is not bound, the variable itself is returned.
 <h3 id="org79881bd">Goals</h3>
 <div class="outline-text-3" id="text-org79881bd">
 <p>
-A goal is represented as a function that takes a state a returns a
+A goal is represented as a function that takes a state and returns a
 stream.  A state is a pair of a substitution and a non-negative
 integer representing a fresh variable counter.  A stream is a sequence
 of states.
@@ -610,8 +610,8 @@ of states.
 </p>
 
 <p>
-The ≡ goal constructor takes two terms as arguments and returns a goal
-that succeeds if those two terms unify in the received state.  If
+The <code>≡</code> goal constructor takes two terms as arguments and returns a
+goal that succeeds if those two terms unify in the received state.  If
 those two terms fail to unify in that state, the empty stream is
 instead returned.
 </p>
@@ -903,8 +903,8 @@ The <code>mplus</code> operator is responsible for merging streams.
 
 <p>
 The <code>disj</code> constructor is defined in terms of the <code>mplus</code> operator.
-It takes two goals---<code>g1</code> and <code>g2</code>&#x2014;and returns the stream that
-results from merging <code>(g1 s/c)</code> and <code>(g2 s/c)</code>.
+It takes two goals&#x2014; <code>g1</code> and <code>g2</code> &#x2014;and returns the stream that results
+from merging <code>(g1 s/c)</code> and <code>(g2 s/c)</code>.
 </p>
 
 <div class="org-src-container">
@@ -931,7 +931,7 @@ The <code>bind</code> operator invokes a goal on each element on a stream.
 
 <p>
 The <code>conj</code> constructor is defined in terms of the <code>bind</code> operator.  It
-takes two goals---<code>g1</code> and <code>g2</code>&#x2014;and returns the stream that results
+takes two goals&#x2014; <code>g1</code> and <code>g2</code> &#x2014;and returns the stream that results
 from invoking <code>g2</code> on each element of the stream returned by <code>(g1
 s/c)</code>.
 </p>
@@ -1015,7 +1015,7 @@ functionality of μKanren:
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-30 Wed 13:43</p>
+<p class="date">Created: 2024-10-30 Wed 14:00</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
