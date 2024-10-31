@@ -417,7 +417,7 @@ The ~disj~ constructor is defined in terms of the ~mplus~ operator.
 It takes two goals--- ~g1~ and ~g2~ ---and returns the stream that results
 from merging ~(g1 s/c)~ and ~(g2 s/c)~.
 
-#+begin_src scheme :scheme chez
+#+begin_src scheme :scheme chez :eval never
   (define (disj g1 g2) (lambda (s/c) (mplus (g1 s/c) (g2 s/c))))
 #+end_src
 
@@ -438,7 +438,7 @@ takes two goals--- ~g1~ and ~g2~ ---and returns the stream that results
 from invoking ~g2~ on each element of the stream returned by ~(g1
 s/c)~.
 
-#+begin_src scheme :scheme chez
+#+begin_src scheme :scheme chez :eval never
   (define (conj g1 g2) (lambda (s/c) (bind (g1 s/c) g2)))
 #+end_src
 
@@ -510,10 +510,10 @@ of the relational programming languages.
 		(lambda (s/c) (lambda () ((appendo d s r) s/c)))))))))))))
 
   (define stream (call/fresh
-		 (lambda (x)
-		   (call/fresh
-		    (lambda (y)
-		      (appendo x y '(a b c)))))))
+		  (lambda (x)
+		    (call/fresh
+		     (lambda (y)
+		       (appendo x y '(a b c)))))))
 
   (printf "~a\n" (stream empty-state))
   (printf "~a\n" ((cdr (stream empty-state))))
@@ -540,18 +540,48 @@ x = (a b c)  y = ()
 Note that if we remove the boilerplate, it is quite easy to see the
 correspondence between the ~append~ and ~appendo~ implementations:
 
-#+begin_src scheme :scheme chez
-(define (appendo l s o)
-  (disj (conj (≡ l '()) (≡ s o))
-	(conj (≡ l `(,a . ,d))
-	      (conj (≡ `(,a . ,r) o)
-		    (appendo d s r) s/c))))
+#+begin_src scheme :scheme chez :eval never
+  (define (appendo l s o)
+    (disj (conj (≡ l '()) (≡ s o))
+	  (conj (≡ l `(,a . ,d))
+		(conj (≡ `(,a . ,r) o)
+		      (appendo d s r) s/c))))
 
-(define (append l s)
-  (cond ((null? l) s)
-	(else (cons (car l)
-		    (append (cdr l) s)))))
+  (define (append l s)
+    (cond ((null? l) s)
+	  (else (cons (car l)
+		      (append (cdr l) s)))))
 #+end_src
+
+* Sweetening μKanren with a bit of syntax sugar
+
+μKanren off-loads higher level operations, like the ones provided by
+miniKanren, to the user (e.g. ~run~, ~run*~, ~fresh~, etc.).  The
+μKanren paper presents a reference implementation for some helpers.
+The following code includes those helpers as well as a custom reifier
+that makes easier to read the returned results.  The code is available
+[[file:relational-programming/ukanren-usr.ss][here]].
+
+#+include: "relational-programming/ukanren-usr.ss" src scheme -n
+
+Let's apply them to our ~appendo~ example to make it more readable.
+
+#+begin_src scheme -n :scheme chez :session ukanren :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (load "relational-programming/ukanren-usr.ss")
+
+  (define (appendo l s o)
+    (fresh (a d r)
+	   (conde ((≡ l '()) (≡ s o))
+		  ((≡ l `(,a . ,d))
+		   (≡ `(,a . ,r) o)
+		   (appendo d s r)))))
+
+  (run* (x y) (appendo x y '(a b c)))
+#+end_src
+
+#+RESULTS:
+: (((x) (y a b c)) ((x a) (y b c)) ((x a b) (y c)) ((x a b c) (y)))
 
 * Related books
 
