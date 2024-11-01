@@ -110,14 +110,14 @@
 	  s/c*))))
 
 ;; The reify function takes a state s/c and an arbitrary value v,
-;; perhaps containing variables, and returns the reiﬁed value of v.
+;; perhaps containing variables, and returns the reified value of v.
 (define (reify v s/c)
   (let ((v (walk* v (car s/c))))
     (walk* v (reify-s v '()))))
 
-;; reify-s takes a walk∗ed term as its ﬁrst argument; its second
+;; reify-s takes a walk*ed term as its first argument; its second
 ;; argument starts out as an empty substitution.  The result of
-;; invoking reify-s is a reiﬁed name substitution, associating logic
+;; invoking reify-s is a reified name substitution, associating logic
 ;; variables to distinct symbols of the form _.n.
 (define (reify-s v s)
   (let ((v (walk v s)))

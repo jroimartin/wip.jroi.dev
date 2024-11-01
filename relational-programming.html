@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-01 Fri 20:51 -->
+<!-- 2024-11-01 Fri 22:35 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -269,7 +269,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="orge82f508">
+<pre class="example" id="org5af6454">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -293,7 +293,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orga240ded">
+<pre class="example" id="org8964589">
 (+o 3 4 7)
 </pre>
 
@@ -315,7 +315,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="orgc5140ea">
+<pre class="example" id="orgfeae8f8">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -323,7 +323,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org0d44f40">
+<pre class="example" id="org88c6166">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -331,7 +331,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org5f9bde1">
+<pre class="example" id="org52b9d62">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -1062,7 +1062,7 @@ A closer look at the results shows that the values found for <code>x</code> and
 <code>y</code> are:
 </p>
 
-<pre class="example" id="org179e5df">
+<pre class="example" id="orgd5a72df">
 x = ()       y = (a b c)
 x = (a)      y = (b c)
 x = (a b)    y = (c)
@@ -1215,14 +1215,14 @@ that makes easier to read the returned results.  The code is available
 <span class="linenr">110: </span>          s/c*))))
 <span class="linenr">111: </span>
 <span class="linenr">112: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The reify function takes a state s/c and an arbitrary value v,</span>
-<span class="linenr">113: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">perhaps containing variables, and returns the rei&#64257;ed value of v.</span>
+<span class="linenr">113: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">perhaps containing variables, and returns the reified value of v.</span>
 <span class="linenr">114: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify</span> v s/c)
 <span class="linenr">115: </span>  (<span style="color: #a020f0;">let</span> ((v (walk* v (car s/c))))
 <span class="linenr">116: </span>    (walk* v (reify-s v '()))))
 <span class="linenr">117: </span>
-<span class="linenr">118: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-s takes a walk&#8727;ed term as its &#64257;rst argument; its second</span>
+<span class="linenr">118: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-s takes a walk*ed term as its first argument; its second</span>
 <span class="linenr">119: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">argument starts out as an empty substitution.  The result of</span>
-<span class="linenr">120: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">invoking reify-s is a rei&#64257;ed name substitution, associating logic</span>
+<span class="linenr">120: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">invoking reify-s is a reified name substitution, associating logic</span>
 <span class="linenr">121: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variables to distinct symbols of the form _.n.</span>
 <span class="linenr">122: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-s</span> v s)
 <span class="linenr">123: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
@@ -1287,7 +1287,7 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-11-01 Fri 20:51</p>
+<p class="date">Created: 2024-11-01 Fri 22:35</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
