@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-01 Fri 09:59 -->
+<!-- 2024-11-01 Fri 20:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -269,7 +269,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org0627040">
+<pre class="example" id="orge82f508">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -293,7 +293,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org6e54a71">
+<pre class="example" id="orga240ded">
 (+o 3 4 7)
 </pre>
 
@@ -315,7 +315,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org5496141">
+<pre class="example" id="orgc5140ea">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -323,7 +323,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org5803a4e">
+<pre class="example" id="org0d44f40">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -331,7 +331,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="orgc19aa7b">
+<pre class="example" id="org5f9bde1">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -1062,7 +1062,7 @@ A closer look at the results shows that the values found for <code>x</code> and
 <code>y</code> are:
 </p>
 
-<pre class="example" id="orgd80b343">
+<pre class="example" id="org179e5df">
 x = ()       y = (a b c)
 x = (a)      y = (b c)
 x = (a b)    y = (c)
@@ -1205,42 +1205,45 @@ that makes easier to read the returned results.  The code is available
 <span class="linenr">100: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr">101: </span>    ((_ (x ...) s/c*)
 <span class="linenr">102: </span>     (<span style="color: #a020f0;">map</span> (<span style="color: #a020f0;">lambda</span> (s/c)
-<span class="linenr">103: </span>            (<span style="color: #a020f0;">let</span> <span style="color: #0000ff;">loop</span> ((vs '(x ...)) (n 0))
-<span class="linenr">104: </span>              (<span style="color: #a020f0;">if</span> (null? vs)
-<span class="linenr">105: </span>                  '()
-<span class="linenr">106: </span>                  (cons (cons (car vs) (reify-state/nth-var n s/c))
-<span class="linenr">107: </span>                        (loop (cdr vs) (+ n  1))))))
-<span class="linenr">108: </span>          s/c*))))
-<span class="linenr">109: </span>
-<span class="linenr">110: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-state/nth-var reifies the state's substitution with respect</span>
-<span class="linenr">111: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">to the provided variable index.</span>
-<span class="linenr">112: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-state/nth-var</span> n s/c)
-<span class="linenr">113: </span>  (<span style="color: #a020f0;">let</span> ((v (walk* (var n) (car s/c))))
-<span class="linenr">114: </span>    (walk* v (reify-s v '()))))
-<span class="linenr">115: </span>
-<span class="linenr">116: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-s recursively associates unbound variables with symbols of</span>
-<span class="linenr">117: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">the form '_.n' starting at v.</span>
-<span class="linenr">118: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-s</span> v s)
-<span class="linenr">119: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
-<span class="linenr">120: </span>    (<span style="color: #a020f0;">cond</span>
-<span class="linenr">121: </span>     ((var? v)
-<span class="linenr">122: </span>      (<span style="color: #a020f0;">let</span> ((n (reify-name (length s))))
-<span class="linenr">123: </span>        (cons `(, v . , n) s)))
-<span class="linenr">124: </span>     ((pair? v) (reify-s (cdr v) (reify-s (car v) s)))
-<span class="linenr">125: </span>     (<span style="color: #a020f0;">else</span> s))))
-<span class="linenr">126: </span>
-<span class="linenr">127: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-name generates a symbol of the form '_.n'.</span>
-<span class="linenr">128: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-name</span> n)
-<span class="linenr">129: </span>  (string-&gt;symbol
-<span class="linenr">130: </span>   (string-append <span style="color: #8b2252;">"_"</span> <span style="color: #8b2252;">"."</span> (number-&gt;string n))))
-<span class="linenr">131: </span>
-<span class="linenr">132: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">walk* extends the walk function to walk pairs.</span>
-<span class="linenr">133: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">walk*</span> v s)
-<span class="linenr">134: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
-<span class="linenr">135: </span>    (<span style="color: #a020f0;">cond</span>
-<span class="linenr">136: </span>     ((pair? v) (cons (walk* (car v) s)
-<span class="linenr">137: </span>                      (walk* (cdr v) s)))
-<span class="linenr">138: </span>     (<span style="color: #a020f0;">else</span> v))))
+<span class="linenr">103: </span>            (reify
+<span class="linenr">104: </span>             (<span style="color: #a020f0;">let</span> <span style="color: #0000ff;">loop</span> ((vs '(x ...)) (n 0))
+<span class="linenr">105: </span>               (<span style="color: #a020f0;">if</span> (null? vs)
+<span class="linenr">106: </span>                   '()
+<span class="linenr">107: </span>                   (cons (cons (car vs) (var n))
+<span class="linenr">108: </span>                         (loop (cdr vs) (+ n  1)))))
+<span class="linenr">109: </span>             s/c))
+<span class="linenr">110: </span>          s/c*))))
+<span class="linenr">111: </span>
+<span class="linenr">112: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The reify function takes a state s/c and an arbitrary value v,</span>
+<span class="linenr">113: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">perhaps containing variables, and returns the rei&#64257;ed value of v.</span>
+<span class="linenr">114: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify</span> v s/c)
+<span class="linenr">115: </span>  (<span style="color: #a020f0;">let</span> ((v (walk* v (car s/c))))
+<span class="linenr">116: </span>    (walk* v (reify-s v '()))))
+<span class="linenr">117: </span>
+<span class="linenr">118: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-s takes a walk&#8727;ed term as its &#64257;rst argument; its second</span>
+<span class="linenr">119: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">argument starts out as an empty substitution.  The result of</span>
+<span class="linenr">120: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">invoking reify-s is a rei&#64257;ed name substitution, associating logic</span>
+<span class="linenr">121: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variables to distinct symbols of the form _.n.</span>
+<span class="linenr">122: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-s</span> v s)
+<span class="linenr">123: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
+<span class="linenr">124: </span>    (<span style="color: #a020f0;">cond</span>
+<span class="linenr">125: </span>     ((var? v) (ext-s v (reify-name (length s)) s))
+<span class="linenr">126: </span>     ((pair? v) (reify-s (cdr v) (reify-s (car v) s)))
+<span class="linenr">127: </span>     (<span style="color: #a020f0;">else</span> s))))
+<span class="linenr">128: </span>
+<span class="linenr">129: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-name generates a symbol of the form _.n.</span>
+<span class="linenr">130: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-name</span> n)
+<span class="linenr">131: </span>  (string-&gt;symbol
+<span class="linenr">132: </span>   (string-append <span style="color: #8b2252;">"_"</span> <span style="color: #8b2252;">"."</span> (number-&gt;string n))))
+<span class="linenr">133: </span>
+<span class="linenr">134: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">walk* deeply walks a term with respect to a substitution.</span>
+<span class="linenr">135: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">walk*</span> v s)
+<span class="linenr">136: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
+<span class="linenr">137: </span>    (<span style="color: #a020f0;">cond</span>
+<span class="linenr">138: </span>     ((var? v) v)
+<span class="linenr">139: </span>     ((pair? v) (cons (walk* (car v) s)
+<span class="linenr">140: </span>                      (walk* (cdr v) s)))
+<span class="linenr">141: </span>     (<span style="color: #a020f0;">else</span> v))))
 </pre>
 </div>
 
@@ -1284,7 +1287,7 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-11-01 Fri 09:59</p>
+<p class="date">Created: 2024-11-01 Fri 20:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

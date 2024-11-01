@@ -100,39 +100,42 @@
   (syntax-rules ()
     ((_ (x ...) s/c*)
      (map (lambda (s/c)
-	    (let loop ((vs '(x ...)) (n 0))
-	      (if (null? vs)
-		  '()
-		  (cons (cons (car vs) (reify-state/nth-var n s/c))
-			(loop (cdr vs) (+ n  1))))))
+	    (reify
+	     (let loop ((vs '(x ...)) (n 0))
+	       (if (null? vs)
+		   '()
+		   (cons (cons (car vs) (var n))
+			 (loop (cdr vs) (+ n  1)))))
+	     s/c))
 	  s/c*))))
 
-;; reify-state/nth-var reifies the state's substitution with respect
-;; to the provided variable index.
-(define (reify-state/nth-var n s/c)
-  (let ((v (walk* (var n) (car s/c))))
+;; The reify function takes a state s/c and an arbitrary value v,
+;; perhaps containing variables, and returns the reiﬁed value of v.
+(define (reify v s/c)
+  (let ((v (walk* v (car s/c))))
     (walk* v (reify-s v '()))))
 
-;; reify-s recursively associates unbound variables with symbols of
-;; the form '_.n' starting at v.
+;; reify-s takes a walk∗ed term as its ﬁrst argument; its second
+;; argument starts out as an empty substitution.  The result of
+;; invoking reify-s is a reiﬁed name substitution, associating logic
+;; variables to distinct symbols of the form _.n.
 (define (reify-s v s)
   (let ((v (walk v s)))
     (cond
-     ((var? v)
-      (let ((n (reify-name (length s))))
-	(cons `(, v . , n) s)))
+     ((var? v) (ext-s v (reify-name (length s)) s))
      ((pair? v) (reify-s (cdr v) (reify-s (car v) s)))
      (else s))))
 
-;; reify-name generates a symbol of the form '_.n'.
+;; reify-name generates a symbol of the form _.n.
 (define (reify-name n)
   (string->symbol
    (string-append "_" "." (number->string n))))
 
-;; walk* extends the walk function to walk pairs.
+;; walk* deeply walks a term with respect to a substitution.
 (define (walk* v s)
   (let ((v (walk v s)))
     (cond
+     ((var? v) v)
      ((pair? v) (cons (walk* (car v) s)
 		      (walk* (cdr v) s)))
      (else v))))
