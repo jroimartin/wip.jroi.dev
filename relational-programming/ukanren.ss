@@ -39,7 +39,7 @@
 ;; terms in a substitution, both are walked in that substitution.  If
 ;; the two terms walk to the same variable, the original substitution
 ;; is returned unchanged.  When one of the two terms walks to a
-;; variable, the substitution is extended, bindings the variable to
+;; variable, the substitution is extended, binding the variable to
 ;; which that term walks with the value of which the other term walks.
 ;; If both terms walk to pairs, the cars and then cdrs are unifed
 ;; recursively, succeeding if unification succeeds in the one and then

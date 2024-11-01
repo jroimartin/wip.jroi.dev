@@ -324,8 +324,8 @@ original substitution is returned unchanged.
 : ((#(0) . 5) (#(1) . #(0)) (#(2) . #(0)))
 
 When one of the two terms walks to a variable, the substitution is
-extended, bindings the variable to which that term walks with the
-value of which the other term walks.
+extended, binding the variable to which that term walks with the value
+of which the other term walks.
 
 #+begin_src scheme -n :scheme chez :exports both :results verbatim
   (load "relational-programming/ukanren.ss")
@@ -335,6 +335,15 @@ value of which the other term walks.
 
 #+RESULTS:
 : ((#(1) . 5) (#(0) . 5) (#(2) . #(0)))
+
+#+begin_src scheme -n :scheme chez :exports both :results verbatim
+  (load "relational-programming/ukanren.ss")
+  (define s '((#(0) . 5) (#(2) . #(1))))
+  (unify (var 2) 3 s)
+#+end_src
+
+#+RESULTS:
+: ((#(1) . 3) (#(0) . 5) (#(2) . #(1)))
 
 #+begin_src scheme -n :scheme chez :exports both :results verbatim
   (load "relational-programming/ukanren.ss")

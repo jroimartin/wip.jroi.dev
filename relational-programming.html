@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-31 Thu 23:55 -->
+<!-- 2024-11-01 Fri 09:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -269,7 +269,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org66e642d">
+<pre class="example" id="org0627040">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -293,7 +293,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="org4a39d23">
+<pre class="example" id="org6e54a71">
 (+o 3 4 7)
 </pre>
 
@@ -315,7 +315,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org79ff0ba">
+<pre class="example" id="org5496141">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -323,7 +323,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org53a2c31">
+<pre class="example" id="org5803a4e">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -331,7 +331,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org22861b4">
+<pre class="example" id="orgc19aa7b">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 	      ...
@@ -407,7 +407,7 @@ the relevant parts of the paper and is available <a href="relational-programming
 <span class="linenr">39: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">terms in a substitution, both are walked in that substitution.  If</span>
 <span class="linenr">40: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">the two terms walk to the same variable, the original substitution</span>
 <span class="linenr">41: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is returned unchanged.  When one of the two terms walks to a</span>
-<span class="linenr">42: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variable, the substitution is extended, bindings the variable to</span>
+<span class="linenr">42: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variable, the substitution is extended, binding the variable to</span>
 <span class="linenr">43: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">which that term walks with the value of which the other term walks.</span>
 <span class="linenr">44: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">If both terms walk to pairs, the cars and then cdrs are unifed</span>
 <span class="linenr">45: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">recursively, succeeding if unification succeeds in the one and then</span>
@@ -778,8 +778,8 @@ original substitution is returned unchanged.
 
 <p>
 When one of the two terms walks to a variable, the substitution is
-extended, bindings the variable to which that term walks with the
-value of which the other term walks.
+extended, binding the variable to which that term walks with the value
+of which the other term walks.
 </p>
 
 <div class="org-src-container">
@@ -791,6 +791,18 @@ value of which the other term walks.
 
 <pre class="example">
 ((#(1) . 5) (#(0) . 5) (#(2) . #(0)))
+</pre>
+
+
+<div class="org-src-container">
+<pre class="src src-scheme"><span class="linenr">1: </span>(load <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5) (#(2) . #(1))))
+<span class="linenr">3: </span>(unify (var 2) 3 s)
+</pre>
+</div>
+
+<pre class="example">
+((#(1) . 3) (#(0) . 5) (#(2) . #(1)))
 </pre>
 
 
@@ -1050,7 +1062,7 @@ A closer look at the results shows that the values found for <code>x</code> and
 <code>y</code> are:
 </p>
 
-<pre class="example" id="orgc2f4ed9">
+<pre class="example" id="orgd80b343">
 x = ()       y = (a b c)
 x = (a)      y = (b c)
 x = (a b)    y = (c)
@@ -1272,7 +1284,7 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-31 Thu 23:55</p>
+<p class="date">Created: 2024-11-01 Fri 09:59</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
