@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-10-23 Wed 13:31 -->
+<!-- 2024-11-19 Tue 17:41 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Maxwell’s Equations of Software</title>
@@ -228,7 +228,7 @@ So, what is on the bottom of page 13 of the
 </p>
 
 
-<div id="orgd452f42" class="figure">
+<div id="orgdafd214" class="figure">
 <p><img src="maxwell-equations/page13.png" alt="page13.png" width="650px" />
 </p>
 </div>
@@ -264,7 +264,7 @@ equivalent S-expression:
 </p>
 
 
-<div id="orga7817f0" class="figure">
+<div id="org8d03f95" class="figure">
 <p><img src="maxwell-equations/mexp-sexp.png" alt="mexp-sexp.png" width="750px" />
 </p>
 </div>
@@ -275,41 +275,41 @@ The following is the complete <a href="https://racket-lang.org/">Racket</a> impl
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr"> 1: </span>#lang racket
+<pre class="src src-racket"><span class="linenr"> 1: </span><span style="color: #a020f0;">#lang</span> <span style="color: #a0522d;">racket</span>
 <span class="linenr"> 2: </span>
 <span class="linenr"> 3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">atom</span> e)
-<span class="linenr"> 4: </span>  (not (cons? e)))
+<span class="linenr"> 4: </span>  (<span style="color: #483d8b;">not</span> (<span style="color: #483d8b;">cons?</span> e)))
 <span class="linenr"> 5: </span>
 <span class="linenr"> 6: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">pairlis</span> x y a)
-<span class="linenr"> 7: </span>  (<span style="color: #a020f0;">cond</span> [(null? x) a]
-<span class="linenr"> 8: </span>        [<span style="color: #a020f0;">else</span> (cons (cons (car x) (car y)) (pairlis (cdr x) (cdr y) a))]))
+<span class="linenr"> 7: </span>  (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">null?</span> x) a]
+<span class="linenr"> 8: </span>        [<span style="color: #a020f0;">else</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">car</span> x) (<span style="color: #483d8b;">car</span> y)) (pairlis (<span style="color: #483d8b;">cdr</span> x) (<span style="color: #483d8b;">cdr</span> y) a))]))
 <span class="linenr"> 9: </span>
 <span class="linenr">10: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evcon</span> c a)
-<span class="linenr">11: </span>  (<span style="color: #a020f0;">cond</span> [(eval (caar c) a) (eval (cadar c) a)]
-<span class="linenr">12: </span>        [<span style="color: #a020f0;">else</span> (evcon (cdr c) a)]))
+<span class="linenr">11: </span>  (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">caar</span> c) a) (<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">cadar</span> c) a)]
+<span class="linenr">12: </span>        [<span style="color: #a020f0;">else</span> (evcon (<span style="color: #483d8b;">cdr</span> c) a)]))
 <span class="linenr">13: </span>
 <span class="linenr">14: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evlis</span> m a)
-<span class="linenr">15: </span>  (<span style="color: #a020f0;">cond</span> [(null? m) null]
-<span class="linenr">16: </span>        [<span style="color: #a020f0;">else</span> (cons (eval (car m) a) (evlis (cdr m) a))]))
+<span class="linenr">15: </span>  (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">null?</span> m) <span style="color: #483d8b;">null</span>]
+<span class="linenr">16: </span>        [<span style="color: #a020f0;">else</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">car</span> m) a) (evlis (<span style="color: #483d8b;">cdr</span> m) a))]))
 <span class="linenr">17: </span>
 <span class="linenr">18: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">eval</span> e a)
-<span class="linenr">19: </span>  (<span style="color: #a020f0;">cond</span> [(atom e) (cdr (assoc e a))]
-<span class="linenr">20: </span>        [(atom (car e)) (<span style="color: #a020f0;">cond</span> [(eq? (car e) 'QUOTE) (cadr e)]
-<span class="linenr">21: </span>                              [(eq? (car e) 'COND) (evcon (cdr e) a)]
-<span class="linenr">22: </span>                              [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)])]
-<span class="linenr">23: </span>        [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)]))
+<span class="linenr">19: </span>  (<span style="color: #a020f0;">cond</span> [(atom e) (<span style="color: #483d8b;">cdr</span> (<span style="color: #483d8b;">assoc</span> e a))]
+<span class="linenr">20: </span>        [(atom (<span style="color: #483d8b;">car</span> e)) (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> e) <span style="color: #008b8b;">'QUOTE</span>) (<span style="color: #483d8b;">cadr</span> e)]
+<span class="linenr">21: </span>                              [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> e) <span style="color: #008b8b;">'COND</span>) (evcon (<span style="color: #483d8b;">cdr</span> e) a)]
+<span class="linenr">22: </span>                              [<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">car</span> e) (evlis (<span style="color: #483d8b;">cdr</span> e) a) a)])]
+<span class="linenr">23: </span>        [<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">car</span> e) (evlis (<span style="color: #483d8b;">cdr</span> e) a) a)]))
 <span class="linenr">24: </span>
 <span class="linenr">25: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">apply</span> fn x a)
-<span class="linenr">26: </span>  (<span style="color: #a020f0;">cond</span> [(atom fn) (<span style="color: #a020f0;">cond</span> [(eq? fn 'CAR) (caar x)]
-<span class="linenr">27: </span>                         [(eq? fn 'CDR) (cdar x)]
-<span class="linenr">28: </span>                         [(eq? fn 'CONS) (cons (car x) (cadr x))]
-<span class="linenr">29: </span>                         [(eq? fn 'ATOM) (atom (car x))]
-<span class="linenr">30: </span>                         [(eq? fn 'EQ) (eq? (car x) (cadr x))]
-<span class="linenr">31: </span>                         [<span style="color: #a020f0;">else</span> (apply (eval fn a) x a)])]
-<span class="linenr">32: </span>        [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
-<span class="linenr">33: </span>        [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+<span class="linenr">26: </span>  (<span style="color: #a020f0;">cond</span> [(atom fn) (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'CAR</span>) (<span style="color: #483d8b;">caar</span> x)]
+<span class="linenr">27: </span>                         [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'CDR</span>) (<span style="color: #483d8b;">cdar</span> x)]
+<span class="linenr">28: </span>                         [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'CONS</span>) (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">car</span> x) (<span style="color: #483d8b;">cadr</span> x))]
+<span class="linenr">29: </span>                         [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'ATOM</span>) (atom (<span style="color: #483d8b;">car</span> x))]
+<span class="linenr">30: </span>                         [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'EQ</span>) (<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> x) (<span style="color: #483d8b;">cadr</span> x))]
+<span class="linenr">31: </span>                         [<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">eval</span> fn a) x a)])]
+<span class="linenr">32: </span>        [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> fn) <span style="color: #008b8b;">'LAMBDA</span>) (<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">caddr</span> fn) (pairlis (<span style="color: #483d8b;">cadr</span> fn) x a))]
+<span class="linenr">33: </span>        [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> fn) <span style="color: #008b8b;">'LABEL</span>) (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">caddr</span> fn) x (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">cadr</span> fn) (<span style="color: #483d8b;">caddr</span> fn)) a))]))
 <span class="linenr">34: </span>
-<span class="linenr">35: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (apply fn x null))
+<span class="linenr">35: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (<span style="color: #a020f0;">apply</span> fn x <span style="color: #483d8b;">null</span>))
 </pre>
 </div>
 
@@ -319,7 +319,7 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">  1: </span>#lang racket
+<pre class="src src-racket"><span class="linenr">  1: </span><span style="color: #a020f0;">#lang</span> <span style="color: #a0522d;">racket</span>
 <span class="linenr">  2: </span>
 <span class="linenr">  3: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Distinction between forms and functions.</span>
 <span class="linenr">  4: </span><span style="color: #b22222;">;;</span>
@@ -341,15 +341,15 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr"> 20: </span>
 <span class="linenr"> 21: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">cons returns #t if e is an atomic symbol, #f otherwise.</span>
 <span class="linenr"> 22: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">atom</span> e)
-<span class="linenr"> 23: </span>  (not (cons? e)))
+<span class="linenr"> 23: </span>  (<span style="color: #483d8b;">not</span> (<span style="color: #483d8b;">cons?</span> e)))
 <span class="linenr"> 24: </span>
 <span class="linenr"> 25: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">pairlis gives the list of pairs of corresponding elements of the</span>
 <span class="linenr"> 26: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">lists x and y, and appends this to the list a.  The resultant list</span>
 <span class="linenr"> 27: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">of pairs, which is like a table with two columns, is called an</span>
 <span class="linenr"> 28: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">association list.</span>
 <span class="linenr"> 29: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">pairlis</span> x y a)
-<span class="linenr"> 30: </span>  (<span style="color: #a020f0;">cond</span> [(null? x) a]
-<span class="linenr"> 31: </span>        [<span style="color: #a020f0;">else</span> (cons (cons (car x) (car y)) (pairlis (cdr x) (cdr y) a))]))
+<span class="linenr"> 30: </span>  (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">null?</span> x) a]
+<span class="linenr"> 31: </span>        [<span style="color: #a020f0;">else</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">car</span> x) (<span style="color: #483d8b;">car</span> y)) (pairlis (<span style="color: #483d8b;">cdr</span> x) (<span style="color: #483d8b;">cdr</span> y) a))]))
 <span class="linenr"> 32: </span>
 <span class="linenr"> 33: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evcon handles the COND form.  It evaluates the list of</span>
 <span class="linenr"> 34: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">propositional terms c in order, and chooses the form following the</span>
@@ -364,8 +364,8 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr"> 43: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caar c) returns '(ATOM (QUOTE A))</span>
 <span class="linenr"> 44: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadar c) returns '(QUOTE B)</span>
 <span class="linenr"> 45: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdr c) returns '(((QUOTE T) (QUOTE C)))</span>
-<span class="linenr"> 46: </span>  (<span style="color: #a020f0;">cond</span> [(eval (caar c) a) (eval (cadar c) a)]
-<span class="linenr"> 47: </span>        [<span style="color: #a020f0;">else</span> (evcon (cdr c) a)]))
+<span class="linenr"> 46: </span>  (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">caar</span> c) a) (<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">cadar</span> c) a)]
+<span class="linenr"> 47: </span>        [<span style="color: #a020f0;">else</span> (evcon (<span style="color: #483d8b;">cdr</span> c) a)]))
 <span class="linenr"> 48: </span>
 <span class="linenr"> 49: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evlis evaluates the list of arguments m of a function.  a is an</span>
 <span class="linenr"> 50: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">association list of names and definitions.</span>
@@ -377,8 +377,8 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr"> 56: </span>  <span style="color: #b22222;">;; </span><span style="color: #b22222;">Thus,</span>
 <span class="linenr"> 57: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car m) returns '(QUOTE B)</span>
 <span class="linenr"> 58: </span>  <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdr m) returns '((QUOTE C))</span>
-<span class="linenr"> 59: </span>  (<span style="color: #a020f0;">cond</span> [(null? m) null]
-<span class="linenr"> 60: </span>        [<span style="color: #a020f0;">else</span> (cons (eval (car m) a) (evlis (cdr m) a))]))
+<span class="linenr"> 59: </span>  (<span style="color: #a020f0;">cond</span> [(<span style="color: #483d8b;">null?</span> m) <span style="color: #483d8b;">null</span>]
+<span class="linenr"> 60: </span>        [<span style="color: #a020f0;">else</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">car</span> m) a) (evlis (<span style="color: #483d8b;">cdr</span> m) a))]))
 <span class="linenr"> 61: </span>
 <span class="linenr"> 62: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">eval handles a form.  a is an association list of names and</span>
 <span class="linenr"> 63: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">definitions.</span>
@@ -386,30 +386,30 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr"> 65: </span>  (<span style="color: #a020f0;">cond</span>
 <span class="linenr"> 66: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If e is an atomic, then it must be a variable, and its value is</span>
 <span class="linenr"> 67: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">looked up on the association list.</span>
-<span class="linenr"> 68: </span>   [(atom e) (cdr (assoc e a))]
+<span class="linenr"> 68: </span>   [(atom e) (<span style="color: #483d8b;">cdr</span> (<span style="color: #483d8b;">assoc</span> e a))]
 <span class="linenr"> 69: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If e is a list that begins with an atomic symbol, then it can be</span>
 <span class="linenr"> 70: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">a quote expressions, a conditional expression or a function</span>
 <span class="linenr"> 71: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">call.</span>
-<span class="linenr"> 72: </span>   [(atom (car e))
+<span class="linenr"> 72: </span>   [(atom (<span style="color: #483d8b;">car</span> e))
 <span class="linenr"> 73: </span>    (<span style="color: #a020f0;">cond</span>
 <span class="linenr"> 74: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">If car of the form is QUOTE, then it is a constant.</span>
 <span class="linenr"> 75: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expression</span>
 <span class="linenr"> 76: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(QUOTE A)</span>
 <span class="linenr"> 77: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr"> 78: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr e) returns 'A</span>
-<span class="linenr"> 79: </span>     [(eq? (car e) 'QUOTE) (cadr e)]
+<span class="linenr"> 79: </span>     [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> e) <span style="color: #008b8b;">'QUOTE</span>) (<span style="color: #483d8b;">cadr</span> e)]
 <span class="linenr"> 80: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">If car of the form is COND, then it is a conditional</span>
 <span class="linenr"> 81: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">expression, and evcon handles it.</span>
 <span class="linenr"> 82: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the expression</span>
 <span class="linenr"> 83: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(COND ((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))</span>
 <span class="linenr"> 84: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr"> 85: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdr e) returns '(((ATOM (QUOTE A)) (QUOTE B)) ((QUOTE T) (QUOTE C)))</span>
-<span class="linenr"> 86: </span>     [(eq? (car e) 'COND) (evcon (cdr e) a)]
+<span class="linenr"> 86: </span>     [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> e) <span style="color: #008b8b;">'COND</span>) (evcon (<span style="color: #483d8b;">cdr</span> e) a)]
 <span class="linenr"> 87: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Otherwise, the form must be a function followed by its</span>
 <span class="linenr"> 88: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">arguments.  The arguments are then evaluated, and the function</span>
 <span class="linenr"> 89: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">is given to apply.</span>
-<span class="linenr"> 90: </span>     [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)])]
-<span class="linenr"> 91: </span>   [<span style="color: #a020f0;">else</span> (apply (car e) (evlis (cdr e) a) a)]))
+<span class="linenr"> 90: </span>     [<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">car</span> e) (evlis (<span style="color: #483d8b;">cdr</span> e) a) a)])]
+<span class="linenr"> 91: </span>   [<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">car</span> e) (evlis (<span style="color: #483d8b;">cdr</span> e) a) a)]))
 <span class="linenr"> 92: </span>
 <span class="linenr"> 93: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">apply handles a function and its arguments.</span>
 <span class="linenr"> 94: </span><span style="color: #b22222;">;;</span>
@@ -433,35 +433,35 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr">112: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A B C))</span>
 <span class="linenr">113: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">114: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caar x) returns 'A</span>
-<span class="linenr">115: </span>     [(eq? fn 'CAR) (caar x)]
+<span class="linenr">115: </span>     [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'CAR</span>) (<span style="color: #483d8b;">caar</span> x)]
 <span class="linenr">116: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function CDR.</span>
 <span class="linenr">117: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
 <span class="linenr">118: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A B C))</span>
 <span class="linenr">119: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">120: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cdar x) returns '(B C)</span>
-<span class="linenr">121: </span>     [(eq? fn 'CDR) (cdar x)]
+<span class="linenr">121: </span>     [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'CDR</span>) (<span style="color: #483d8b;">cdar</span> x)]
 <span class="linenr">122: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function CONS.</span>
 <span class="linenr">123: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
 <span class="linenr">124: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'(A B)</span>
 <span class="linenr">125: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">126: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car x) returns 'A</span>
 <span class="linenr">127: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr x) returns 'B</span>
-<span class="linenr">128: </span>     [(eq? fn 'CONS) (cons (car x) (cadr x))]
+<span class="linenr">128: </span>     [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'CONS</span>) (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">car</span> x) (<span style="color: #483d8b;">cadr</span> x))]
 <span class="linenr">129: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function ATOM.</span>
 <span class="linenr">130: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
 <span class="linenr">131: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'((A . B))</span>
 <span class="linenr">132: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">133: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car x) returns '(A . B)</span>
-<span class="linenr">134: </span>     [(eq? fn 'ATOM) (atom (car x))]
+<span class="linenr">134: </span>     [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'ATOM</span>) (atom (<span style="color: #483d8b;">car</span> x))]
 <span class="linenr">135: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the elementary function EQ.</span>
 <span class="linenr">136: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Given the arguments</span>
 <span class="linenr">137: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">'(A B)</span>
 <span class="linenr">138: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">139: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(car x) returns 'A</span>
 <span class="linenr">140: </span>     <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr x) returns 'B</span>
-<span class="linenr">141: </span>     [(eq? fn 'EQ) (eq? (car x) (cadr x))]
+<span class="linenr">141: </span>     [(<span style="color: #483d8b;">eq?</span> fn <span style="color: #008b8b;">'EQ</span>) (<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> x) (<span style="color: #483d8b;">cadr</span> x))]
 <span class="linenr">142: </span>     <span style="color: #b22222;">;; </span><span style="color: #b22222;">Otherwise, fn must be looked up in the association list.</span>
-<span class="linenr">143: </span>     [<span style="color: #a020f0;">else</span> (apply (eval fn a) x a)])]
+<span class="linenr">143: </span>     [<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">eval</span> fn a) x a)])]
 <span class="linenr">144: </span>
 <span class="linenr">145: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If fn begins with LAMBDA, then the arguments are paired with the</span>
 <span class="linenr">146: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">bound variables and the form is given to eval to evaluate.</span>
@@ -470,7 +470,7 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr">149: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">150: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(CDR X)</span>
 <span class="linenr">151: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns '(X)</span>
-<span class="linenr">152: </span>   [(eq? (car fn) 'LAMBDA) (eval (caddr fn) (pairlis (cadr fn) x a))]
+<span class="linenr">152: </span>   [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> fn) <span style="color: #008b8b;">'LAMBDA</span>) (<span style="color: #483d8b;">eval</span> (<span style="color: #483d8b;">caddr</span> fn) (pairlis (<span style="color: #483d8b;">cadr</span> fn) x a))]
 <span class="linenr">153: </span>
 <span class="linenr">154: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">If fn begins with LABEL, then the function name and definition are</span>
 <span class="linenr">155: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">added to the association list, and the inside function is evaluated</span>
@@ -480,7 +480,7 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr">159: </span>   <span style="color: #b22222;">;; </span><span style="color: #b22222;">Then,</span>
 <span class="linenr">160: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(caddr fn) returns '(LAMBDA (X) (FF (CONS (QUOTE A) X)))</span>
 <span class="linenr">161: </span>   <span style="color: #b22222;">;;   </span><span style="color: #b22222;">(cadr fn) returns 'FF</span>
-<span class="linenr">162: </span>   [(eq? (car fn) 'LABEL) (apply (caddr fn) x (cons (cons (cadr fn) (caddr fn)) a))]))
+<span class="linenr">162: </span>   [(<span style="color: #483d8b;">eq?</span> (<span style="color: #483d8b;">car</span> fn) <span style="color: #008b8b;">'LABEL</span>) (<span style="color: #a020f0;">apply</span> (<span style="color: #483d8b;">caddr</span> fn) x (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">cons</span> (<span style="color: #483d8b;">cadr</span> fn) (<span style="color: #483d8b;">caddr</span> fn)) a))]))
 <span class="linenr">163: </span>
 <span class="linenr">164: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">evalquote is a universal LISP function.  In other words, it can</span>
 <span class="linenr">165: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">compute the value of any given function applied to its arguments</span>
@@ -488,7 +488,7 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 <span class="linenr">167: </span><span style="color: #b22222;">;;</span>
 <span class="linenr">168: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fn is the function to be applied represented as a S-expression.  x</span>
 <span class="linenr">169: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is a list of S-expressions used as arguments.</span>
-<span class="linenr">170: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (apply fn x null))
+<span class="linenr">170: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">evalquote</span> fn x) (<span style="color: #a020f0;">apply</span> fn x <span style="color: #483d8b;">null</span>))
 </pre>
 </div>
 
@@ -496,7 +496,7 @@ single bit (<a href="maxwell-equations/evalquote-commented.rkt">evalquote-commen
 So, let's run it!
 </p>
 
-<pre class="example" id="orgf203e29">
+<pre class="example" id="org93e0a26">
 racket@maxwell-equations/evalquote&gt; (evalquote 'CAR '((A B C)))
 'A
 racket@maxwell-equations/evalquote&gt; (evalquote '(LAMBDA (X) (CDR X)) '((A B C)))
@@ -538,7 +538,7 @@ We can add, for instance, the <code>*</code> operator into the context of the
 LISP interpreter:
 </p>
 
-<pre class="example" id="org6603ead">
+<pre class="example" id="org7058d35">
 racket@maxwell-equations/evalquote-proc&gt; (apply '(LAMBDA (X Y) (* X Y)) '(2 21) `((* . ,*)))
 42
 </pre>
@@ -552,7 +552,7 @@ William Byrd.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-05-31 Fri 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-10-23 Wed 13:31</p>
+<p class="date">Created: 2024-11-19 Tue 17:41</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

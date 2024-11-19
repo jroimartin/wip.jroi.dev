@@ -53,12 +53,12 @@ equivalent S-expression:
 As you can imagine, I could not resist to write my own implementation.
 The following is the complete [[https://racket-lang.org/][Racket]] implementation ([[file:maxwell-equations/evalquote.rkt][evalquote.rkt]]):
 
-#+include: "maxwell-equations/evalquote.rkt" src scheme -n
+#+include: "maxwell-equations/evalquote.rkt" src racket -n
 
 And the following is the same Racket code after commenting every
 single bit ([[file:maxwell-equations/evalquote-commented.rkt][evalquote-commented.rkt]]):
 
-#+include: "maxwell-equations/evalquote-commented.rkt" src scheme -n
+#+include: "maxwell-equations/evalquote-commented.rkt" src racket -n
 
 So, let's run it!
 
