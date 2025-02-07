@@ -114,5 +114,5 @@ pre.example-preformatted, pre.lisp-preformatted {
   border-radius: 3px;
   margin: 1.2em;
   padding: 8pt;
-  overflow: scroll
+  overflow: auto
 }
