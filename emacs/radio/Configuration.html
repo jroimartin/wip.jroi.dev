@@ -31,6 +31,7 @@ Documentation License." -->
 a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 div.example {margin-left: 3.2em}
 span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
@@ -50,28 +51,35 @@ Next: <a href="Usage.html" accesskey="n" rel="next">Usage</a>, Previous: <a href
 <p>The following configuration variables allow to customize the behavior
 of the package:
 </p>
-<dl class="table">
-<dt><a id="index-radio_002dcommand"></a><span><code class="code">radio-command</code><a class="copiable-link" href="#index-radio_002dcommand"> &para;</a></span></dt>
-<dd><p>Command used to play a radio station.
-</p>
-</dd>
-<dt><a id="index-radio_002dstations_002dalist"></a><span><code class="code">radio-stations-alist</code><a class="copiable-link" href="#index-radio_002dstations_002dalist"> &para;</a></span></dt>
+<dl class="first-defvr first-defopt-alias-first-defvr">
+<dt class="defvr defopt-alias-defvr" id="index-radio_002dstations_002dalist"><span class="category-def">User Option: </span><span><strong class="def-name">radio-stations-alist</strong><a class="copiable-link" href="#index-radio_002dstations_002dalist"> &para;</a></span></dt>
 <dd><p>List of radio stations.
-</p></dd>
-</dl>
+</p>
+<p>Elements are of the form <code class="code">(<var class="var">name</var> . <var class="var">url</var>)</code>.  A cons with
+the <var class="var">name</var> and <var class="var">url</var> of the radio station.
+</p></dd></dl>
 
-<p>The customize interface can be used to configure these variables.
-Specifically, the <code class="code">radio</code> group contains all the relevant
-settings.
+<dl class="first-defvr first-defopt-alias-first-defvr">
+<dt class="defvr defopt-alias-defvr" id="index-radio_002dcommand"><span class="category-def">User Option: </span><span><strong class="def-name">radio-command</strong><a class="copiable-link" href="#index-radio_002dcommand"> &para;</a></span></dt>
+<dd><p>Command used to play a radio station.
+</p></dd></dl>
+
+<p>The <code class="code">customize</code> interface can be used to configure these
+variables.  Specifically, the <code class="code">radio</code> group contains all the
+relevant settings.
 </p>
 <p>However, if you prefer to add the configuration into your init file,
 then the following code can serve as an example:
 </p>
 <div class="example lisp">
-<pre class="lisp-preformatted">(customize-set-variable 'radio-command &quot;mpv --terminal=no --video=no&quot;)
+<pre class="lisp-preformatted">(customize-set-variable
+ 'radio-command
+ &quot;mpv --terminal=no --video=no&quot;)
 
-(customize-set-variable 'radio-stations-alist '((&quot;First station&quot; . &quot;https://example.com/first.aac&quot;)
-                                                (&quot;Second station&quot; . &quot;https://example.com/second.aac&quot;)))
+(customize-set-variable
+ 'radio-stations-alist
+ '((&quot;First station&quot; . &quot;https://example.com/first.aac&quot;)
+   (&quot;Second station&quot; . &quot;https://example.com/second.aac&quot;)))
 </pre></div>
 
 <p>It sets <code class="code">mpv</code> as media player and registers two radio stations

@@ -99,6 +99,10 @@ kbd.kbd {
   padding: 1px;
 }
 
+var.var {
+  text-transform: uppercase;
+}
+
 div.example, div.lisp {
   margin: 0;
 }

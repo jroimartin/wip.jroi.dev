@@ -32,6 +32,7 @@ a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
 kbd.kbd {font-style: oblique}
 kbd.key {font-style: normal}
 span:hover a.copiable-link {visibility: visible}
+strong.def-name {font-family: monospace; font-weight: bold; font-size: larger}
 -->
 </style>
 <link rel="stylesheet" type="text/css" href="../../css/style.css">
@@ -50,15 +51,21 @@ Next: <a href="Copying.html" accesskey="n" rel="next">GNU General Public License
 
 <p>Radio is mainly controlled by two commands:
 </p>
-<dl class="table">
-<dt><a id="index-radio"></a><span><code class="code">radio</code><a class="copiable-link" href="#index-radio"> &para;</a></span></dt>
+<dl class="first-deffn first-defun-alias-first-deffn">
+<dt class="deffn defun-alias-deffn" id="index-radio"><span class="category-def">Function: </span><span><strong class="def-name">radio</strong> <var class="def-var-arguments">station-name</var><a class="copiable-link" href="#index-radio"> &para;</a></span></dt>
 <dd><p>Play a radio station.
 </p>
-</dd>
-<dt><a id="index-radio_002dstop"></a><span><code class="code">radio-stop</code><a class="copiable-link" href="#index-radio_002dstop"> &para;</a></span></dt>
+<p>When called from Lisp, <var class="var">station-name</var> must be the name of one of
+the stations defined in <code class="code">radio-stations-alist</code>.
+</p></dd></dl>
+
+<dl class="first-deffn first-defun-alias-first-deffn">
+<dt class="deffn defun-alias-deffn" id="index-radio_002dstop"><span class="category-def">Function: </span><span><strong class="def-name">radio-stop</strong><a class="copiable-link" href="#index-radio_002dstop"> &para;</a></span></dt>
 <dd><p>Stop playing current radio station.
-</p></dd>
-</dl>
+</p>
+<p>If no station is being played, calling this function has no
+effect.
+</p></dd></dl>
 
 <p>When invoked interactively, <code class="code">radio</code> reads the station name from
 the minibuffer, with completion.  Modes like <code class="code">fido-mode</code> can
@@ -67,16 +74,15 @@ greatly improve user experience.
 <p>For users that prefer a more visual interface, there exists a third
 command:
 </p>
-<dl class="table">
-<dt><a id="index-radio_002dlist_002dstations"></a><span><code class="code">radio-list-stations</code><a class="copiable-link" href="#index-radio_002dlist_002dstations"> &para;</a></span></dt>
-<dd><p>Display a list of all radio stations.
-</p></dd>
-</dl>
-
 <a class="index-entry-id" id="index-Tabulated-view"></a>
 <a class="index-entry-id" id="index-Station-list"></a>
+<dl class="first-deffn first-defun-alias-first-deffn">
+<dt class="deffn defun-alias-deffn" id="index-radio_002dlist_002dstations"><span class="category-def">Function: </span><span><strong class="def-name">radio-list-stations</strong><a class="copiable-link" href="#index-radio_002dlist_002dstations"> &para;</a></span></dt>
+<dd><p>Display a list of all radio stations.
+</p></dd></dl>
+
 <p>It opens Radio&rsquo;s tabulated view, which shows the list of configured
-radio stations as well as the <code class="t">▶</code> symbol next to the one being
+radio stations as well as the play symbol next to the one being
 played.  It is controlled through the following key bindings:
 </p>
 <dl class="table">
