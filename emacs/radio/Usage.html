@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- Copyright © 2025 Roi Martin
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with the
+Invariant Sections being "GNU General Public License".  A copy of
+the license is included in the section entitled "GNU Free
+Documentation License." -->
+<title>Usage (Radio Manual)</title>
+
+<meta name="description" content="Usage (Radio Manual)">
+<meta name="keywords" content="Usage (Radio Manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Command-Index.html" rel="index" title="Command Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Copying.html" rel="next" title="Copying">
+<link href="Configuration.html" rel="prev" title="Configuration">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+<link rel="stylesheet" type="text/css" href="../../css/style.css">
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Usage">
+<div class="nav-panel">
+<p>
+Next: <a href="Copying.html" accesskey="n" rel="next">GNU General Public License</a>, Previous: <a href="Configuration.html" accesskey="p" rel="prev">Configuration</a>, Up: <a href="index.html" accesskey="u" rel="up">Radio Manual</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Command-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Usage-1"><span>3 Usage<a class="copiable-link" href="#Usage-1"> &para;</a></span></h2>
+
+<p>Radio is mainly controlled by two commands:
+</p>
+<dl class="table">
+<dt><a id="index-radio"></a><span><code class="code">radio</code><a class="copiable-link" href="#index-radio"> &para;</a></span></dt>
+<dd><p>Play a radio station.
+</p>
+</dd>
+<dt><a id="index-radio_002dstop"></a><span><code class="code">radio-stop</code><a class="copiable-link" href="#index-radio_002dstop"> &para;</a></span></dt>
+<dd><p>Stop playing current radio station.
+</p></dd>
+</dl>
+
+<p>When invoked interactively, <code class="code">radio</code> reads the station name from
+the minibuffer, with completion.  Modes like <code class="code">fido-mode</code> can
+greatly improve user experience.
+</p>
+<p>For users that prefer a more visual interface, there exists a third
+command:
+</p>
+<dl class="table">
+<dt><a id="index-radio_002dlist_002dstations"></a><span><code class="code">radio-list-stations</code><a class="copiable-link" href="#index-radio_002dlist_002dstations"> &para;</a></span></dt>
+<dd><p>Display a list of all radio stations.
+</p></dd>
+</dl>
+
+<a class="index-entry-id" id="index-Tabulated-view"></a>
+<a class="index-entry-id" id="index-Station-list"></a>
+<p>It opens Radio&rsquo;s tabulated view, which shows the list of configured
+radio stations as well as the <code class="t">▶</code> symbol next to the one being
+played.  It is controlled through the following key bindings:
+</p>
+<dl class="table">
+<dt><kbd class="kbd"><kbd class="key">RET</kbd></kbd></dt>
+<dd><p>Play the selected radio station.
+</p>
+</dd>
+<dt><kbd class="kbd">s</kbd></dt>
+<dd><p>Stop playing the current radio station.
+</p></dd>
+</dl>
+
+</div>
+
+
+
+</body>
+</html>
