@@ -62,6 +62,8 @@ the <var class="var">name</var> and <var class="var">url</var> of the radio stat
 <dl class="first-defvr first-defopt-alias-first-defvr">
 <dt class="defvr defopt-alias-defvr" id="index-radio_002dcommand"><span class="category-def">User Option: </span><span><strong class="def-name">radio-command</strong><a class="copiable-link" href="#index-radio_002dcommand"> &para;</a></span></dt>
 <dd><p>Command used to play a radio station.
+</p>
+<p>The string %s is replaced with the URL of the radio station.
 </p></dd></dl>
 
 <p>The <code class="code">customize</code> interface can be used to configure these
@@ -74,7 +76,7 @@ then the following code can serve as an example:
 <div class="example lisp">
 <pre class="lisp-preformatted">(customize-set-variable
  'radio-command
- &quot;mpv --terminal=no --video=no&quot;)
+ &quot;mpv --terminal=no --video=no %s&quot;)
 
 (customize-set-variable
  'radio-stations-alist
