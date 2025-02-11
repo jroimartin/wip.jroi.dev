@@ -116,3 +116,13 @@ pre.example-preformatted, pre.lisp-preformatted {
   padding: 8pt;
   overflow: auto
 }
+
+div.display {
+  margin: 0;
+}
+
+pre.display-preformatted {
+  text-align: justify;
+  text-justify: inter-word;
+  white-space: pre-wrap;
+}
