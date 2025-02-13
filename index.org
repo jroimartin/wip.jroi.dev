@@ -22,7 +22,7 @@ GitHub repository.
 
 * GNU Emacs packages
 
-- [[https://github.com/jroimartin/radio][Radio]]
+- [[https://elpa.nongnu.org/nongnu/radio.html][Radio]]
 
 * Misc
 
