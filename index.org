@@ -26,6 +26,7 @@ GitHub repository.
 
 * Misc
 
+- [[file:recipes.org][Recipes]]
 - [[file:home-n-links.org][/home/n/links]]
 
 * About

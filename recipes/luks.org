@@ -1,0 +1,32 @@
+#+title: Disk Encryption With LUKS
+#+author: Roi Martin
+#+date: <2025-03-06 Thu>
+#+html_link_home: ../index.html
+#+html_link_up: ../recipes.html
+#+html_head: <link rel="stylesheet" type="text/css" href="../css/style.css" />
+#+options: num:nil toc:nil
+
+The following is a quick guide to encrypt a device using LUKS and
+access the encrypted data.
+
+For more details, see <https://gitlab.com/cryptsetup/cryptsetup/-/wikis/FrequentlyAskedQuestions>.
+
+* Setup device
+
+#+begin_src shell
+  wipefs -a <target device>
+  cryptsetup luksFormat <target device>
+  cryptsetup luksOpen <target device> c1
+  mkfs.ext4 /dev/mapper/c1
+  cryptsetup luksClose c1
+#+end_src
+
+* Access data
+
+#+begin_src shell
+  cryptsetup luksOpen <target device> c1
+  mount /dev/mapper/c1 /mnt
+  # ...
+  umount /mnt
+  cryptsetup luksClose c1
+#+end_src
