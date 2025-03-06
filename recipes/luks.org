@@ -9,7 +9,7 @@
 The following is a quick guide to encrypt a device using LUKS and
 access the encrypted data.
 
-For more details, see <https://gitlab.com/cryptsetup/cryptsetup/-/wikis/FrequentlyAskedQuestions>.
+For more details, see [[https://gitlab.com/cryptsetup/cryptsetup/-/wikis/FrequentlyAskedQuestions][FrequentlyAskedQuestions]].
 
 * Setup device
 
