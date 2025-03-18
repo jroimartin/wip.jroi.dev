@@ -24,9 +24,13 @@ GitHub repository.
 
 - [[https://elpa.nongnu.org/nongnu/radio.html][Radio]]
 
+* Quick Guides
+
+- [[file:build-emacs.org][Building GNU Emacs]]
+- [[file:luks.org][Disk Encryption With LUKS]]
+
 * Misc
 
-- [[file:recipes.org][Recipes]]
 - [[file:home-n-links.org][/home/n/links]]
 
 * About
