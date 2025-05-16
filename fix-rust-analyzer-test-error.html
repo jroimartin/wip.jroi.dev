@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-05-16 Fri 22:05 -->
+<!-- 2025-05-16 Fri 23:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Eglot configs</title>
+<title>Fix rust-analyzer error "rustc [E0463]: can't find crate for `test`"</title>
 <meta name="author" content="Roi Martin" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -201,36 +201,20 @@
  |
  <a accesskey="H" href="index.html"> HOME </a>
 </div><div id="content" class="content">
-<h1 class="title">Eglot configs</h1>
-<div id="table-of-contents" role="doc-toc">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
-<ul>
-<li><a href="#org970acb1">Rust: Fix "rustc [E0463]: can't find crate for `test`" error.</a></li>
-</ul>
-</div>
-</div>
-<p>
-This page contains some project-wise Eglot configurations that I find
-useful. I define these settings using per-directory local variables.
-In other words, I specify the settings in a <code>.dir-locals.el</code> file in
-the root directory of the project.
-</p>
-<div id="outline-container-org970acb1" class="outline-2">
-<h2 id="org970acb1">Rust: Fix "rustc [E0463]: can't find crate for `test`" error.</h2>
-<div class="outline-text-2" id="text-org970acb1">
+<h1 class="title">Fix rust-analyzer error "rustc [E0463]: can't find crate for `test`"</h1>
 <p>
 When working in projects that set a custom <code>build-std</code> value that do
 not include the <code>std</code> crate, rust-analyzer reports the following
 error.
 </p>
 
-<pre class="example" id="org8e6cab7">
+<pre class="example" id="org5aa0652">
 rustc [E0463]: can't find crate for `test`
 </pre>
 
 <p>
-The configuration below fixes it.
+Placing a <code>.dir-locals.el</code> file in the root directory of the project
+with the following contents fixes it.
 </p>
 
 <div class="org-src-container">
@@ -239,12 +223,10 @@ The configuration below fixes it.
 </pre>
 </div>
 </div>
-</div>
-</div>
 <div id="postamble" class="status">
 <p class="date">Date: 2025-05-16 Fri 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2025-05-16 Fri 22:05</p>
+<p class="date">Created: 2025-05-16 Fri 23:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

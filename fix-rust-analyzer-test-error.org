@@ -1,17 +1,10 @@
-#+title: Eglot configs
+#+title: Fix rust-analyzer error "rustc [E0463]: can't find crate for `test`"
 #+author: Roi Martin
 #+date: <2025-05-16 Fri>
 #+html_link_home: index.html
 #+html_link_up: index.html
 #+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
 #+options: num:nil
-
-This page contains some project-wise Eglot configurations that I find
-useful. I define these settings using per-directory local variables.
-In other words, I specify the settings in a =.dir-locals.el= file in
-the root directory of the project.
-
-* Rust: Fix "rustc [E0463]: can't find crate for `test`" error.
 
 When working in projects that set a custom ~build-std~ value that do
 not include the ~std~ crate, rust-analyzer reports the following
@@ -21,7 +14,8 @@ error.
 rustc [E0463]: can't find crate for `test`
 #+end_example
 
-The configuration below fixes it.
+Placing a =.dir-locals.el= file in the root directory of the project
+with the following contents fixes it.
 
 #+begin_src emacs-lisp
   ((nil . ((eglot-workspace-configuration

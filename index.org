@@ -28,7 +28,7 @@ GitHub repository.
 
 - [[file:build-emacs.org][Building GNU Emacs]]
 - [[file:luks.org][Disk Encryption With LUKS]]
-- [[file:eglot-configs.org][Eglot configs]]
+- [[file:fix-rust-analyzer-test-error.org][Fix rust-analyzer error "rustc [E0463]: can't find crate for `test`"]]
 
 * Misc
 
