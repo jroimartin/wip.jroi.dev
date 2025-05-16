@@ -28,6 +28,7 @@ GitHub repository.
 
 - [[file:build-emacs.org][Building GNU Emacs]]
 - [[file:luks.org][Disk Encryption With LUKS]]
+- [[file:eglot-configs.org][Eglot configs]]
 
 * Misc
 
