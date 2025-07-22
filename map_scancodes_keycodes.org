@@ -84,7 +84,7 @@ See =hwdb(7)= and [[https://github.com/systemd/systemd/blob/72775b7c89aa418ec3f5
 
 ** Update the binary hwdb
 
-Execute the following command as root:
+Run the following command as root:
 
 #+begin_src shell
   systemd-hwdb update
@@ -92,7 +92,7 @@ Execute the following command as root:
 
 ** Reload the binary hwdb
 
-Execute the following command as root:
+Run the following command as root:
 
 #+begin_src shell
   udevadm trigger
