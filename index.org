@@ -29,7 +29,7 @@ GitHub repository.
 - [[file:build-emacs.org][Building GNU Emacs]]
 - [[file:luks.org][Disk Encryption With LUKS]]
 - [[file:fix-rust-analyzer-test-error.org][Fix rust-analyzer error "rustc [E0463]: can't find crate for `test`"]]
-- [[file:map_scancodes_keycodes.org][Map scancodes to keycodes]]
+- [[file:map-scancodes-keycodes.org][Map scancodes to keycodes]]
 
 * Misc
 
