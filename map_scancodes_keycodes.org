@@ -1,0 +1,99 @@
+#+title: Map scancodes to keycodes
+#+author: Roi Martin
+#+date: <2025-07-22 Tue>
+#+options: toc:nil num:nil
+#+html_link_home: index.html
+#+html_link_up: index.html
+#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+* Scancodes vs keycodes
+
+- *Scancode*: the keyboard sends a scancode to the computer.
+- *Keycode*: the kernel maps the scancode to a keycode.
+
+* Mapping
+
+** Get the scancodes
+
+Run the following command as root:
+
+#+begin_src shell
+  evtest
+#+end_src
+
+And select the input device that corresponds to the keyboard.  Then,
+press the keys that you want to map.  For instance,
+
+#+begin_example
+Event: time 1753187771.746790, type 4 (EV_MSC), code 4 (MSC_SCAN), value 70004
+Event: time 1753187771.746790, type 1 (EV_KEY), code 30 (KEY_A), value 
+#+end_example
+
+The previous output shows that the scancode for the =a= key is
+=70004=.
+
+** Get the device modalias
+
+If the selected device is, for instance, =/dev/input/event6=, then get
+the modalias with the following command:
+
+#+begin_src shell
+  cat /sys/class/input/event6/device/modalias
+#+end_src
+
+The output should be similar to this:
+
+#+begin_example
+input:b0003v0853p0146e0111-e0,1,4,11,...
+#+end_example
+
+We will need it to create the =hwdb= file.
+
+** Create a hwdb file
+
+Create a file named =/etc/udev/hwdb.d/99-keyboard.hwdb=.  The content
+for the previous example should be similar to this:
+
+#+begin_example
+# Topre REALFORCE 87 US
+# Input device ID: bus 0x03 vendor 0x853 product 0x146 version 0x111
+evdev:input:b0003v0853p0146e0111*
+ KEYBOARD_KEY_700e0=leftmeta  # leftctrl  -> leftmeta
+ KEYBOARD_KEY_700e3=leftalt   # leftmeta  -> leftalt
+ KEYBOARD_KEY_700e2=leftctrl  # leftalt   -> leftctrl
+ KEYBOARD_KEY_700e6=rightctrl # rightalt  -> rightctrl
+ KEYBOARD_KEY_700e7=rightalt  # rightmeta -> rightalt
+ KEYBOARD_KEY_700e4=rightmeta # rightctrl -> rightmeta
+#+end_example
+
+It is a list of records with the following format:
+
+#+begin_example
+<modalias pattern>
+ KEYBOARD_KEY_<scancode>=<keycode>
+ ...
+#+end_example
+
+The scancode should be expressed in hex lowercase.  The keycodes are
+retrieved and normalized from the [[https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/input-event-codes.h?id=67890d579402804b1d32b3280d9860073542528e][kernel input API header]]. Keycodes
+are either ~KEY_*~ defines in lowercase with the ~key_~ prefix
+optionally removed or ~BTN_~ defines in lowercase with ~btn_~
+preserved.
+
+See =hwdb(7)= and [[https://github.com/systemd/systemd/blob/72775b7c89aa418ec3f55fd5682f841f3fc6e6d9/hwdb.d/60-keyboard.hwdb][60-keyboard.hwdb]] for more details.
+
+** Update the binary hwdb
+
+Execute the following command as root:
+
+#+begin_src shell
+  systemd-hwdb update
+#+end_src
+
+** Reload the binary hwdb
+
+Execute the following command as root:
+
+#+begin_src shell
+  udevadm trigger
+#+end_src
