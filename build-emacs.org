@@ -12,8 +12,8 @@ I use the following commands to build GNU Emacs from source.
   cd emacs
   ./autogen.sh
   ./configure --with-pgtk --with-tree-sitter --prefix=$HOME/opt/emacs  # ./configure --help
-  make
+  make -j8
   make install
 #+end_src
 
-For more details, see [[https://git.savannah.gnu.org/cgit/emacs.git/plain/INSTALL.REPO][INSTALL.REPO]].
+For more details, see [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/plain/INSTALL.REPO][INSTALL.REPO]].
