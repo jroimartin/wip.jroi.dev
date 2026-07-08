@@ -35,7 +35,7 @@ GitHub repository.
 
 * Feeds
 
-- Updates: [[https://wip.jroi.dev/updates.xml][rss]], [[file:https://wip.jroi.dev/updates.html][html]]
+- Updates: [[https://wip.jroi.dev/updates.xml][rss]], [[https://wip.jroi.dev/updates.html][html]]
 
 * About
 
