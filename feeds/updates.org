@@ -1,0 +1,16 @@
+#+title: Work In Progress - Updates
+#+author: Roi Martin
+#+date: <2025-03-06 Thu>
+#+options: num:nil toc:nil
+#+html_link_up: /
+#+description: My forever-work-in-progress notes
+#+rss-image-url: https://orgmode.org/resources/img/org-mode-unicorn.svg
+
+* RSS feed for updates
+:PROPERTIES:
+:ID:       7aa09bd5-5753-4104-870f-29ed33384202
+:PUBDATE:  2026-07-08 Wed 15:13
+:END:
+
+An RSS feed for this website's updates is now available at
+[[https://wip.jroi.dev/updates.xml]].

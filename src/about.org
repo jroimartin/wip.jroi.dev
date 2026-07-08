@@ -1,9 +1,7 @@
 #+title: About This Site
 #+author: Roi Martin
 #+date: <2024-05-28 Tue>
-#+html_link_home: index.html
-#+html_link_up: index.html
-#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+#+html_link_up: /
 
 My name is Roi Martin.  I am a programmer and a security enthusiast
 that has been lucky enough to make a living out of combining both

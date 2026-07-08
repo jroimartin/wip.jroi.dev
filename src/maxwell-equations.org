@@ -1,9 +1,7 @@
 #+title: Maxwell’s Equations of Software
 #+author: Roi Martin
 #+date: <2024-05-31 Fri>
-#+html_link_home: index.html
-#+html_link_up: index.html
-#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+#+html_link_up: /
 
 On December 27, 2004 ACM Queue published an [[https://queue.acm.org/detail.cfm?id=1039523][interview]] with [[https://en.wikipedia.org/wiki/Alan_Kay][Alan Kay]],
 the creator of [[https://en.wikipedia.org/wiki/Smalltalk][Smalltalk]].  In this interview, he pronounced the famous
@@ -23,7 +21,7 @@ So, what is on the bottom of page 13 of the
 [[https://www.softwarepreservation.org/projects/LISP/book/LISP%201.5%20Programmers%20Manual.pdf][LISP 1.5 Programmers Manual]]?
 
 #+attr_html: :width 650px
-[[file:maxwell-equations/page13.png]]
+[[file:assets/maxwell-equations/page13.png]]
 
 This small piece of code is a *universal LISP function*.  In other
 words, ~evalquote~ can compute the value of any given function applied
@@ -48,17 +46,17 @@ The manual also explains how to translate an M-expression to its
 equivalent S-expression:
 
 #+attr_html: :width 750px
-[[file:maxwell-equations/mexp-sexp.png]]
+[[file:assets/maxwell-equations/mexp-sexp.png]]
 
 As you can imagine, I could not resist to write my own implementation.
-The following is the complete [[https://racket-lang.org/][Racket]] implementation ([[file:maxwell-equations/evalquote.rkt][evalquote.rkt]]):
+The following is the complete [[https://racket-lang.org/][Racket]] implementation ([[file:assets/maxwell-equations/evalquote.rkt][evalquote.rkt]]):
 
-#+include: "maxwell-equations/evalquote.rkt" src racket -n
+#+include: "assets/maxwell-equations/evalquote.rkt" src racket -n
 
 And the following is the same Racket code after commenting every
-single bit ([[file:maxwell-equations/evalquote-commented.rkt][evalquote-commented.rkt]]):
+single bit ([[file:assets/maxwell-equations/evalquote-commented.rkt][evalquote-commented.rkt]]):
 
-#+include: "maxwell-equations/evalquote-commented.rkt" src racket -n
+#+include: "assets/maxwell-equations/evalquote-commented.rkt" src racket -n
 
 So, let's run it!
 
@@ -73,7 +71,7 @@ racket@maxwell-equations/evalquote> (evalquote '(LAMBDA (X) (CONS (QUOTE FIRST) 
 
 The code is so short and simple that extending it is trivial.  For
 example, the following two lines patch allows to call procedures
-passed from the environment ([[file:maxwell-equations/evalquote-proc.rkt][evalquote-proc.rkt]]):
+passed from the environment ([[file:assets/maxwell-equations/evalquote-proc.rkt][evalquote-proc.rkt]]):
 
 #+begin_src diff
 --- evalquote.rkt	2024-06-11 16:56:44.247229249 +0200

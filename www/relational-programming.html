@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2024-11-02 Sat 10:42 -->
+<!-- 2026-07-08 Wed 15:33 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
 <meta name="author" content="Roi Martin" />
 <meta name="generator" content="Org Mode" />
-<style>
+<style type="text/css">
   #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -193,41 +194,40 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
 <div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
+ <a accesskey="h" href="/"> UP </a>
  |
- <a accesskey="H" href="index.html"> HOME </a>
+ <a accesskey="H" href="https://wip.jroi.dev/"> HOME </a>
 </div><div id="content" class="content">
 <h1 class="title">Relational Programming</h1>
 <div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org8384890">Introduction</a></li>
-<li><a href="#org2952dba">What is relational programming?</a></li>
-<li><a href="#orgc8c26e9">μKanren</a></li>
-<li><a href="#org5a8c67b">Dissecting μKanren</a>
+<li><a href="#org1eb5b54">Introduction</a></li>
+<li><a href="#orgb2b0867">What is relational programming?</a></li>
+<li><a href="#org6ded625">μKanren</a></li>
+<li><a href="#org61fb36b">Dissecting μKanren</a>
 <ul>
-<li><a href="#orgba3bfbd">Variables</a></li>
-<li><a href="#org7734690">Substitutions</a></li>
-<li><a href="#org2e4f230">Goals</a></li>
-<li><a href="#org33a8cbf">Unification</a></li>
-<li><a href="#orge8e6a0b">The <code>mplus</code> and <code>bind</code> operators</a></li>
+<li><a href="#org6000285">Variables</a></li>
+<li><a href="#org77e8f45">Substitutions</a></li>
+<li><a href="#org8cf8129">Goals</a></li>
+<li><a href="#org043040a">Unification</a></li>
+<li><a href="#org366601d">The <code>mplus</code> and <code>bind</code> operators</a></li>
 </ul>
 </li>
-<li><a href="#org51c017a">μKanren in practice</a></li>
-<li><a href="#orgb511e15">Sweetening μKanren with a bit of syntax sugar</a></li>
-<li><a href="#org3616e2a">Related books</a></li>
+<li><a href="#orgeb8f830">μKanren in practice</a></li>
+<li><a href="#org68edd23">Sweetening μKanren with a bit of syntax sugar</a></li>
+<li><a href="#org818d497">Related books</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-org8384890" class="outline-2">
-<h2 id="org8384890">Introduction</h2>
-<div class="outline-text-2" id="text-org8384890">
+<div id="outline-container-org1eb5b54" class="outline-2">
+<h2 id="org1eb5b54">Introduction</h2>
+<div class="outline-text-2" id="text-org1eb5b54">
 <p>
 I'm at the very beginning of learning about logic, relational
 programming, miniKanren, Prolog, etc.  This page contains my personal
@@ -235,16 +235,11 @@ notes as well as links to papers and talks I found interesting.  At
 the end of the page there is a list of related books for those that
 want to dig deeper.
 </p>
-
-<p>
-If you want to subscribe to this page, use this <a href="https://github.com/jroimartin/wip.jroi.dev/commits/main/relational-programming.html.atom">RSS feed</a>.
-</p>
 </div>
 </div>
-
-<div id="outline-container-org2952dba" class="outline-2">
-<h2 id="org2952dba">What is relational programming?</h2>
-<div class="outline-text-2" id="text-org2952dba">
+<div id="outline-container-orgb2b0867" class="outline-2">
+<h2 id="orgb2b0867">What is relational programming?</h2>
+<div class="outline-text-2" id="text-orgb2b0867">
 <p>
 According to Wikipedia in relation to <a href="https://en.wikipedia.org/wiki/Logic_programming">logic programming</a>:
 </p>
@@ -269,7 +264,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org4509018">
+<pre class="example" id="org0ba9697">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -293,7 +288,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orga9eae13">
+<pre class="example" id="orgf363677">
 (+o 3 4 7)
 </pre>
 
@@ -315,7 +310,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="org031c9ca">
+<pre class="example" id="orgcc1a34b">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -323,7 +318,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org6da4afc">
+<pre class="example" id="org5ed21f6">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -331,10 +326,10 @@ or,
 or,
 </p>
 
-<pre class="example" id="org3d2beb1">
+<pre class="example" id="org7e3ac8f">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
-	      ...
+		...
 </pre>
 
 <p>
@@ -343,10 +338,9 @@ output.
 </p>
 </div>
 </div>
-
-<div id="outline-container-orgc8c26e9" class="outline-2">
-<h2 id="orgc8c26e9">μKanren</h2>
-<div class="outline-text-2" id="text-orgc8c26e9">
+<div id="outline-container-org6ded625" class="outline-2">
+<h2 id="org6ded625">μKanren</h2>
+<div class="outline-text-2" id="text-org6ded625">
 <p>
 μKanren is a minimalist language in the miniKanren family of
 relational programming languages.
@@ -362,58 +356,58 @@ Implementations</a>" by William E. Byrd.
 What follows is the μKanren implementation exposed on the paper
 "<a href="http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf">μKanren: A Minimal Functional Core for Relational Programming</a>" by
 Jason Hemann and Daniel P. Friedman.  The code has been commented with
-the relevant parts of the paper and is available <a href="relational-programming/ukanren.ss">here</a>.
+the relevant parts of the paper and is available <a href="assets/relational-programming/ukanren.ss">here</a>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr"> 1: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Variables are represented as vectors that hold their variable</span>
-<span class="linenr"> 2: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">index.  Variable equality is determined by coincidence of indices</span>
-<span class="linenr"> 3: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">in vectors.</span>
-<span class="linenr"> 4: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">var</span> c) (vector c))
+<pre class="src src-scheme"><code><span class="linenr"> 1: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Variables are represented as vectors that hold their variable
+<span class="linenr"> 2: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">index.  Variable equality is determined by coincidence of indices
+<span class="linenr"> 3: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">in vectors.
+<span class="linenr"> 4: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">var</span> c) (vector c))
 <span class="linenr"> 5: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">var?</span> x) (vector? x))
 <span class="linenr"> 6: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">var=?</span> x1 x2) (= (vector-ref x1 0) (vector-ref x2 0)))
 <span class="linenr"> 7: </span>
-<span class="linenr"> 8: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The walk operator searches for a variable's value in the</span>
-<span class="linenr"> 9: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">substitution.  When a non-variable term is walked, the term itself</span>
-<span class="linenr">10: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is returned.</span>
-<span class="linenr">11: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">walk</span> u s)
+<span class="linenr"> 8: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The walk operator searches for a variable's value in the
+<span class="linenr"> 9: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">substitution.  When a non-variable term is walked, the term itself
+<span class="linenr">10: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is returned.
+<span class="linenr">11: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">walk</span> u s)
 <span class="linenr">12: </span>  (<span style="color: #a020f0;">let</span> ((pr (<span style="color: #a020f0;">and</span> (var? u) (assp (<span style="color: #a020f0;">lambda</span> (v) (var=? u v)) s))))
 <span class="linenr">13: </span>    (<span style="color: #a020f0;">if</span> pr (walk (cdr pr) s) u)))
 <span class="linenr">14: </span>
-<span class="linenr">15: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The ext-s operator extends the substitution with a new binding.</span>
-<span class="linenr">16: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">When extending the substitution, the first argument is always a</span>
-<span class="linenr">17: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variable and the second is an arbitrary term.</span>
-<span class="linenr">18: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">ext-s</span> x v s) `((,x . ,v) . ,s))
+<span class="linenr">15: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The ext-s operator extends the substitution with a new binding.
+<span class="linenr">16: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">When extending the substitution, the first argument is always a
+<span class="linenr">17: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variable and the second is an arbitrary term.
+<span class="linenr">18: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">ext-s</span> x v s) `((,x . ,v) . ,s))
 <span class="linenr">19: </span>
-<span class="linenr">20: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The &#8801; goal constructor takes two terms as arguments and returns a</span>
-<span class="linenr">21: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">goal that succeeds if those two terms unify in the received state.</span>
-<span class="linenr">22: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">If those two terms fail to unify in that state, the empty stream is</span>
-<span class="linenr">23: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">instead returned.</span>
-<span class="linenr">24: </span>(<span style="color: #a020f0;">define</span> (&#8801; u v)
+<span class="linenr">20: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The &#8801; goal constructor takes two terms as arguments and returns a
+<span class="linenr">21: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">goal that succeeds if those two terms unify in the received state.
+<span class="linenr">22: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">If those two terms fail to unify in that state, the empty stream is
+<span class="linenr">23: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">instead returned.
+<span class="linenr">24: </span></span>(<span style="color: #a020f0;">define</span> (&#8801; u v)
 <span class="linenr">25: </span>  (<span style="color: #a020f0;">lambda</span> (s/c)
 <span class="linenr">26: </span>    (<span style="color: #a020f0;">let</span> ((s (unify u v (car s/c))))
 <span class="linenr">27: </span>      (<span style="color: #a020f0;">if</span> s (unit `(,s . ,(cdr s/c))) mzero))))
 <span class="linenr">28: </span>
-<span class="linenr">29: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">unit lifts the state into a stream whose only element is that</span>
-<span class="linenr">30: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state.</span>
-<span class="linenr">31: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">unit</span> s/c) (cons s/c mzero))
+<span class="linenr">29: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">unit lifts the state into a stream whose only element is that
+<span class="linenr">30: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state.
+<span class="linenr">31: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">unit</span> s/c) (cons s/c mzero))
 <span class="linenr">32: </span>
-<span class="linenr">33: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">mzero is the empty stream.</span>
-<span class="linenr">34: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">mzero</span> '())
+<span class="linenr">33: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">mzero is the empty stream.
+<span class="linenr">34: </span></span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">mzero</span> '())
 <span class="linenr">35: </span>
-<span class="linenr">36: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Terms of the language are defined by the unify operator.  Here,</span>
-<span class="linenr">37: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">terms of the language consist of variables, objects deemed</span>
-<span class="linenr">38: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">identical under eqv?, and pairs of the foregoing.  To unify two</span>
-<span class="linenr">39: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">terms in a substitution, both are walked in that substitution.  If</span>
-<span class="linenr">40: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">the two terms walk to the same variable, the original substitution</span>
-<span class="linenr">41: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is returned unchanged.  When one of the two terms walks to a</span>
-<span class="linenr">42: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variable, the substitution is extended, binding the variable to</span>
-<span class="linenr">43: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">which that term walks with the value of which the other term walks.</span>
-<span class="linenr">44: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">If both terms walk to pairs, the cars and then cdrs are unifed</span>
-<span class="linenr">45: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">recursively, succeeding if unification succeeds in the one and then</span>
-<span class="linenr">46: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">the other.  Finally, non-variable, non-pair terms unify if they are</span>
-<span class="linenr">47: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">identical under eqv?, and unification fails otherwise.</span>
-<span class="linenr">48: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">unify</span> u v s)
+<span class="linenr">36: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Terms of the language are defined by the unify operator.  Here,
+<span class="linenr">37: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">terms of the language consist of variables, objects deemed
+<span class="linenr">38: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">identical under eqv?, and pairs of the foregoing.  To unify two
+<span class="linenr">39: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">terms in a substitution, both are walked in that substitution.  If
+<span class="linenr">40: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">the two terms walk to the same variable, the original substitution
+<span class="linenr">41: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is returned unchanged.  When one of the two terms walks to a
+<span class="linenr">42: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variable, the substitution is extended, binding the variable to
+<span class="linenr">43: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">which that term walks with the value of which the other term walks.
+<span class="linenr">44: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">If both terms walk to pairs, the cars and then cdrs are unifed
+<span class="linenr">45: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">recursively, succeeding if unification succeeds in the one and then
+<span class="linenr">46: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">the other.  Finally, non-variable, non-pair terms unify if they are
+<span class="linenr">47: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">identical under eqv?, and unification fails otherwise.
+<span class="linenr">48: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">unify</span> u v s)
 <span class="linenr">49: </span>  (<span style="color: #a020f0;">let</span> ((u (walk u s)) (v (walk v s)))
 <span class="linenr">50: </span>    (<span style="color: #a020f0;">cond</span>
 <span class="linenr">51: </span>     ((<span style="color: #a020f0;">and</span> (var? u) (var? v) (var=? u v)) s)
@@ -424,45 +418,45 @@ the relevant parts of the paper and is available <a href="relational-programming
 <span class="linenr">56: </span>        (<span style="color: #a020f0;">and</span> s (unify (cdr u) (cdr v) s))))
 <span class="linenr">57: </span>     (<span style="color: #a020f0;">else</span> (<span style="color: #a020f0;">and</span> (eqv? u v) s)))))
 <span class="linenr">58: </span>
-<span class="linenr">59: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The call/fresh goal constructor takes a unary function f whose body</span>
-<span class="linenr">60: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is a goal, and itself returns a goal.  This returned goal, when</span>
-<span class="linenr">61: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">provided a state s/c, binds the formal parameter of f to a new</span>
-<span class="linenr">62: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">logic variable, and passes a state, with the substitution it</span>
-<span class="linenr">63: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">originally received and a newly incremented fresh-variable counter,</span>
-<span class="linenr">64: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">c, to the goal that is the body of f.</span>
-<span class="linenr">65: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">call/fresh</span> f)
+<span class="linenr">59: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The call/fresh goal constructor takes a unary function f whose body
+<span class="linenr">60: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">is a goal, and itself returns a goal.  This returned goal, when
+<span class="linenr">61: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">provided a state s/c, binds the formal parameter of f to a new
+<span class="linenr">62: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">logic variable, and passes a state, with the substitution it
+<span class="linenr">63: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">originally received and a newly incremented fresh-variable counter,
+<span class="linenr">64: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">c, to the goal that is the body of f.
+<span class="linenr">65: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">call/fresh</span> f)
 <span class="linenr">66: </span>  (<span style="color: #a020f0;">lambda</span> (s/c)
 <span class="linenr">67: </span>    (<span style="color: #a020f0;">let</span> ((c (cdr s/c)))
 <span class="linenr">68: </span>      ((f (var c)) `(,(car s/c) . ,(+ c 1))))))
 <span class="linenr">69: </span>
-<span class="linenr">70: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The disj goal constructor takes two goals as arguments and returns</span>
-<span class="linenr">71: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">a goal that succeeds if either of the two subgoals succeed.</span>
-<span class="linenr">72: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">disj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (mplus (g1 s/c) (g2 s/c))))
+<span class="linenr">70: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The disj goal constructor takes two goals as arguments and returns
+<span class="linenr">71: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">a goal that succeeds if either of the two subgoals succeed.
+<span class="linenr">72: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">disj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (mplus (g1 s/c) (g2 s/c))))
 <span class="linenr">73: </span>
-<span class="linenr">74: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The conj goal constructor similarly takes two goals as arguments</span>
-<span class="linenr">75: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns a goal that succeeds if both goals succeed for that</span>
-<span class="linenr">76: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state.</span>
-<span class="linenr">77: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">conj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (bind (g1 s/c) g2)))
+<span class="linenr">74: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The conj goal constructor similarly takes two goals as arguments
+<span class="linenr">75: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">and returns a goal that succeeds if both goals succeed for that
+<span class="linenr">76: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state.
+<span class="linenr">77: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">conj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (bind (g1 s/c) g2)))
 <span class="linenr">78: </span>
-<span class="linenr">79: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The search strategy of &#956;Kanren is encoded through the mplus and</span>
-<span class="linenr">80: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">bind operators.</span>
-<span class="linenr">81: </span>
-<span class="linenr">82: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The mplus operator is responsible for merging streams.</span>
-<span class="linenr">83: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">mplus</span> $1 $2)
+<span class="linenr">79: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The search strategy of &#956;Kanren is encoded through the mplus and
+<span class="linenr">80: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">bind operators.
+<span class="linenr">81: </span></span>
+<span class="linenr">82: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The mplus operator is responsible for merging streams.
+<span class="linenr">83: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">mplus</span> $1 $2)
 <span class="linenr">84: </span>  (<span style="color: #a020f0;">cond</span>
 <span class="linenr">85: </span>   ((null? $1) $2)
 <span class="linenr">86: </span>   ((procedure? $1) (<span style="color: #a020f0;">lambda</span> () (mplus $2 ($1))))
 <span class="linenr">87: </span>   (<span style="color: #a020f0;">else</span> (cons (car $1) (mplus (cdr $1) $2)))))
 <span class="linenr">88: </span>
-<span class="linenr">89: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">bind invokes the goal g on each element of the stream $.  If the</span>
-<span class="linenr">90: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">stream is empty or becomes exhausted mzero, the empty stream, is</span>
-<span class="linenr">91: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">returned.</span>
-<span class="linenr">92: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">bind</span> $ g)
+<span class="linenr">89: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">bind invokes the goal g on each element of the stream $.  If the
+<span class="linenr">90: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">stream is empty or becomes exhausted mzero, the empty stream, is
+<span class="linenr">91: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">returned.
+<span class="linenr">92: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">bind</span> $ g)
 <span class="linenr">93: </span>  (<span style="color: #a020f0;">cond</span>
 <span class="linenr">94: </span>   ((null? $) mzero)
 <span class="linenr">95: </span>   ((procedure? $) (<span style="color: #a020f0;">lambda</span> () (bind ($) g)))
 <span class="linenr">96: </span>   (<span style="color: #a020f0;">else</span> (mplus (g (car $)) (bind (cdr $) g)))))
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -471,10 +465,9 @@ Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 </p>
 </div>
 </div>
-
-<div id="outline-container-org5a8c67b" class="outline-2">
-<h2 id="org5a8c67b">Dissecting μKanren</h2>
-<div class="outline-text-2" id="text-org5a8c67b">
+<div id="outline-container-org61fb36b" class="outline-2">
+<h2 id="org61fb36b">Dissecting μKanren</h2>
+<div class="outline-text-2" id="text-org61fb36b">
 <p>
 This μKanren implementation weights 39 lines of code.  Being so short
 makes easier to experiment with it.  However, it also hides lots of
@@ -482,53 +475,50 @@ details.  In this section I try to analyze every single bit of it to
 get a better understanding.
 </p>
 </div>
-
-<div id="outline-container-orgba3bfbd" class="outline-3">
-<h3 id="orgba3bfbd">Variables</h3>
-<div class="outline-text-3" id="text-orgba3bfbd">
+<div id="outline-container-org6000285" class="outline-3">
+<h3 id="org6000285">Variables</h3>
+<div class="outline-text-3" id="text-org6000285">
 <p>
 Variables are represented as vectors:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(var 0)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 #(0)
 </pre>
 
-
 <p>
 The 0-th index of the vector is the variable index.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> (var 0))
 <span class="linenr">3: </span>(vector-ref x 0)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 0
 </pre>
 
-
 <p>
 Two variables are equal if their indices are equal.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">x</span> (var 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">y</span> (var 0))
 <span class="linenr">4: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">z</span> (var 1))
 <span class="linenr">5: </span>(printf <span style="color: #8b2252;">"x == y =&gt; ~a == ~a =&gt; ~a\n"</span> x y (var=? x y))
 <span class="linenr">6: </span>(printf <span style="color: #8b2252;">"x == z =&gt; ~a == ~a =&gt; ~a\n"</span> x z (var=? x z))
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -537,10 +527,9 @@ x == z =&gt; #(0) == #(1) =&gt; #f
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org7734690" class="outline-3">
-<h3 id="org7734690">Substitutions</h3>
-<div class="outline-text-3" id="text-org7734690">
+<div id="outline-container-org77e8f45" class="outline-3">
+<h3 id="org77e8f45">Substitutions</h3>
+<div class="outline-text-3" id="text-org77e8f45">
 <p>
 A substitution is an association list that binds variables to concrete
 values or to other variables.  A substitution can be extended using
@@ -548,18 +537,17 @@ the <code>ext-s</code> operator.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '())
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> (ext-s (var 0) 'arbitrary-term s))
 <span class="linenr">4: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> (ext-s (var 1) (var 0) s))
 <span class="linenr">5: </span>s
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(1) . #(0)) (#(0) . arbitrary-term))
 </pre>
-
 
 <p>
 The <code>walk</code> operator searches for a variable's value in the
@@ -567,26 +555,25 @@ substitution recursively.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(1) . #(0)) (#(0) . arbitrary-term)))
 <span class="linenr">3: </span>(walk (var 1) s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 arbitrary-term
 </pre>
 
-
 <p>
 When a variable is not bound, the variable itself is returned.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(1) . #(0))))
 <span class="linenr">3: </span>(walk (var 1) s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -594,10 +581,9 @@ When a variable is not bound, the variable itself is returned.
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org2e4f230" class="outline-3">
-<h3 id="org2e4f230">Goals</h3>
-<div class="outline-text-3" id="text-org2e4f230">
+<div id="outline-container-org8cf8129" class="outline-3">
+<h3 id="org8cf8129">Goals</h3>
+<div class="outline-text-3" id="text-org8cf8129">
 <p>
 A goal is represented as a function that takes a state and returns a
 stream.  A state is a pair of a substitution and a non-negative
@@ -618,17 +604,16 @@ instead returned.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">g</span> (&#8801; (var 0) 5))
 <span class="linenr">4: </span>(g s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((((#(0) . 5)) . 0))
 </pre>
-
 
 <p>
 Note that the goal does not increment the fresh variable counter.
@@ -645,17 +630,16 @@ the goal that is the body of <code>f</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">f</span> (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 5)))
 <span class="linenr">4: </span>((call/fresh f) s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((((#(0) . 5)) . 1))
 </pre>
-
 
 <p>
 If the two terms of <code>≡</code> fail to unify, the empty stream should be
@@ -663,50 +647,47 @@ returned.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">f</span> (<span style="color: #a020f0;">lambda</span> (q) (&#8801; 3 5)))
 <span class="linenr">4: </span>((call/fresh f) s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ()
 </pre>
 
-
 <p>
 The unification of <code>3</code> and <code>5</code> fails because these terms are not
 identical.  We can also verify that the unification of <code>5</code> and
-<code>5</code>&#x2014;or <code>q</code> and <code>q</code> in general&#x2014;succeeds but do not extend the
+<code>5</code>&mdash;or <code>q</code> and <code>q</code> in general&mdash;succeeds but do not extend the
 stream.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">f</span> (<span style="color: #a020f0;">lambda</span> (q) (&#8801; 5 5)))
 <span class="linenr">4: </span>((call/fresh f) s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((() . 1))
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">f</span> (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q q)))
 <span class="linenr">4: </span>((call/fresh f) s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((() . 1))
 </pre>
-
 
 <p>
 The <code>disj</code> goal constructor takes two goals as arguments and returns a
@@ -714,18 +695,17 @@ goal that succeeds if either of the two subgoals succeed.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>((disj
 <span class="linenr">4: </span>  (call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 3)))
 <span class="linenr">5: </span>  (call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 5)))) s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((((#(0) . 3)) . 1) (((#(0) . 5)) . 1))
 </pre>
-
 
 <p>
 The <code>conj</code> goal constructor similarly takes two goals as arguments and
@@ -733,12 +713,12 @@ returns a goal that succeeds if both goals succeed for that state.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s/c</span> '(() . 0))
 <span class="linenr">3: </span>((conj
 <span class="linenr">4: </span>  (call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 3)))
 <span class="linenr">5: </span>  (call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 5)))) s/c)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -746,10 +726,9 @@ returns a goal that succeeds if both goals succeed for that state.
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org33a8cbf" class="outline-3">
-<h3 id="org33a8cbf">Unification</h3>
-<div class="outline-text-3" id="text-org33a8cbf">
+<div id="outline-container-org043040a" class="outline-3">
+<h3 id="org043040a">Unification</h3>
+<div class="outline-text-3" id="text-org043040a">
 <p>
 Unification is determined by the <code>unify</code> operator of the μKanren
 implementation.  It is especially interesting that it is <code>unify</code> that
@@ -765,16 +744,15 @@ original substitution is returned unchanged.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5) (#(1) . #(0)) (#(2) . #(0))))
 <span class="linenr">3: </span>(unify (var 1) (var 2) s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(0) . 5) (#(1) . #(0)) (#(2) . #(0)))
 </pre>
-
 
 <p>
 When one of the two terms walks to a variable, the substitution is
@@ -783,40 +761,37 @@ of which the other term walks.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5) (#(2) . #(0))))
 <span class="linenr">3: </span>(unify (var 1) (var 2) s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(1) . 5) (#(0) . 5) (#(2) . #(0)))
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5) (#(2) . #(1))))
 <span class="linenr">3: </span>(unify (var 2) 3 s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(1) . 3) (#(0) . 5) (#(2) . #(1)))
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5) (#(2) . #(0))))
 <span class="linenr">3: </span>(unify (var 1) 3 s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(1) . 3) (#(0) . 5) (#(2) . #(0)))
 </pre>
-
 
 <p>
 If both terms walk to pairs, the cars and then cdrs are unifed
@@ -825,16 +800,15 @@ the other.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '())
 <span class="linenr">3: </span>(unify `(,(var 0) . ,(var 1)) '(3 . 5) s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(1) . 5) (#(0) . 3))
 </pre>
-
 
 <p>
 Finally, non-variable, non-pair terms unify if they are identical
@@ -842,50 +816,47 @@ under eqv?.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5)))
 <span class="linenr">3: </span>(unify (var 0) 5 s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((#(0) . 5))
 </pre>
 
-
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '())
 <span class="linenr">3: </span>(unify 5 5 s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ()
 </pre>
 
-
 <p>
 Unification fails otherwise.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '((#(0) . 5)))
 <span class="linenr">3: </span>(unify (var 0) 3 s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 #f
 </pre>
-
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">s</span> '())
 <span class="linenr">3: </span>(unify 5 3 s)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -893,36 +864,34 @@ Unification fails otherwise.
 </pre>
 </div>
 </div>
-
-<div id="outline-container-orge8e6a0b" class="outline-3">
-<h3 id="orge8e6a0b">The <code>mplus</code> and <code>bind</code> operators</h3>
-<div class="outline-text-3" id="text-orge8e6a0b">
+<div id="outline-container-org366601d" class="outline-3">
+<h3 id="org366601d">The <code>mplus</code> and <code>bind</code> operators</h3>
+<div class="outline-text-3" id="text-org366601d">
 <p>
 The <code>mplus</code> operator is responsible for merging streams.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">$1</span> '((((#(0) . 3)) . 1) (((#(0) . 5)) . 1)))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">$2</span> '((((#(0) . 7)) . 1)))
 <span class="linenr">4: </span>(mplus $1 $2)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((((#(0) . 3)) . 1) (((#(0) . 5)) . 1) (((#(0) . 7)) . 1))
 </pre>
 
-
 <p>
 The <code>disj</code> constructor is defined in terms of the <code>mplus</code> operator.
-It takes two goals&#x2014; <code>g1</code> and <code>g2</code> &#x2014;and returns the stream that results
+It takes two goals&mdash; <code>g1</code> and <code>g2</code> &mdash;and returns the stream that results
 from merging <code>(g1 s/c)</code> and <code>(g2 s/c)</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme">(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">disj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (mplus (g1 s/c) (g2 s/c))))
-</pre>
+<pre class="src src-scheme"><code>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">disj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (mplus (g1 s/c) (g2 s/c))))
+</code></pre>
 </div>
 
 <p>
@@ -930,28 +899,27 @@ The <code>bind</code> operator invokes a goal on each element on a stream.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">$</span> '((((#(0) . 3)) . 1) (((#(0) . 5)) . 1)))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">g</span> (call/fresh (<span style="color: #a020f0;">lambda</span> (q) (&#8801; q 7))))
 <span class="linenr">4: </span>(bind $ g)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((((#(1) . 7) (#(0) . 3)) . 2) (((#(1) . 7) (#(0) . 5)) . 2))
 </pre>
 
-
 <p>
 The <code>conj</code> constructor is defined in terms of the <code>bind</code> operator.  It
-takes two goals&#x2014; <code>g1</code> and <code>g2</code> &#x2014;and returns the stream that results
+takes two goals&mdash; <code>g1</code> and <code>g2</code> &mdash;and returns the stream that results
 from invoking <code>g2</code> on each element of the stream returned by <code>(g1
 s/c)</code>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme">(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">conj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (bind (g1 s/c) g2)))
-</pre>
+<pre class="src src-scheme"><code>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">conj</span> g1 g2) (<span style="color: #a020f0;">lambda</span> (s/c) (bind (g1 s/c) g2)))
+</code></pre>
 </div>
 
 <p>
@@ -961,7 +929,7 @@ to represent infinite streams.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr"> 1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr"> 1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr"> 2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
 <span class="linenr"> 3: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">fives</span> x)
 <span class="linenr"> 4: </span>  (disj (&#8801; x 5) (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((fives x) s/c)))))
@@ -975,7 +943,7 @@ to represent infinite streams.
 <span class="linenr">12: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr stream)))
 <span class="linenr">13: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr stream)))))
 <span class="linenr">14: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr ((cdr stream)))))))
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -987,30 +955,28 @@ to represent infinite streams.
 </div>
 </div>
 </div>
-
-<div id="outline-container-org51c017a" class="outline-2">
-<h2 id="org51c017a">μKanren in practice</h2>
-<div class="outline-text-2" id="text-org51c017a">
+<div id="outline-container-orgeb8f830" class="outline-2">
+<h2 id="orgeb8f830">μKanren in practice</h2>
+<div class="outline-text-2" id="text-orgeb8f830">
 <p>
 The following is a very simple example of how to use the core
 functionality of μKanren:
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr">1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr">2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
 <span class="linenr">3: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">a-and-b</span>
 <span class="linenr">4: </span>  (conj
 <span class="linenr">5: </span>   (call/fresh (<span style="color: #a020f0;">lambda</span> (a) (&#8801; a 7)))
 <span class="linenr">6: </span>   (call/fresh (<span style="color: #a020f0;">lambda</span> (b) (disj (&#8801; b 5) (&#8801; b 6))))))
 <span class="linenr">7: </span>(a-and-b empty-state)
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
 ((((#(1) . 5) (#(0) . 7)) . 2) (((#(1) . 6) (#(0) . 7)) . 2))
 </pre>
-
 
 <p>
 Now let's implement <code>appendo</code>, which is considered the "Hello, world"
@@ -1018,7 +984,7 @@ of the relational programming languages.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr"> 1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr"> 1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr"> 2: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
 <span class="linenr"> 3: </span>
 <span class="linenr"> 4: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">appendo</span> l s o)
@@ -1026,27 +992,27 @@ of the relational programming languages.
 <span class="linenr"> 6: </span>   (conj (&#8801; l '()) (&#8801; s o))
 <span class="linenr"> 7: </span>   (call/fresh
 <span class="linenr"> 8: </span>    (<span style="color: #a020f0;">lambda</span> (a)
-<span class="linenr"> 9: </span>      (call/fresh
-<span class="linenr">10: </span>       (<span style="color: #a020f0;">lambda</span> (d)
-<span class="linenr">11: </span>         (conj
-<span class="linenr">12: </span>          (&#8801; l `(,a . ,d))
-<span class="linenr">13: </span>          (call/fresh
-<span class="linenr">14: </span>           (<span style="color: #a020f0;">lambda</span> (r)
-<span class="linenr">15: </span>             (conj
-<span class="linenr">16: </span>              (&#8801; `(,a . ,r) o)
-<span class="linenr">17: </span>              (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((appendo d s r) s/c)))))))))))))
+<span class="linenr"> 9: </span>        (call/fresh
+<span class="linenr">10: </span>         (<span style="color: #a020f0;">lambda</span> (d)
+<span class="linenr">11: </span>           (conj
+<span class="linenr">12: </span>            (&#8801; l `(,a . ,d))
+<span class="linenr">13: </span>            (call/fresh
+<span class="linenr">14: </span>             (<span style="color: #a020f0;">lambda</span> (r)
+<span class="linenr">15: </span>               (conj
+<span class="linenr">16: </span>                (&#8801; `(,a . ,r) o)
+<span class="linenr">17: </span>                (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () ((appendo d s r) s/c)))))))))))))
 <span class="linenr">18: </span>
 <span class="linenr">19: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">stream</span> (call/fresh
-<span class="linenr">20: </span>                (<span style="color: #a020f0;">lambda</span> (x)
-<span class="linenr">21: </span>                  (call/fresh
-<span class="linenr">22: </span>                   (<span style="color: #a020f0;">lambda</span> (y)
-<span class="linenr">23: </span>                     (appendo x y '(a b c)))))))
+<span class="linenr">20: </span>                  (<span style="color: #a020f0;">lambda</span> (x)
+<span class="linenr">21: </span>                    (call/fresh
+<span class="linenr">22: </span>                     (<span style="color: #a020f0;">lambda</span> (y)
+<span class="linenr">23: </span>                       (appendo x y '(a b c)))))))
 <span class="linenr">24: </span>
 <span class="linenr">25: </span>(printf <span style="color: #8b2252;">"~a\n"</span> (stream empty-state))
 <span class="linenr">26: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr (stream empty-state))))
 <span class="linenr">27: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr (stream empty-state))))))
 <span class="linenr">28: </span>(printf <span style="color: #8b2252;">"~a\n"</span> ((cdr ((cdr ((cdr (stream empty-state))))))))
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1056,13 +1022,12 @@ of the relational programming languages.
 ((((#(1)) (#(9)) (#(10)) (#(8) . c) (#(6) #(8) . #(9)) (#(7) c) (#(5) . b) (#(3) #(5) . #(6)) (#(4) b c) (#(2) . a) (#(0) #(2) . #(3))) . 11))
 </pre>
 
-
 <p>
 A closer look at the results shows that the values found for <code>x</code> and
 <code>y</code> are:
 </p>
 
-<pre class="example" id="org7c38c39">
+<pre class="example" id="orgdcf77db">
 x = ()       y = (a b c)
 x = (a)      y = (b c)
 x = (a b)    y = (c)
@@ -1075,133 +1040,132 @@ correspondence between the <code>append</code> and <code>appendo</code> implemen
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme">(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">appendo</span> l s o)
+<pre class="src src-scheme"><code>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">appendo</span> l s o)
   (disj (conj (&#8801; l '()) (&#8801; s o))
-        (conj (&#8801; l `(,a . ,d))
-              (conj (&#8801; `(,a . ,r) o)
-                    (appendo d s r) s/c))))
+          (conj (&#8801; l `(,a . ,d))
+                (conj (&#8801; `(,a . ,r) o)
+                      (appendo d s r) s/c))))
 
 (<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">append</span> l s)
   (<span style="color: #a020f0;">cond</span> ((null? l) s)
-        (<span style="color: #a020f0;">else</span> (cons (car l)
-                    (append (cdr l) s)))))
-</pre>
+          (<span style="color: #a020f0;">else</span> (cons (car l)
+                      (append (cdr l) s)))))
+</code></pre>
 </div>
 </div>
 </div>
-
-<div id="outline-container-orgb511e15" class="outline-2">
-<h2 id="orgb511e15">Sweetening μKanren with a bit of syntax sugar</h2>
-<div class="outline-text-2" id="text-orgb511e15">
+<div id="outline-container-org68edd23" class="outline-2">
+<h2 id="org68edd23">Sweetening μKanren with a bit of syntax sugar</h2>
+<div class="outline-text-2" id="text-org68edd23">
 <p>
 μKanren off-loads higher level operations, like the ones provided by
 miniKanren, to the user (e.g. <code>run</code>, <code>run*</code>, <code>fresh</code>, etc.).  The
 μKanren paper presents a reference implementation for some helpers.
 The following code includes those helpers as well as a custom reifier
 that makes easier to read the returned results.  The code is available
-<a href="relational-programming/ukanren-usr.ss">here</a>.
+<a href="assets/relational-programming/ukanren-usr.ss">here</a>.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr">  1: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Zzz allows to write a delayed goal like</span>
-<span class="linenr">  2: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(lambda (s/c)</span>
-<span class="linenr">  3: </span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(lambda ()</span>
-<span class="linenr">  4: </span><span style="color: #b22222;">;;       </span><span style="color: #b22222;">(g s/c)))</span>
-<span class="linenr">  5: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as</span>
-<span class="linenr">  6: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(Zzz g)</span>
-<span class="linenr">  7: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">Zzz</span>
+<pre class="src src-scheme"><code><span class="linenr">  1: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">Zzz allows to write a delayed goal like
+<span class="linenr">  2: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(lambda (s/c)
+<span class="linenr">  3: </span></span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(lambda ()
+<span class="linenr">  4: </span></span><span style="color: #b22222;">;;       </span><span style="color: #b22222;">(g s/c)))
+<span class="linenr">  5: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as
+<span class="linenr">  6: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(Zzz g)
+<span class="linenr">  7: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">Zzz</span>
 <span class="linenr">  8: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr">  9: </span>    ((_ g) (<span style="color: #a020f0;">lambda</span> (s/c) (<span style="color: #a020f0;">lambda</span> () (g s/c))))))
 <span class="linenr"> 10: </span>
-<span class="linenr"> 11: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">conj+ allows to write nested calls to conj like</span>
-<span class="linenr"> 12: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(conj g0</span>
-<span class="linenr"> 13: </span><span style="color: #b22222;">;;         </span><span style="color: #b22222;">(conj g1</span>
-<span class="linenr"> 14: </span><span style="color: #b22222;">;;               </span><span style="color: #b22222;">g2))</span>
-<span class="linenr"> 15: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as</span>
-<span class="linenr"> 16: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(conj+ g0 g1 g2)</span>
-<span class="linenr"> 17: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">conj+</span>
+<span class="linenr"> 11: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">conj+ allows to write nested calls to conj like
+<span class="linenr"> 12: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(conj g0
+<span class="linenr"> 13: </span></span><span style="color: #b22222;">;;         </span><span style="color: #b22222;">(conj g1
+<span class="linenr"> 14: </span></span><span style="color: #b22222;">;;               </span><span style="color: #b22222;">g2))
+<span class="linenr"> 15: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as
+<span class="linenr"> 16: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(conj+ g0 g1 g2)
+<span class="linenr"> 17: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">conj+</span>
 <span class="linenr"> 18: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr"> 19: </span>    ((_ g) (Zzz g))
 <span class="linenr"> 20: </span>    ((_ g0 g ...) (conj (Zzz g0) (conj+ g ...)))))
 <span class="linenr"> 21: </span>
-<span class="linenr"> 22: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">disj+ allows to write nested calls to disj like</span>
-<span class="linenr"> 23: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(disj g0</span>
-<span class="linenr"> 24: </span><span style="color: #b22222;">;;         </span><span style="color: #b22222;">(disj g1</span>
-<span class="linenr"> 25: </span><span style="color: #b22222;">;;               </span><span style="color: #b22222;">g2))</span>
-<span class="linenr"> 26: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as</span>
-<span class="linenr"> 27: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(disj+ g0 g1 g2)</span>
-<span class="linenr"> 28: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">disj+</span>
+<span class="linenr"> 22: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">disj+ allows to write nested calls to disj like
+<span class="linenr"> 23: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(disj g0
+<span class="linenr"> 24: </span></span><span style="color: #b22222;">;;         </span><span style="color: #b22222;">(disj g1
+<span class="linenr"> 25: </span></span><span style="color: #b22222;">;;               </span><span style="color: #b22222;">g2))
+<span class="linenr"> 26: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as
+<span class="linenr"> 27: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(disj+ g0 g1 g2)
+<span class="linenr"> 28: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">disj+</span>
 <span class="linenr"> 29: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr"> 30: </span>    ((_ g) (Zzz g))
 <span class="linenr"> 31: </span>    ((_ g0 g ...) (disj (Zzz g0) (disj+ g ...)))))
 <span class="linenr"> 32: </span>
-<span class="linenr"> 33: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">conde allows to write the common pattern</span>
-<span class="linenr"> 34: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(disj+ (conj+ g0 g1 g2)</span>
-<span class="linenr"> 35: </span><span style="color: #b22222;">;;          </span><span style="color: #b22222;">(conj+ g3 g4 g5)</span>
-<span class="linenr"> 36: </span><span style="color: #b22222;">;;          </span><span style="color: #b22222;">(conj+ g6 g7 g8))</span>
-<span class="linenr"> 37: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as</span>
-<span class="linenr"> 38: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(conde</span>
-<span class="linenr"> 39: </span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(g0 g1 g2)</span>
-<span class="linenr"> 40: </span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(g3 g4 g5)</span>
-<span class="linenr"> 41: </span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(g6 g7 g8))</span>
-<span class="linenr"> 42: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">conde</span>
+<span class="linenr"> 33: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">conde allows to write the common pattern
+<span class="linenr"> 34: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(disj+ (conj+ g0 g1 g2)
+<span class="linenr"> 35: </span></span><span style="color: #b22222;">;;          </span><span style="color: #b22222;">(conj+ g3 g4 g5)
+<span class="linenr"> 36: </span></span><span style="color: #b22222;">;;          </span><span style="color: #b22222;">(conj+ g6 g7 g8))
+<span class="linenr"> 37: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as
+<span class="linenr"> 38: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(conde
+<span class="linenr"> 39: </span></span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(g0 g1 g2)
+<span class="linenr"> 40: </span></span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(g3 g4 g5)
+<span class="linenr"> 41: </span></span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(g6 g7 g8))
+<span class="linenr"> 42: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">conde</span>
 <span class="linenr"> 43: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr"> 44: </span>    ((_ (g0 g ...) ...) (disj+ (conj+ g0 g ...) ...))))
 <span class="linenr"> 45: </span>
-<span class="linenr"> 46: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fresh allows to write nested calls to call/fresh like</span>
-<span class="linenr"> 47: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(call/fresh</span>
-<span class="linenr"> 48: </span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(lambda (x)</span>
-<span class="linenr"> 49: </span><span style="color: #b22222;">;;       </span><span style="color: #b22222;">(call/fresh</span>
-<span class="linenr"> 50: </span><span style="color: #b22222;">;;         </span><span style="color: #b22222;">(lambda (y)</span>
-<span class="linenr"> 51: </span><span style="color: #b22222;">;;            </span><span style="color: #b22222;">(g x y)))))</span>
-<span class="linenr"> 52: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as</span>
-<span class="linenr"> 53: </span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(fresh (x y) (g x y))</span>
-<span class="linenr"> 54: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">fresh</span>
+<span class="linenr"> 46: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">fresh allows to write nested calls to call/fresh like
+<span class="linenr"> 47: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(call/fresh
+<span class="linenr"> 48: </span></span><span style="color: #b22222;">;;     </span><span style="color: #b22222;">(lambda (x)
+<span class="linenr"> 49: </span></span><span style="color: #b22222;">;;       </span><span style="color: #b22222;">(call/fresh
+<span class="linenr"> 50: </span></span><span style="color: #b22222;">;;         </span><span style="color: #b22222;">(lambda (y)
+<span class="linenr"> 51: </span></span><span style="color: #b22222;">;;            </span><span style="color: #b22222;">(g x y)))))
+<span class="linenr"> 52: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">as
+<span class="linenr"> 53: </span></span><span style="color: #b22222;">;;   </span><span style="color: #b22222;">(fresh (x y) (g x y))
+<span class="linenr"> 54: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">fresh</span>
 <span class="linenr"> 55: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr"> 56: </span>    ((_ () g ...) (conj+ g ...))
 <span class="linenr"> 57: </span>    ((_ (x0 x ...) g ...) (call/fresh (<span style="color: #a020f0;">lambda</span> (x0) (fresh (x ...) g ...))))))
 <span class="linenr"> 58: </span>
-<span class="linenr"> 59: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">pull automatically invokes an immature stream to return results.</span>
-<span class="linenr"> 60: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">pull</span> $)
+<span class="linenr"> 59: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">pull automatically invokes an immature stream to return results.
+<span class="linenr"> 60: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">pull</span> $)
 <span class="linenr"> 61: </span>  (<span style="color: #a020f0;">if</span> (procedure? $) (pull ($)) $))
 <span class="linenr"> 62: </span>
-<span class="linenr"> 63: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">take-all pulls all the results from the stream.</span>
-<span class="linenr"> 64: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">take-all</span> $)
+<span class="linenr"> 63: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">take-all pulls all the results from the stream.
+<span class="linenr"> 64: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">take-all</span> $)
 <span class="linenr"> 65: </span>  (<span style="color: #a020f0;">let</span> (($ (pull $)))
 <span class="linenr"> 66: </span>    (<span style="color: #a020f0;">if</span> (null? $) '() (cons (car $) (take-all (cdr $))))))
 <span class="linenr"> 67: </span>
-<span class="linenr"> 68: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">take pulls n results from the stream.</span>
-<span class="linenr"> 69: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">take</span> n $)
+<span class="linenr"> 68: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">take pulls n results from the stream.
+<span class="linenr"> 69: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">take</span> n $)
 <span class="linenr"> 70: </span>  (<span style="color: #a020f0;">if</span> (zero? n)
 <span class="linenr"> 71: </span>      '()
 <span class="linenr"> 72: </span>      (<span style="color: #a020f0;">let</span> (($ (pull $)))
 <span class="linenr"> 73: </span>        (<span style="color: #a020f0;">if</span> (null? $) '() (cons (car $) (take (- n 1) (cdr $)))))))
 <span class="linenr"> 74: </span>
-<span class="linenr"> 75: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">empty-state represents the empty state.</span>
-<span class="linenr"> 76: </span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
+<span class="linenr"> 75: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">empty-state represents the empty state.
+<span class="linenr"> 76: </span></span>(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">empty-state</span> '(() . 0))
 <span class="linenr"> 77: </span>
-<span class="linenr"> 78: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">call/empty-state attempts a goal in the empty state.</span>
-<span class="linenr"> 79: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">call/empty-state</span> g) (g empty-state))
+<span class="linenr"> 78: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">call/empty-state attempts a goal in the empty state.
+<span class="linenr"> 79: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">call/empty-state</span> g) (g empty-state))
 <span class="linenr"> 80: </span>
-<span class="linenr"> 81: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">run executes the provided goals and calls take, reifying the</span>
-<span class="linenr"> 82: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">results afterwards.</span>
-<span class="linenr"> 83: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">run</span>
+<span class="linenr"> 81: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">run executes the provided goals and calls take, reifying the
+<span class="linenr"> 82: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">results afterwards.
+<span class="linenr"> 83: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">run</span>
 <span class="linenr"> 84: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr"> 85: </span>    ((_ n (x ...) g0 g ...)
 <span class="linenr"> 86: </span>     (multivar-reify (x ...) (take n (call/empty-state
 <span class="linenr"> 87: </span>                                      (fresh (x ...) g0 g ...)))))))
 <span class="linenr"> 88: </span>
-<span class="linenr"> 89: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">run* executes the provided goals and calls take-all, reifying the</span>
-<span class="linenr"> 90: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">results afterwards.</span>
-<span class="linenr"> 91: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">run*</span>
+<span class="linenr"> 89: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">run* executes the provided goals and calls take-all, reifying the
+<span class="linenr"> 90: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">results afterwards.
+<span class="linenr"> 91: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">run*</span>
 <span class="linenr"> 92: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr"> 93: </span>    ((_ (x ...) g0 g ...)
 <span class="linenr"> 94: </span>     (multivar-reify (x ...) (take-all (call/empty-state
 <span class="linenr"> 95: </span>                                        (fresh (x ...) g0 g ...)))))))
 <span class="linenr"> 96: </span>
-<span class="linenr"> 97: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">multivar-reify reifies a list of states s/c* by refiying each</span>
-<span class="linenr"> 98: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state's substitution with respect to each provided variable.</span>
-<span class="linenr"> 99: </span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">multivar-reify</span>
+<span class="linenr"> 97: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">multivar-reify reifies a list of states s/c* by refiying each
+<span class="linenr"> 98: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">state's substitution with respect to each provided variable.
+<span class="linenr"> 99: </span></span>(<span style="color: #a020f0;">define-syntax</span> <span style="color: #a0522d;">multivar-reify</span>
 <span class="linenr">100: </span>  (<span style="color: #a020f0;">syntax-rules</span> ()
 <span class="linenr">101: </span>    ((_ (x ...) s/c*)
 <span class="linenr">102: </span>     (<span style="color: #a020f0;">map</span> (<span style="color: #a020f0;">lambda</span> (s/c)
@@ -1214,37 +1178,37 @@ that makes easier to read the returned results.  The code is available
 <span class="linenr">109: </span>             s/c))
 <span class="linenr">110: </span>          s/c*))))
 <span class="linenr">111: </span>
-<span class="linenr">112: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The reify function takes a state s/c and an arbitrary value v,</span>
-<span class="linenr">113: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">perhaps containing variables, and returns the reified value of v.</span>
-<span class="linenr">114: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify</span> v s/c)
+<span class="linenr">112: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">The reify function takes a state s/c and an arbitrary value v,
+<span class="linenr">113: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">perhaps containing variables, and returns the reified value of v.
+<span class="linenr">114: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify</span> v s/c)
 <span class="linenr">115: </span>  (<span style="color: #a020f0;">let</span> ((v (walk* v (car s/c))))
 <span class="linenr">116: </span>    (walk* v (reify-s v '()))))
 <span class="linenr">117: </span>
-<span class="linenr">118: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-s takes a walk*ed term as its first argument; its second</span>
-<span class="linenr">119: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">argument starts out as an empty substitution.  The result of</span>
-<span class="linenr">120: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">invoking reify-s is a reified name substitution, associating logic</span>
-<span class="linenr">121: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variables to distinct symbols of the form _.n.</span>
-<span class="linenr">122: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-s</span> v s)
+<span class="linenr">118: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-s takes a walk*ed term as its first argument; its second
+<span class="linenr">119: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">argument starts out as an empty substitution.  The result of
+<span class="linenr">120: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">invoking reify-s is a reified name substitution, associating logic
+<span class="linenr">121: </span></span><span style="color: #b22222;">;; </span><span style="color: #b22222;">variables to distinct symbols of the form _.n.
+<span class="linenr">122: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-s</span> v s)
 <span class="linenr">123: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
 <span class="linenr">124: </span>    (<span style="color: #a020f0;">cond</span>
 <span class="linenr">125: </span>     ((var? v) (ext-s v (reify-name (length s)) s))
 <span class="linenr">126: </span>     ((pair? v) (reify-s (cdr v) (reify-s (car v) s)))
 <span class="linenr">127: </span>     (<span style="color: #a020f0;">else</span> s))))
 <span class="linenr">128: </span>
-<span class="linenr">129: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-name generates a symbol of the form _.n.</span>
-<span class="linenr">130: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-name</span> n)
+<span class="linenr">129: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">reify-name generates a symbol of the form _.n.
+<span class="linenr">130: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">reify-name</span> n)
 <span class="linenr">131: </span>  (string-&gt;symbol
 <span class="linenr">132: </span>   (string-append <span style="color: #8b2252;">"_"</span> <span style="color: #8b2252;">"."</span> (number-&gt;string n))))
 <span class="linenr">133: </span>
-<span class="linenr">134: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">walk* deeply walks a term with respect to a substitution.</span>
-<span class="linenr">135: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">walk*</span> v s)
+<span class="linenr">134: </span><span style="color: #b22222;">;; </span><span style="color: #b22222;">walk* deeply walks a term with respect to a substitution.
+<span class="linenr">135: </span></span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">walk*</span> v s)
 <span class="linenr">136: </span>  (<span style="color: #a020f0;">let</span> ((v (walk v s)))
 <span class="linenr">137: </span>    (<span style="color: #a020f0;">cond</span>
 <span class="linenr">138: </span>     ((var? v) v)
 <span class="linenr">139: </span>     ((pair? v) (cons (walk* (car v) s)
 <span class="linenr">140: </span>                      (walk* (cdr v) s)))
 <span class="linenr">141: </span>     (<span style="color: #a020f0;">else</span> v))))
-</pre>
+</code></pre>
 </div>
 
 <p>
@@ -1252,18 +1216,18 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 </p>
 
 <div class="org-src-container">
-<pre class="src src-scheme"><span class="linenr"> 1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
+<pre class="src src-scheme"><code><span class="linenr"> 1: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren.ss"</span>)
 <span class="linenr"> 2: </span>(<span style="color: #a020f0;">include</span> <span style="color: #8b2252;">"relational-programming/ukanren-usr.ss"</span>)
 <span class="linenr"> 3: </span>
 <span class="linenr"> 4: </span>(<span style="color: #a020f0;">define</span> (<span style="color: #0000ff;">appendo</span> l s o)
 <span class="linenr"> 5: </span>  (fresh (a d r)
-<span class="linenr"> 6: </span>         (conde ((&#8801; l '()) (&#8801; s o))
-<span class="linenr"> 7: </span>                ((&#8801; l `(,a . ,d))
-<span class="linenr"> 8: </span>                 (&#8801; `(,a . ,r) o)
-<span class="linenr"> 9: </span>                 (appendo d s r)))))
+<span class="linenr"> 6: </span>           (conde ((&#8801; l '()) (&#8801; s o))
+<span class="linenr"> 7: </span>                  ((&#8801; l `(,a . ,d))
+<span class="linenr"> 8: </span>                   (&#8801; `(,a . ,r) o)
+<span class="linenr"> 9: </span>                   (appendo d s r)))))
 <span class="linenr">10: </span>
 <span class="linenr">11: </span>(run* (x y) (appendo x y '(a b c)))
-</pre>
+</code></pre>
 </div>
 
 <pre class="example">
@@ -1271,10 +1235,9 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 </pre>
 </div>
 </div>
-
-<div id="outline-container-org3616e2a" class="outline-2">
-<h2 id="org3616e2a">Related books</h2>
-<div class="outline-text-2" id="text-org3616e2a">
+<div id="outline-container-org818d497" class="outline-2">
+<h2 id="org818d497">Related books</h2>
+<div class="outline-text-2" id="text-org818d497">
 <ul class="org-ul">
 <li>"Introduction to Logic" by Patrick Suppes</li>
 <li>"The Little Lisper" by Daniel P. Friedman</li>
@@ -1287,7 +1250,7 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2024-11-02 Sat 10:42</p>
+<p class="date">Created: 2026-07-08 Wed 15:33</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

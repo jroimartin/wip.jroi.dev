@@ -2,9 +2,7 @@
 #+author: Roi Martin
 #+date: <2024-06-22 Sat>
 #+options: num:nil
-#+html_link_home: index.html
-#+html_link_up: index.html
-#+html_head: <link rel="stylesheet" type="text/css" href="css/style.css" />
+#+html_link_up: /
 
 * Introduction
 
@@ -13,8 +11,6 @@ programming, miniKanren, Prolog, etc.  This page contains my personal
 notes as well as links to papers and talks I found interesting.  At
 the end of the page there is a list of related books for those that
 want to dig deeper.
-
-If you want to subscribe to this page, use this [[https://github.com/jroimartin/wip.jroi.dev/commits/main/relational-programming.html.atom][RSS feed]].
 
 * What is relational programming?
 
@@ -99,9 +95,9 @@ Implementations]]" by William E. Byrd.
 What follows is the μKanren implementation exposed on the paper
 "[[http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf][μKanren: A Minimal Functional Core for Relational Programming]]" by
 Jason Hemann and Daniel P. Friedman.  The code has been commented with
-the relevant parts of the paper and is available [[file:relational-programming/ukanren.ss][here]].
+the relevant parts of the paper and is available [[file:assets/relational-programming/ukanren.ss][here]].
 
-#+include: "relational-programming/ukanren.ss" src scheme -n
+#+include: "assets/relational-programming/ukanren.ss" src scheme -n
 
 μKanren was also shown in the talk "[[https://youtu.be/0FwIwewHC3o][Implementing a microKanren]]" that
 Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
@@ -569,9 +565,9 @@ miniKanren, to the user (e.g. ~run~, ~run*~, ~fresh~, etc.).  The
 μKanren paper presents a reference implementation for some helpers.
 The following code includes those helpers as well as a custom reifier
 that makes easier to read the returned results.  The code is available
-[[file:relational-programming/ukanren-usr.ss][here]].
+[[file:assets/relational-programming/ukanren-usr.ss][here]].
 
-#+include: "relational-programming/ukanren-usr.ss" src scheme -n
+#+include: "assets/relational-programming/ukanren-usr.ss" src scheme -n
 
 Let's apply them to our ~appendo~ example to make it more readable.
 

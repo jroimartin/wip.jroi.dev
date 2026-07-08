@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2025-11-22 Sat 22:53 -->
+<!-- 2026-07-08 Wed 15:30 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Building GNU Emacs</title>
+<title>About This Site</title>
 <meta name="author" content="Roi Martin" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -57,6 +57,7 @@
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
   pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -71,7 +72,7 @@
   pre.src-haskell:before { content: 'Haskell'; }
   pre.src-hledger:before { content: 'hledger'; }
   pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
+  pre.src-js:before { content: 'JavaScript'; }
   pre.src-latex:before { content: 'LaTeX'; }
   pre.src-ledger:before { content: 'Ledger'; }
   pre.src-lisp:before { content: 'Lisp'; }
@@ -193,37 +194,44 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   .org-svg { }
 </style>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body>
 <div id="org-div-home-and-up">
- <a accesskey="h" href="index.html"> UP </a>
+ <a accesskey="h" href="/"> UP </a>
  |
- <a accesskey="H" href="index.html"> HOME </a>
+ <a accesskey="H" href="https://wip.jroi.dev/"> HOME </a>
 </div><div id="content" class="content">
-<h1 class="title">Building GNU Emacs</h1>
+<h1 class="title">About This Site</h1>
 <p>
-I use the following commands to build GNU Emacs from source.
+My name is Roi Martin.  I am a programmer and a security enthusiast
+that has been lucky enough to make a living out of combining both
+passions.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-shell">git clone https://https.git.savannah.gnu.org/git/emacs.git
-<span style="color: #483d8b;">cd</span> emacs
-./autogen.sh
-./configure --prefix=$<span style="color: #a0522d;">HOME</span>/opt/emacs --with-pgtk
-make -j8
-make install
-</pre>
-</div>
+<p>
+Time has shown me that blogs do not work for me.  Their chronological
+nature and having to wait until you finish a blog post to publish it
+does not fit my personality.  I like to approach problems in an
+iterative way and tend to jump from one project to another.  Which,
+for me, is incompatible with writing a blog.
+</p>
 
 <p>
-For more details, see <a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/plain/INSTALL.REPO">INSTALL.REPO</a>.
+Also, I like to take notes while learning new things, so I thought
+that publishing these notes could be useful for others and fits me
+better.  This site contains my forever-work-in-progress notes.
+</p>
+
+<p>
+You can find me in <a href="https://github.com/jroimartin">GitHub</a>, where I publish most of my projects, and
+<a href="https://fosstodon.org/@jroimartin">Mastodon</a>.
 </p>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2025-03-06 Thu 00:00</p>
+<p class="date">Date: 2024-05-28 Tue 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2025-11-22 Sat 22:53</p>
+<p class="date">Created: 2026-07-08 Wed 15:30</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
