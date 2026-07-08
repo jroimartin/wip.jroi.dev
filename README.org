@@ -2,7 +2,7 @@
 
 Source code of https://wip.jroi.dev.
 
-Eval the following elisp snippet to build the site.
+Eval the following Emacs Lisp snippet to build the site.
 
 #+begin_src emacs-lisp :exports both
 (let ((org-publish-project-alist `(("org"
