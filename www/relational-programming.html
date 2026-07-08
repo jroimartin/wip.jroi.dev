@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-08 Wed 15:33 -->
+<!-- 2026-07-08 Wed 18:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Relational Programming</title>
@@ -207,27 +207,27 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org1eb5b54">Introduction</a></li>
-<li><a href="#orgb2b0867">What is relational programming?</a></li>
-<li><a href="#org6ded625">μKanren</a></li>
-<li><a href="#org61fb36b">Dissecting μKanren</a>
+<li><a href="#org5217e64">Introduction</a></li>
+<li><a href="#orgbd7dbdd">What is relational programming?</a></li>
+<li><a href="#orgb9c68b8">μKanren</a></li>
+<li><a href="#orga2cb70c">Dissecting μKanren</a>
 <ul>
-<li><a href="#org6000285">Variables</a></li>
-<li><a href="#org77e8f45">Substitutions</a></li>
-<li><a href="#org8cf8129">Goals</a></li>
-<li><a href="#org043040a">Unification</a></li>
-<li><a href="#org366601d">The <code>mplus</code> and <code>bind</code> operators</a></li>
+<li><a href="#orgf5cadf7">Variables</a></li>
+<li><a href="#org092b46a">Substitutions</a></li>
+<li><a href="#orga6fd2ab">Goals</a></li>
+<li><a href="#org97478ab">Unification</a></li>
+<li><a href="#orgddc5674">The <code>mplus</code> and <code>bind</code> operators</a></li>
 </ul>
 </li>
-<li><a href="#orgeb8f830">μKanren in practice</a></li>
-<li><a href="#org68edd23">Sweetening μKanren with a bit of syntax sugar</a></li>
-<li><a href="#org818d497">Related books</a></li>
+<li><a href="#org1cf4cd1">μKanren in practice</a></li>
+<li><a href="#org0615fab">Sweetening μKanren with a bit of syntax sugar</a></li>
+<li><a href="#orged98d9f">Related books</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org1eb5b54" class="outline-2">
-<h2 id="org1eb5b54">Introduction</h2>
-<div class="outline-text-2" id="text-org1eb5b54">
+<div id="outline-container-org5217e64" class="outline-2">
+<h2 id="org5217e64">Introduction</h2>
+<div class="outline-text-2" id="text-org5217e64">
 <p>
 I'm at the very beginning of learning about logic, relational
 programming, miniKanren, Prolog, etc.  This page contains my personal
@@ -237,9 +237,9 @@ want to dig deeper.
 </p>
 </div>
 </div>
-<div id="outline-container-orgb2b0867" class="outline-2">
-<h2 id="orgb2b0867">What is relational programming?</h2>
-<div class="outline-text-2" id="text-orgb2b0867">
+<div id="outline-container-orgbd7dbdd" class="outline-2">
+<h2 id="orgbd7dbdd">What is relational programming?</h2>
+<div class="outline-text-2" id="text-orgbd7dbdd">
 <p>
 According to Wikipedia in relation to <a href="https://en.wikipedia.org/wiki/Logic_programming">logic programming</a>:
 </p>
@@ -264,7 +264,7 @@ In functional programming, given the following expression in Lisp
 syntax:
 </p>
 
-<pre class="example" id="org0ba9697">
+<pre class="example" id="orga5321be">
 (+ 3 4) =&gt; 7
 </pre>
 
@@ -288,7 +288,7 @@ Meanwhile, in relational programming, this is expressed in terms of
 relations.  Our previous example becomes the following relation:
 </p>
 
-<pre class="example" id="orgf363677">
+<pre class="example" id="org7261b79">
 (+o 3 4 7)
 </pre>
 
@@ -310,7 +310,7 @@ variables.
 For instance,
 </p>
 
-<pre class="example" id="orgcc1a34b">
+<pre class="example" id="orgddcb15b">
 (+o 3 4 Z) =&gt; Z = 7
 </pre>
 
@@ -318,7 +318,7 @@ For instance,
 or,
 </p>
 
-<pre class="example" id="org5ed21f6">
+<pre class="example" id="orgeb1bc42">
 (+o 3 Y 7) =&gt; Y = 4
 </pre>
 
@@ -326,7 +326,7 @@ or,
 or,
 </p>
 
-<pre class="example" id="org7e3ac8f">
+<pre class="example" id="org53ceee2">
 (+o X Y 7) =&gt; X = 0; Y = 7
               X = 1; Y = 6
 		...
@@ -338,9 +338,9 @@ output.
 </p>
 </div>
 </div>
-<div id="outline-container-org6ded625" class="outline-2">
-<h2 id="org6ded625">μKanren</h2>
-<div class="outline-text-2" id="text-org6ded625">
+<div id="outline-container-orgb9c68b8" class="outline-2">
+<h2 id="orgb9c68b8">μKanren</h2>
+<div class="outline-text-2" id="text-orgb9c68b8">
 <p>
 μKanren is a minimalist language in the miniKanren family of
 relational programming languages.
@@ -465,9 +465,9 @@ Jason Hemann and Daniel P. Friedman gave at Code Mesh 2016.
 </p>
 </div>
 </div>
-<div id="outline-container-org61fb36b" class="outline-2">
-<h2 id="org61fb36b">Dissecting μKanren</h2>
-<div class="outline-text-2" id="text-org61fb36b">
+<div id="outline-container-orga2cb70c" class="outline-2">
+<h2 id="orga2cb70c">Dissecting μKanren</h2>
+<div class="outline-text-2" id="text-orga2cb70c">
 <p>
 This μKanren implementation weights 39 lines of code.  Being so short
 makes easier to experiment with it.  However, it also hides lots of
@@ -475,9 +475,9 @@ details.  In this section I try to analyze every single bit of it to
 get a better understanding.
 </p>
 </div>
-<div id="outline-container-org6000285" class="outline-3">
-<h3 id="org6000285">Variables</h3>
-<div class="outline-text-3" id="text-org6000285">
+<div id="outline-container-orgf5cadf7" class="outline-3">
+<h3 id="orgf5cadf7">Variables</h3>
+<div class="outline-text-3" id="text-orgf5cadf7">
 <p>
 Variables are represented as vectors:
 </p>
@@ -527,9 +527,9 @@ x == z =&gt; #(0) == #(1) =&gt; #f
 </pre>
 </div>
 </div>
-<div id="outline-container-org77e8f45" class="outline-3">
-<h3 id="org77e8f45">Substitutions</h3>
-<div class="outline-text-3" id="text-org77e8f45">
+<div id="outline-container-org092b46a" class="outline-3">
+<h3 id="org092b46a">Substitutions</h3>
+<div class="outline-text-3" id="text-org092b46a">
 <p>
 A substitution is an association list that binds variables to concrete
 values or to other variables.  A substitution can be extended using
@@ -581,9 +581,9 @@ When a variable is not bound, the variable itself is returned.
 </pre>
 </div>
 </div>
-<div id="outline-container-org8cf8129" class="outline-3">
-<h3 id="org8cf8129">Goals</h3>
-<div class="outline-text-3" id="text-org8cf8129">
+<div id="outline-container-orga6fd2ab" class="outline-3">
+<h3 id="orga6fd2ab">Goals</h3>
+<div class="outline-text-3" id="text-orga6fd2ab">
 <p>
 A goal is represented as a function that takes a state and returns a
 stream.  A state is a pair of a substitution and a non-negative
@@ -726,9 +726,9 @@ returns a goal that succeeds if both goals succeed for that state.
 </pre>
 </div>
 </div>
-<div id="outline-container-org043040a" class="outline-3">
-<h3 id="org043040a">Unification</h3>
-<div class="outline-text-3" id="text-org043040a">
+<div id="outline-container-org97478ab" class="outline-3">
+<h3 id="org97478ab">Unification</h3>
+<div class="outline-text-3" id="text-org97478ab">
 <p>
 Unification is determined by the <code>unify</code> operator of the μKanren
 implementation.  It is especially interesting that it is <code>unify</code> that
@@ -864,9 +864,9 @@ Unification fails otherwise.
 </pre>
 </div>
 </div>
-<div id="outline-container-org366601d" class="outline-3">
-<h3 id="org366601d">The <code>mplus</code> and <code>bind</code> operators</h3>
-<div class="outline-text-3" id="text-org366601d">
+<div id="outline-container-orgddc5674" class="outline-3">
+<h3 id="orgddc5674">The <code>mplus</code> and <code>bind</code> operators</h3>
+<div class="outline-text-3" id="text-orgddc5674">
 <p>
 The <code>mplus</code> operator is responsible for merging streams.
 </p>
@@ -955,9 +955,9 @@ to represent infinite streams.
 </div>
 </div>
 </div>
-<div id="outline-container-orgeb8f830" class="outline-2">
-<h2 id="orgeb8f830">μKanren in practice</h2>
-<div class="outline-text-2" id="text-orgeb8f830">
+<div id="outline-container-org1cf4cd1" class="outline-2">
+<h2 id="org1cf4cd1">μKanren in practice</h2>
+<div class="outline-text-2" id="text-org1cf4cd1">
 <p>
 The following is a very simple example of how to use the core
 functionality of μKanren:
@@ -1027,7 +1027,7 @@ A closer look at the results shows that the values found for <code>x</code> and
 <code>y</code> are:
 </p>
 
-<pre class="example" id="orgdcf77db">
+<pre class="example" id="org93512a6">
 x = ()       y = (a b c)
 x = (a)      y = (b c)
 x = (a b)    y = (c)
@@ -1054,9 +1054,9 @@ correspondence between the <code>append</code> and <code>appendo</code> implemen
 </div>
 </div>
 </div>
-<div id="outline-container-org68edd23" class="outline-2">
-<h2 id="org68edd23">Sweetening μKanren with a bit of syntax sugar</h2>
-<div class="outline-text-2" id="text-org68edd23">
+<div id="outline-container-org0615fab" class="outline-2">
+<h2 id="org0615fab">Sweetening μKanren with a bit of syntax sugar</h2>
+<div class="outline-text-2" id="text-org0615fab">
 <p>
 μKanren off-loads higher level operations, like the ones provided by
 miniKanren, to the user (e.g. <code>run</code>, <code>run*</code>, <code>fresh</code>, etc.).  The
@@ -1235,9 +1235,9 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 </pre>
 </div>
 </div>
-<div id="outline-container-org818d497" class="outline-2">
-<h2 id="org818d497">Related books</h2>
-<div class="outline-text-2" id="text-org818d497">
+<div id="outline-container-orged98d9f" class="outline-2">
+<h2 id="orged98d9f">Related books</h2>
+<div class="outline-text-2" id="text-orged98d9f">
 <ul class="org-ul">
 <li>"Introduction to Logic" by Patrick Suppes</li>
 <li>"The Little Lisper" by Daniel P. Friedman</li>
@@ -1250,7 +1250,7 @@ Let's apply them to our <code>appendo</code> example to make it more readable.
 <div id="postamble" class="status">
 <p class="date">Date: 2024-06-22 Sat 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-07-08 Wed 15:33</p>
+<p class="date">Created: 2026-07-08 Wed 18:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

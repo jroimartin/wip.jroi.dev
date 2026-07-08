@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-08 Wed 15:30 -->
+<!-- 2026-07-08 Wed 18:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Disk Encryption With LUKS</title>
@@ -211,9 +211,9 @@ access the encrypted data.
 <p>
 For more details, see <a href="https://gitlab.com/cryptsetup/cryptsetup/-/wikis/FrequentlyAskedQuestions">FrequentlyAskedQuestions</a>.
 </p>
-<div id="outline-container-orgc353723" class="outline-2">
-<h2 id="orgc353723">Setup device</h2>
-<div class="outline-text-2" id="text-orgc353723">
+<div id="outline-container-orga38b81b" class="outline-2">
+<h2 id="orga38b81b">Setup device</h2>
+<div class="outline-text-2" id="text-orga38b81b">
 <div class="org-src-container">
 <pre class="src src-shell"><code>wipefs -a &lt;target device&gt;
 cryptsetup luksFormat &lt;target device&gt;
@@ -224,9 +224,9 @@ cryptsetup luksClose c1
 </div>
 </div>
 </div>
-<div id="outline-container-orgb0cefea" class="outline-2">
-<h2 id="orgb0cefea">Access data</h2>
-<div class="outline-text-2" id="text-orgb0cefea">
+<div id="outline-container-org555c2cb" class="outline-2">
+<h2 id="org555c2cb">Access data</h2>
+<div class="outline-text-2" id="text-org555c2cb">
 <div class="org-src-container">
 <pre class="src src-shell"><code>cryptsetup luksOpen &lt;target device&gt; c1
 mount /dev/mapper/c1 /mnt
@@ -241,7 +241,7 @@ cryptsetup luksClose c1
 <div id="postamble" class="status">
 <p class="date">Date: 2025-03-06 Thu 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-07-08 Wed 15:30</p>
+<p class="date">Created: 2026-07-08 Wed 18:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

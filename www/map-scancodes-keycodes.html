@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-07-08 Wed 15:30 -->
+<!-- 2026-07-08 Wed 18:09 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Map scancodes to keycodes</title>
@@ -203,22 +203,22 @@
  <a accesskey="H" href="https://wip.jroi.dev/"> HOME </a>
 </div><div id="content" class="content">
 <h1 class="title">Map scancodes to keycodes</h1>
-<div id="outline-container-orgeb67498" class="outline-2">
-<h2 id="orgeb67498">Scancodes vs keycodes</h2>
-<div class="outline-text-2" id="text-orgeb67498">
+<div id="outline-container-org98f8aed" class="outline-2">
+<h2 id="org98f8aed">Scancodes vs keycodes</h2>
+<div class="outline-text-2" id="text-org98f8aed">
 <ul class="org-ul">
 <li><b>Scancode</b>: the keyboard sends a scancode to the computer.</li>
 <li><b>Keycode</b>: the kernel maps the scancode to a keycode.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgb042971" class="outline-2">
-<h2 id="orgb042971">Mapping</h2>
-<div class="outline-text-2" id="text-orgb042971">
+<div id="outline-container-orgc7ee021" class="outline-2">
+<h2 id="orgc7ee021">Mapping</h2>
+<div class="outline-text-2" id="text-orgc7ee021">
 </div>
-<div id="outline-container-org506107e" class="outline-3">
-<h3 id="org506107e">Get the scancodes</h3>
-<div class="outline-text-3" id="text-org506107e">
+<div id="outline-container-org9da7950" class="outline-3">
+<h3 id="org9da7950">Get the scancodes</h3>
+<div class="outline-text-3" id="text-org9da7950">
 <p>
 Run the following command as root:
 </p>
@@ -233,7 +233,7 @@ And select the input device that corresponds to the keyboard.  Then,
 press the keys that you want to map.  For instance,
 </p>
 
-<pre class="example" id="orgda22472">
+<pre class="example" id="orgdf1901c">
 Event: time 1753187771.746790, type 4 (EV_MSC), code 4 (MSC_SCAN), value 70004
 Event: time 1753187771.746790, type 1 (EV_KEY), code 30 (KEY_A), value 
 </pre>
@@ -244,9 +244,9 @@ The previous output shows that the scancode for the <code>a</code> key is
 </p>
 </div>
 </div>
-<div id="outline-container-org5dc3946" class="outline-3">
-<h3 id="org5dc3946">Get the device modalias</h3>
-<div class="outline-text-3" id="text-org5dc3946">
+<div id="outline-container-orgc416b4a" class="outline-3">
+<h3 id="orgc416b4a">Get the device modalias</h3>
+<div class="outline-text-3" id="text-orgc416b4a">
 <p>
 If the selected device is, for instance, <code>/dev/input/event6</code>, then get
 the modalias with the following command:
@@ -261,7 +261,7 @@ the modalias with the following command:
 The output should be similar to this:
 </p>
 
-<pre class="example" id="org884e415">
+<pre class="example" id="orgd184679">
 input:b0003v0853p0146e0111-e0,1,4,11,...
 </pre>
 
@@ -270,15 +270,15 @@ We will need it to create the <code>hwdb</code> file.
 </p>
 </div>
 </div>
-<div id="outline-container-org622cee7" class="outline-3">
-<h3 id="org622cee7">Create a hwdb file</h3>
-<div class="outline-text-3" id="text-org622cee7">
+<div id="outline-container-orge75df4e" class="outline-3">
+<h3 id="orge75df4e">Create a hwdb file</h3>
+<div class="outline-text-3" id="text-orge75df4e">
 <p>
 Create a file named <code>/etc/udev/hwdb.d/99-keyboard.hwdb</code>.  The content
 for the previous example should be similar to this:
 </p>
 
-<pre class="example" id="orgb689ec9">
+<pre class="example" id="orgaf24d88">
 # Topre REALFORCE 87 US
 # Input device ID: bus 0x03 vendor 0x853 product 0x146 version 0x111
 evdev:input:b0003v0853p0146e0111*
@@ -294,7 +294,7 @@ evdev:input:b0003v0853p0146e0111*
 It is a list of records with the following format:
 </p>
 
-<pre class="example" id="org474935f">
+<pre class="example" id="org6313699">
 &lt;modalias pattern&gt;
  KEYBOARD_KEY_&lt;scancode&gt;=&lt;keycode&gt;
  ...
@@ -313,9 +313,9 @@ See <code>hwdb(7)</code> and <a href="https://github.com/systemd/systemd/blob/72
 </p>
 </div>
 </div>
-<div id="outline-container-org8686635" class="outline-3">
-<h3 id="org8686635">Update the binary hwdb</h3>
-<div class="outline-text-3" id="text-org8686635">
+<div id="outline-container-org4b199e6" class="outline-3">
+<h3 id="org4b199e6">Update the binary hwdb</h3>
+<div class="outline-text-3" id="text-org4b199e6">
 <p>
 Run the following command as root:
 </p>
@@ -326,9 +326,9 @@ Run the following command as root:
 </div>
 </div>
 </div>
-<div id="outline-container-orgb2fbf1c" class="outline-3">
-<h3 id="orgb2fbf1c">Reload the binary hwdb</h3>
-<div class="outline-text-3" id="text-orgb2fbf1c">
+<div id="outline-container-org97d1bc2" class="outline-3">
+<h3 id="org97d1bc2">Reload the binary hwdb</h3>
+<div class="outline-text-3" id="text-org97d1bc2">
 <p>
 Run the following command as root:
 </p>
@@ -344,7 +344,7 @@ Run the following command as root:
 <div id="postamble" class="status">
 <p class="date">Date: 2025-07-22 Tue 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-07-08 Wed 15:30</p>
+<p class="date">Created: 2026-07-08 Wed 18:09</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
