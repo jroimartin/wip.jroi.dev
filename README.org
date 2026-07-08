@@ -25,6 +25,12 @@ Eval the following Emacs Lisp snippet to build the site.
                                     :publishing-directory "./www/css"
                                     :publishing-function org-publish-attachment
                                     :recursive t)
+                                   ("images"
+                                    :base-directory "./src/images"
+                                    :base-extension any
+                                    :publishing-directory "./www/images"
+                                    :publishing-function org-publish-attachment
+                                    :recursive t)
                                    ("feeds"
                                     :base-directory "./feeds"
                                     :base-extension "org"
@@ -39,4 +45,4 @@ Eval the following Emacs Lisp snippet to build the site.
 #+end_src
 
 #+results:
-: Last update: Wed Jul  8 16:04:31 2026
+: Last update: Wed Jul  8 16:51:45 2026
