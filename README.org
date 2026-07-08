@@ -1,5 +1,4 @@
 #+title: Work In Progress
-#+author: Roi Martin
 
 Source code of https://wip.jroi.dev.
 
