@@ -4,7 +4,7 @@
 #+options: num:nil toc:nil
 #+html_link_up: /
 #+description: My forever-work-in-progress notes
-#+rss-image-url: https://orgmode.org/resources/img/org-mode-unicorn.svg
+#+rss_image_url: https://orgmode.org/resources/img/org-mode-unicorn.svg
 
 * RSS feed for updates
 :PROPERTIES:
