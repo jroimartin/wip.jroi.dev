@@ -5,44 +5,46 @@ Source code of https://wip.jroi.dev.
 Eval the following Emacs Lisp snippet to build the site.
 
 #+begin_src emacs-lisp :exports both
-(let ((org-publish-project-alist '(("org"
-                                    :base-directory "./src"
-                                    :base-extension "org"
-                                    :publishing-directory "./www"
-                                    :publishing-function org-html-publish-to-html
-                                    :html-link-home "https://wip.jroi.dev/"
-                                    :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/style.css\" />"
-                                    :recursive t)
-                                   ("assets"
-                                    :base-directory "./src/assets"
-                                    :base-extension any
-                                    :publishing-directory "./www/assets"
-                                    :publishing-function org-publish-attachment
-                                    :recursive t)
-                                   ("css"
-                                    :base-directory "./src/css"
-                                    :base-extension any
-                                    :publishing-directory "./www/css"
-                                    :publishing-function org-publish-attachment
-                                    :recursive t)
-                                   ("images"
-                                    :base-directory "./src/images"
-                                    :base-extension any
-                                    :publishing-directory "./www/images"
-                                    :publishing-function org-publish-attachment
-                                    :recursive t)
-                                   ("feeds"
-                                    :base-directory "./feeds"
-                                    :base-extension "org"
-                                    :publishing-directory "./www"
-                                    :publishing-function (org-rss-publish-to-rss org-html-publish-to-html)
-                                    :html-link-home "https://wip.jroi.dev/"
-                                    :html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/style.css\" />")))
-      (org-export-use-babel nil)
-      (geiser-mode-auto-p nil))
+(let* ((html-link-home "https://wip.jroi.dev/")
+       (html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/css/style.css\" />")
+       (org-publish-project-alist `(("org"
+                                     :base-directory "./src"
+                                     :base-extension "org"
+                                     :publishing-directory "./www"
+                                     :publishing-function org-html-publish-to-html
+                                     :html-link-home ,html-link-home
+                                     :html-head ,html-head
+                                     :recursive t)
+                                    ("assets"
+                                     :base-directory "./src/assets"
+                                     :base-extension any
+                                     :publishing-directory "./www/assets"
+                                     :publishing-function org-publish-attachment
+                                     :recursive t)
+                                    ("css"
+                                     :base-directory "./src/css"
+                                     :base-extension any
+                                     :publishing-directory "./www/css"
+                                     :publishing-function org-publish-attachment
+                                     :recursive t)
+                                    ("images"
+                                     :base-directory "./src/images"
+                                     :base-extension any
+                                     :publishing-directory "./www/images"
+                                     :publishing-function org-publish-attachment
+                                     :recursive t)
+                                    ("feeds"
+                                     :base-directory "./feeds"
+                                     :base-extension "org"
+                                     :publishing-directory "./www"
+                                     :publishing-function (org-rss-publish-to-rss org-html-publish-to-html)
+                                     :html-link-home ,html-link-home
+                                     :html-head ,html-head)))
+       (org-export-use-babel nil)
+       (geiser-mode-auto-p nil))
   (org-publish-all)
   (message "Last update: %s" (current-time-string)))
 #+end_src
 
 #+results:
-: Last update: Wed Jul  8 18:33:23 2026
+: Last update: Thu Jul  9 08:54:38 2026
