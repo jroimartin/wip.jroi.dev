@@ -12,5 +12,7 @@
 :PUBDATE:  2026-07-08 Wed 15:49
 :END:
 
+/2026-07-08/
+
 An RSS feed for this website's updates is now available at
 [[https://wip.jroi.dev/updates.xml]].

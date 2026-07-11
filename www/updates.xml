@@ -14,8 +14,8 @@
   <link>https://wip.jroi.dev/</link>
   <description><![CDATA[My forever-work-in-progress notes]]></description>
   <language>en</language>
-  <pubDate>Wed, 08 Jul 2026 18:09:10 +0200</pubDate>
-  <lastBuildDate>Wed, 08 Jul 2026 18:09:10 +0200</lastBuildDate>
+  <pubDate>Sat, 11 Jul 2026 10:00:03 +0200</pubDate>
+  <lastBuildDate>Sat, 11 Jul 2026 10:00:03 +0200</lastBuildDate>
   <generator>Emacs 32.0 Org-mode 9.8.7</generator>
   <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
   <image>
@@ -26,12 +26,16 @@
 
   <item>
     <title>RSS feed for updates</title>
-    <link>https://wip.jroi.dev/updates.html#orge173c16</link>
+    <link>https://wip.jroi.dev/updates.html#org4f4862e</link>
     <author>jroi.martin@gmail.com (Roi Martin)</author>
-    <guid isPermaLink="false">https://wip.jroi.dev/updates.html#orge173c16</guid>
+    <guid isPermaLink="false">https://wip.jroi.dev/updates.html#org4f4862e</guid>
     <pubDate>Wed, 08 Jul 2026 15:49:00 +0200</pubDate>
 
     <description><![CDATA[<p>
+<i>2026-07-08</i>
+</p>
+
+<p>
 An RSS feed for this website's updates is now available at
 <a href="https://wip.jroi.dev/updates.xml">https://wip.jroi.dev/updates.xml</a>.
 </p>
