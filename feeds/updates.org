@@ -8,11 +8,12 @@
 
 * RSS feed for updates
 :PROPERTIES:
-:ID:       5785fb6c-2bfc-4e03-bb5c-4a523b3addd0
-:PUBDATE:  2026-07-08 Wed 15:49
+:CUSTOM_ID: 20260711-rss-feed-for-updates
+:ID:       5aa07ef9-9a92-45f9-8883-b90bbadfba22
+:PUBDATE:  2026-07-11 Sat 15:28
 :END:
 
-/2026-07-08/
+/2026-07-11/
 
 An RSS feed for this website's updates is now available at
 [[https://wip.jroi.dev/updates.xml]].
