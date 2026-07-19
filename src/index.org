@@ -21,6 +21,7 @@ GitHub repository.
 * GNU Emacs packages
 
 - [[https://elpa.nongnu.org/nongnu/radio.html][Radio]]
+- [[https://github.com/jroimartin/outline-occur][Outline-occur]]
 
 * Quick Guides
 
