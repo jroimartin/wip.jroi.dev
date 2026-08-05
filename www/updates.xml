@@ -14,8 +14,8 @@
   <link>https://wip.jroi.dev/</link>
   <description><![CDATA[My forever-work-in-progress notes]]></description>
   <language>en</language>
-  <pubDate>Sun, 19 Jul 2026 13:50:10 +0200</pubDate>
-  <lastBuildDate>Sun, 19 Jul 2026 13:50:10 +0200</lastBuildDate>
+  <pubDate>Wed, 05 Aug 2026 16:09:44 +0200</pubDate>
+  <lastBuildDate>Wed, 05 Aug 2026 16:09:44 +0200</lastBuildDate>
   <generator>Emacs 32.0 Org-mode 9.8.7</generator>
   <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
   <image>
@@ -24,6 +24,37 @@
     <link>https://wip.jroi.dev/</link>
   </image>
 
+  <item>
+    <title>Outline-occur is now part of GNU Emacs core</title>
+    <link>https://wip.jroi.dev/updates.html#20260805-outline-occur-is-now-part-of-gnu-emacs-core</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/updates.html#20260805-outline-occur-is-now-part-of-gnu-emacs-core</guid>
+    <pubDate>Wed, 05 Aug 2026 16:09:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2026-08-05</i>
+</p>
+
+<p>
+My package <code>outline-occur</code> is now part of GNU Emacs core.  Therefore,
+its source code repository has been archived and is now read-only.
+</p>
+
+<p>
+Note that its API changed during integration into core.  Please refer
+to the docstring of <code>outline-occur</code> for up-to-date documentation.
+</p>
+
+<p>
+For more information, see the following commits:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=8a88f3ed5aeece4a7c8edbebc83ed52479fbbfab">8a88f3ed5aee</a> "Add `outline-occur' command and `display-buffer-default-alist' variable"</li>
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=9e6f03993b824b69d7946b0e23850383d8cd3a72">9e6f03993b82</a> "* lisp/outline.el (outline-occur): Autoload."</li>
+</ul>
+]]></description>
+  </item>
   <item>
     <title>New GNU Emacs package: outline-occur</title>
     <link>https://wip.jroi.dev/updates.html#20260719-new-gnu-emacs-package--outline-occur</link>

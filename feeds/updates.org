@@ -6,6 +6,26 @@
 #+description: My forever-work-in-progress notes
 #+rss_image_url: https://wip.jroi.dev/images/wip.png
 
+* Outline-occur is now part of GNU Emacs core
+:PROPERTIES:
+:CUSTOM_ID: 20260805-outline-occur-is-now-part-of-gnu-emacs-core
+:ID:       bfa9ec20-706a-48a2-839a-f44d092c14ba
+:PUBDATE:  2026-08-05 Wed 16:09
+:END:
+
+/2026-08-05/
+
+My package =outline-occur= is now part of GNU Emacs core.  Therefore,
+its source code repository has been archived and is now read-only.
+
+Note that its API changed during integration into core.  Please refer
+to the docstring of =outline-occur= for up-to-date documentation.
+
+For more information, see the following commits:
+
+- [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=8a88f3ed5aeece4a7c8edbebc83ed52479fbbfab][8a88f3ed5aee]] "Add `outline-occur' command and `display-buffer-default-alist' variable"
+- [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=9e6f03993b824b69d7946b0e23850383d8cd3a72][9e6f03993b82]] "* lisp/outline.el (outline-occur): Autoload."
+
 * New GNU Emacs package: outline-occur
 :PROPERTIES:
 :CUSTOM_ID: 20260719-new-gnu-emacs-package--outline-occur
