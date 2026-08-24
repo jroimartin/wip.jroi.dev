@@ -6,6 +6,27 @@
 #+description: My forever-work-in-progress notes
 #+rss_image_url: https://wip.jroi.dev/images/wip.png
 
+* Outline-occur is now called Outline-xref
+:PROPERTIES:
+:CUSTOM_ID: 20260824-outline-occur-is-now-called-outline-xref
+:ID:       d2ddb5f1-d7e7-4f3c-8c9b-024c5715865f
+:PUBDATE:  2026-08-24 Mon 13:08
+:END:
+
+/2026-08-24/
+
+I've reimplemented =outline-occur= using Xref, so now it is named
+=outline-xref=.  The reason is that Occur is designed around regular
+expressions, while Outline supports both regular expressions and
+custom search functions to find outline headings.  If we want to
+provide a navigable outline that matches the headings identified by
+Outline, we have to support both search strategies and Xref is better
+suited for this task.
+
+For more information, see the following commit:
+
+- [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=fcee0b4ff1d8f1039871d46932a0b1bb72b5687f][fcee0b4ff1d8]] "Reimplement `outline-occur' using Xref and match Outline headings"
+
 * Outline-occur is now part of GNU Emacs core
 :PROPERTIES:
 :CUSTOM_ID: 20260805-outline-occur-is-now-part-of-gnu-emacs-core

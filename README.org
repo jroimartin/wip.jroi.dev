@@ -47,4 +47,4 @@ Eval the following Emacs Lisp snippet to build the site.
 #+end_src
 
 #+results:
-: Last update: Wed Aug  5 16:09:45 2026
+: Last update: Mon Aug 24 13:12:38 2026
