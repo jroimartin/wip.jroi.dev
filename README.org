@@ -34,12 +34,14 @@ Eval the following Emacs Lisp snippet to build the site.
                                      :publishing-function org-publish-attachment
                                      :recursive t)
                                     ("feeds"
-                                     :base-directory "./feeds"
-                                     :base-extension "org"
+                                     :base-directory "./src"
                                      :publishing-directory "./www"
-                                     :publishing-function (org-rss-publish-to-rss org-html-publish-to-html)
+                                     :publishing-function org-rss-publish-to-rss
+                                     :exclude ".*"
+                                     :include ("updates.org")
                                      :html-link-home ,html-link-home
-                                     :html-head ,html-head)))
+                                     :html-head ,html-head
+                                     :html-link-use-abs-url t)))
        (org-export-use-babel nil)
        (geiser-mode-auto-p nil))
   (org-publish-all)
@@ -47,4 +49,4 @@ Eval the following Emacs Lisp snippet to build the site.
 #+end_src
 
 #+results:
-: Last update: Mon Aug 24 13:12:38 2026
+: Last update: Mon Aug 24 13:22:21 2026
