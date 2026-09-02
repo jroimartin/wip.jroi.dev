@@ -28,7 +28,8 @@ it easy to jump around the relevant sections.
 * Usage
 
 There is a single entry point, which is the ~outline-xref~ command.
-I bind it to =M-s M-o= for easy access from any buffer:
+I bind it to =M-s M-o= for easy access from any buffer (assuming the
+default =M-s= binding for ~search-map~):
 
 #+begin_src emacs-lisp
 (keymap-set search-map "M-o" #'outline-xref)
