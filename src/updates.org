@@ -6,6 +6,18 @@
 #+description: My forever-work-in-progress notes
 #+rss_image_url: https://wip.jroi.dev/images/wip.png
 
+* New publication about "Semantic Linefeeds"
+:PROPERTIES:
+:CUSTOM_ID: 20260902-new-publication-about--semantic-linefeeds-
+:ID:       a7230aaf-ed0f-4a3c-8583-1dc4a46c094b
+:PUBDATE:  2026-09-02 Wed 16:09
+:END:
+
+/2026-09-02/
+
+I've just published a short document about semantic linefeeds and how
+they are implemented in GNU Emacs.  It is available at [[file:semlf.org]].
+
 * Outline-occur is now called Outline-xref
 :PROPERTIES:
 :CUSTOM_ID: 20260824-outline-occur-is-now-called-outline-xref

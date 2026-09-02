@@ -14,8 +14,8 @@
   <link>https://wip.jroi.dev/</link>
   <description><![CDATA[My forever-work-in-progress notes]]></description>
   <language>en</language>
-  <pubDate>Mon, 24 Aug 2026 13:36:58 +0200</pubDate>
-  <lastBuildDate>Mon, 24 Aug 2026 13:36:58 +0200</lastBuildDate>
+  <pubDate>Wed, 02 Sep 2026 16:09:36 +0200</pubDate>
+  <lastBuildDate>Wed, 02 Sep 2026 16:09:36 +0200</lastBuildDate>
   <generator>Emacs 32.0 Org-mode 9.8.7</generator>
   <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
   <image>
@@ -24,6 +24,23 @@
     <link>https://wip.jroi.dev/</link>
   </image>
 
+  <item>
+    <title>New publication about "Semantic Linefeeds"</title>
+    <link>https://wip.jroi.dev/updates.html#20260902-new-publication-about--semantic-linefeeds-</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/updates.html#20260902-new-publication-about--semantic-linefeeds-</guid>
+    <pubDate>Wed, 02 Sep 2026 16:09:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2026-09-02</i>
+</p>
+
+<p>
+I've just published a short document about semantic linefeeds and how
+they are implemented in GNU Emacs.  It is available at <a href="https://wip.jroi.dev/semlf.html">https://wip.jroi.dev/semlf.html</a>.
+</p>
+]]></description>
+  </item>
   <item>
     <title>Outline-occur is now called Outline-xref</title>
     <link>https://wip.jroi.dev/updates.html#20260824-outline-occur-is-now-called-outline-xref</link>
