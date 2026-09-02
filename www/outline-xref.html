@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-02 Wed 15:08 -->
+<!-- 2026-09-02 Wed 15:07 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Map Scancodes To Keycodes</title>
+<title>Outline-xref</title>
 <meta name="author" content="Roi Martin" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -202,149 +202,135 @@
  |
  <a accesskey="H" href="https://wip.jroi.dev/"> HOME </a>
 </div><div id="content" class="content">
-<h1 class="title">Map Scancodes To Keycodes</h1>
-<div id="outline-container-org6f2c413" class="outline-2">
-<h2 id="org6f2c413">Scancodes vs keycodes</h2>
-<div class="outline-text-2" id="text-org6f2c413">
+<h1 class="title">Outline-xref</h1>
+<p>
+Outline-xref&mdash;initially named Outline-occur&mdash;is a GNU Emacs feature
+that allows you to navigate the current buffer's outline using Xref.
+As the name suggests, Outline-xref uses two pieces of the built-in GNU
+Emacs infrastructure to provide this functionality&mdash;Outline and Xref.
+</p>
+
+<p>
+Outline is specialized in editing outlines, which are defined by
+"headings".
+For instance, headlines in an Org document, function and variable
+declarations in source code, etc.
+Outline integrates with several major modes that customize what are
+headings and how they can be found in a buffer.
+</p>
+
+<p>
+Xref provides generic infrastructure for cross-referencing commands.
+It can be used to present a variety of results like search matches,
+references to identifiers, etc.
+</p>
+
+<p>
+The idea behind Outline-xref is to leverage Outline to identify the
+headings in a given buffer and use Xref to display them.
+That provides a nice quick overview of the working document and makes
+it easy to jump around the relevant sections.
+</p>
+<div id="outline-container-orgc610153" class="outline-2">
+<h2 id="orgc610153">Usage</h2>
+<div class="outline-text-2" id="text-orgc610153">
+<p>
+There is a single entry point, which is the <code>outline-xref</code> command.
+I bind it to <code>M-s M-o</code> for easy access from any buffer:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-emacs-lisp"><code>(keymap-set search-map <span style="color: #8b2252;">"M-o"</span> #'outline-xref)
+</code></pre>
+</div>
+
+<p>
+When you execute this command, it will display an Xref buffer with the
+outline of the current buffer.
+The following screenshot shows it in action:
+</p>
+
+
+<div id="org8de4517" class="figure">
+<p><img src="assets/outline-xref/outline-xref.png" alt="outline-xref.png" />
+</p>
+</div>
+
+<p>
+In general, it just works and you don't have to configure anything.
+This is because major modes usually take care of setting the relevant
+outline variables.
+However, if you have specific needs, you can customize the
+<code>outline-search-function</code> and <code>outline-regexp</code> variables.
+Remember to read their corresponding doc strings for more information.
+</p>
+</div>
+</div>
+<div id="outline-container-org31fb2d1" class="outline-2">
+<h2 id="org31fb2d1">History</h2>
+<div class="outline-text-2" id="text-org31fb2d1">
+</div>
+<div id="outline-container-org3aed38c" class="outline-3">
+<h3 id="org3aed38c">2026-07-15</h3>
+<div class="outline-text-3" id="text-org3aed38c">
+<p>
+Outline-xref starts as a tiny package named Outline-occur.
+It is still available in the following read-only source code
+repository:
+</p>
+
 <ul class="org-ul">
-<li><b>Scancode</b>: the keyboard sends a scancode to the computer.</li>
-<li><b>Keycode</b>: the kernel maps the scancode to a keycode.</li>
+<li><a href="https://github.com/jroimartin/outline-occur">https://github.com/jroimartin/outline-occur</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgd65baec" class="outline-2">
-<h2 id="orgd65baec">Mapping</h2>
-<div class="outline-text-2" id="text-orgd65baec">
-</div>
-<div id="outline-container-orgeff80a9" class="outline-3">
-<h3 id="orgeff80a9">Get the scancodes</h3>
-<div class="outline-text-3" id="text-orgeff80a9">
+<div id="outline-container-org5175695" class="outline-3">
+<h3 id="org5175695">2026-08-04</h3>
+<div class="outline-text-3" id="text-org5175695">
 <p>
-Run the following command as root:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code>evtest
-</code></pre>
-</div>
-
-<p>
-And select the input device that corresponds to the keyboard.  Then,
-press the keys that you want to map.  For instance,
-</p>
-
-<pre class="example" id="org977e9f7">
-Event: time 1753187771.746790, type 4 (EV_MSC), code 4 (MSC_SCAN), value 70004
-Event: time 1753187771.746790, type 1 (EV_KEY), code 30 (KEY_A), value 
-</pre>
-
-<p>
-The previous output shows that the scancode for the <code>a</code> key is
-<code>70004</code>.
-</p>
-</div>
-</div>
-<div id="outline-container-orgce8bf84" class="outline-3">
-<h3 id="orgce8bf84">Get the device modalias</h3>
-<div class="outline-text-3" id="text-orgce8bf84">
-<p>
-If the selected device is, for instance, <code>/dev/input/event6</code>, then get
-the modalias with the following command:
-</p>
-
-<div class="org-src-container">
-<pre class="src src-shell"><code>cat /sys/class/input/event6/device/modalias
-</code></pre>
-</div>
-
-<p>
-The output should be similar to this:
-</p>
-
-<pre class="example" id="org9ff77a3">
-input:b0003v0853p0146e0111-e0,1,4,11,...
-</pre>
-
-<p>
-We will need it to create the <code>hwdb</code> file.
-</p>
-</div>
-</div>
-<div id="outline-container-org60fc42a" class="outline-3">
-<h3 id="org60fc42a">Create a hwdb file</h3>
-<div class="outline-text-3" id="text-org60fc42a">
-<p>
-Create a file named <code>/etc/udev/hwdb.d/99-keyboard.hwdb</code>.  The content
-for the previous example should be similar to this:
-</p>
-
-<pre class="example" id="org4d25b79">
-# Topre REALFORCE 87 US
-# Input device ID: bus 0x03 vendor 0x853 product 0x146 version 0x111
-evdev:input:b0003v0853p0146e0111*
- KEYBOARD_KEY_700e0=leftmeta  # leftctrl  -&gt; leftmeta
- KEYBOARD_KEY_700e3=leftalt   # leftmeta  -&gt; leftalt
- KEYBOARD_KEY_700e2=leftctrl  # leftalt   -&gt; leftctrl
- KEYBOARD_KEY_700e6=rightctrl # rightalt  -&gt; rightctrl
- KEYBOARD_KEY_700e7=rightalt  # rightmeta -&gt; rightalt
- KEYBOARD_KEY_700e4=rightmeta # rightctrl -&gt; rightmeta
-</pre>
-
-<p>
-It is a list of records with the following format:
-</p>
-
-<pre class="example" id="org164510e">
-&lt;modalias pattern&gt;
- KEYBOARD_KEY_&lt;scancode&gt;=&lt;keycode&gt;
- ...
-</pre>
-
-<p>
-The scancode should be expressed in hex lowercase.  The keycodes are
-retrieved and normalized from the <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/input-event-codes.h?id=67890d579402804b1d32b3280d9860073542528e">kernel input API header</a>. Keycodes
-are either <code>KEY_*</code> defines in lowercase with the <code>key_</code> prefix
-optionally removed or <code>BTN_</code> defines in lowercase with <code>btn_</code>
-preserved.
+After announcing the Outline-occur package in the emacs-devel mailing
+list, we decided that it made sense to integrate it into GNU Emacs
+core.
 </p>
 
 <p>
-See <code>hwdb(7)</code> and <a href="https://github.com/systemd/systemd/blob/72775b7c89aa418ec3f55fd5682f841f3fc6e6d9/hwdb.d/60-keyboard.hwdb">60-keyboard.hwdb</a> for more details.
-</p>
-</div>
-</div>
-<div id="outline-container-org0cc325d" class="outline-3">
-<h3 id="org0cc325d">Update the binary hwdb</h3>
-<div class="outline-text-3" id="text-org0cc325d">
-<p>
-Run the following command as root:
+If you would like to dig deeper, see the following commits:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-shell"><code>systemd-hwdb update
-</code></pre>
+<ul class="org-ul">
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=8a88f3ed5aeece4a7c8edbebc83ed52479fbbfab">8a88f3ed5aee</a> "Add `outline-occur' command and `display-buffer-default-alist' variable"</li>
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=9e6f03993b824b69d7946b0e23850383d8cd3a72">9e6f03993b82</a> "* lisp/outline.el (outline-occur): Autoload."</li>
+</ul>
 </div>
 </div>
-</div>
-<div id="outline-container-org3066347" class="outline-3">
-<h3 id="org3066347">Reload the binary hwdb</h3>
-<div class="outline-text-3" id="text-org3066347">
+<div id="outline-container-orge1a97d0" class="outline-3">
+<h3 id="orge1a97d0">2026-08-11</h3>
+<div class="outline-text-3" id="text-orge1a97d0">
 <p>
-Run the following command as root:
+Outline-occur is reimplemented using Xref and renamed to Outline-xref.
+The reason is that Occur is designed around regular expressions, while
+Outline supports both regular expressions and custom search functions
+to find outline headings.
+In order to provide a navigable outline that matches the headings
+identified by Outline, both search strategies must be supported and
+Xref is better suited for this task.
 </p>
 
-<div class="org-src-container">
-<pre class="src src-shell"><code>udevadm trigger
-</code></pre>
-</div>
+<p>
+If you are curious about the details, see the following commit:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=fcee0b4ff1d8f1039871d46932a0b1bb72b5687f">fcee0b4ff1d8</a> "Reimplement `outline-occur' using Xref and match Outline headings"</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2025-07-22 Tue 00:00</p>
+<p class="date">Date: 2026-08-31 Mon 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-09-02 Wed 15:08</p>
+<p class="date">Created: 2026-09-02 Wed 15:07</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

@@ -1,4 +1,4 @@
-#+title: Map scancodes to keycodes
+#+title: Map Scancodes To Keycodes
 #+author: Roi Martin
 #+date: <2025-07-22 Tue>
 #+options: toc:nil num:nil
