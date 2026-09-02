@@ -6,6 +6,19 @@
 #+description: My forever-work-in-progress notes
 #+rss_image_url: https://wip.jroi.dev/images/wip.png
 
+* ERT Erts-file Test Results
+:PROPERTIES:
+:CUSTOM_ID: 20260902-ert-erts-file-test-results
+:ID:       452ee751-ef7f-40f6-b5a6-b8d8e02d1dcb
+:PUBDATE:  2026-09-02 Wed 19:18
+:END:
+
+/2026-09-02/
+
+I've just published a document about a "new" ERT feature that makes it
+easier to work with erts files.  It is available at
+[[file:ert-erts-file-test-results.org]].
+
 * New publication about "Semantic Linefeeds"
 :PROPERTIES:
 :CUSTOM_ID: 20260902-new-publication-about--semantic-linefeeds-
