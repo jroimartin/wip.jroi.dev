@@ -26,6 +26,7 @@ GitHub repository.
 
 - [[https://elpa.nongnu.org/nongnu/radio.html][Radio]] (NonGNU ELPA)
 - [[file:semlf.org][Semantic Linefeed Filling]] (GNU Emacs core, since 31.1)
+- [[file:ert-erts-file-test-results.org][ERT Erts-file Test Results]] (GNU Emacs core, since 31.1)
 - [[file:outline-xref.org][Outline-xref]] (GNU Emacs core, since 32.1)
 
 * Quick Guides
