@@ -1,0 +1,93 @@
+#+title: Semantic Linefeed Filling
+#+author: Roi Martin
+#+date: <2026-09-02 Wed>
+#+options: num:nil toc:nil
+#+html_link_up: /
+
+The term "semantic linefeeds" or "semantic line breaks" refers to a
+set of conventions for using insensitive vertical whitespace to
+structure prose along semantic boundaries.
+
+GNU Emacs provides this functionality through two commands:
+~fill-paragraph-semlf~ and ~fill-region-as-paragraph-semlf~.
+
+The command ~fill-paragraph-semlf~ fills a paragraph of text using
+semantic linefeeds, whereby a newline is inserted after every
+sentence.
+
+The command ~fill-region-as-paragraph-semlf~ fills a region of text
+using semantic linefeeds as if the region were a single paragraph.
+Users can set the variable ~fill-region-as-paragraph-function~ to the
+value ~fill-region-as-paragraph-semlf~ to enable functions like =M-q=
+(~fill-paragraph~) and ~fill-region~ to fill text using semantic
+linefeeds.
+
+Semantic linefeeds are usually used with markup languages that are not
+sensitive to newlines when exported to a different format (e.g. Org,
+Texinfo, Markdown).
+
+Let's say that we have the following paragraph in an Org document:
+
+#+begin_example
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.
+#+end_example
+
+After filling the paragraph using semantic linefeeds, the result is:
+
+#+begin_example
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor.
+Incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+ut aliquip ex ea commodo consequat.
+#+end_example
+
+However, when exported, in both cases the result is:
+
+#+begin_example
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.
+#+end_example
+
+So, what are the benefits?
+
+One benefit is that semantic linefeeds are "diff friendly".
+For example,
+
+#+begin_example
+-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+-tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+-commodo consequat.
++Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
++eiusmod tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim
++ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
++aliquip ex ea commodo consequat.
+#+end_example
+
+Versus,
+
+#+begin_example
+-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+-tempor.
++Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
++eiusmod tempor.
+ Incididunt ut labore et dolore magna aliqua.
+ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+ ut aliquip ex ea commodo consequat.
+#+end_example
+
+Semantic linefeeds make easier to spot that the word =XXXXX= was added
+in the first line.
+
+Also, they are convenient during code reviews.
+Shorter diffs and separating ideas with newlines allow to be more
+accurate when adding comments.
+
+For more details about semantic linefeeds, see [[https://sembr.org/]]
+and [[https://rhodesmill.org/brandon/2012/one-sentence-per-line/]].

@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-02 Wed 15:54 -->
+<!-- 2026-09-02 Wed 16:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Work In Progress</title>
+<title>Semantic Linefeed Filling</title>
 <meta name="author" content="Roi Martin" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -195,7 +195,6 @@
   .org-svg { }
 </style>
 <link rel="stylesheet" type="text/css" href="/css/style.css" />
-<link rel="me" href="https://fosstodon.org/@jroimartin" />
 </head>
 <body>
 <div id="org-div-home-and-up">
@@ -203,85 +202,127 @@
  |
  <a accesskey="H" href="https://wip.jroi.dev/"> HOME </a>
 </div><div id="content" class="content">
-<h1 class="title">Work In Progress
-<br />
-<span class="subtitle">My forever-work-in-progress notes</span>
-</h1>
+<h1 class="title">Semantic Linefeed Filling</h1>
 <p>
-In this site I publish the notes I take as part of my learning
-process.  I usually jump from one project to another and eventually
-come back to a previous one, so all the notes here are
-work-in-progress and can change.  If you want to follow my work, you
-can subscribe to this <a href="https://wip.jroi.dev/updates.xml">RSS feed</a> or watch my <a href="https://github.com/jroimartin/wip.jroi.dev">jroimartin/wip.jroi.dev</a>
-GitHub repository.
+The term "semantic linefeeds" or "semantic line breaks" refers to a
+set of conventions for using insensitive vertical whitespace to
+structure prose along semantic boundaries.
 </p>
-<div id="outline-container-org2ea265a" class="outline-2">
-<h2 id="org2ea265a">Programming</h2>
-<div class="outline-text-2" id="text-org2ea265a">
-<ul class="org-ul">
-<li><a href="maxwell-equations.html">Maxwell’s Equations of Software</a></li>
-<li><a href="relational-programming.html">Relational Programming</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org78f99d5" class="outline-2">
-<h2 id="org78f99d5">GNU Emacs</h2>
-<div class="outline-text-2" id="text-org78f99d5">
-<ul class="org-ul">
-<li><a href="build-emacs.html">Building GNU Emacs</a></li>
-</ul>
-</div>
-<div id="outline-container-orgb153d74" class="outline-3">
-<h3 id="orgb153d74">Contributions</h3>
-<div class="outline-text-3" id="text-orgb153d74">
-<ul class="org-ul">
-<li><a href="https://elpa.nongnu.org/nongnu/radio.html">Radio</a> (NonGNU ELPA)</li>
-<li><a href="semlf.html">Semantic Linefeed Filling</a> (GNU Emacs core, since 31.1)</li>
-<li><a href="outline-xref.html">Outline-xref</a> (GNU Emacs core, since 32.1)</li>
-</ul>
-</div>
-</div>
-</div>
-<div id="outline-container-org49457f7" class="outline-2">
-<h2 id="org49457f7">Quick Guides</h2>
-<div class="outline-text-2" id="text-org49457f7">
-<ul class="org-ul">
-<li><a href="luks.html">Disk Encryption With LUKS</a></li>
-<li><a href="fix-rust-analyzer-test-error.html">Fix rust-analyzer error "rustc [E0463]: can't find crate for `test`"</a></li>
-<li><a href="map-scancodes-keycodes.html">Map Scancodes To Keycodes</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org84e475a" class="outline-2">
-<h2 id="org84e475a">Misc</h2>
-<div class="outline-text-2" id="text-org84e475a">
-<ul class="org-ul">
-<li><a href="home-n-links.html">/home/n/links</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-orge4e05ba" class="outline-2">
-<h2 id="orge4e05ba">Feeds</h2>
-<div class="outline-text-2" id="text-orge4e05ba">
-<ul class="org-ul">
-<li><a href="updates.html">Updates</a> (<a href="https://wip.jroi.dev/updates.xml">rss</a>)</li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org48ebeef" class="outline-2">
-<h2 id="org48ebeef">About</h2>
-<div class="outline-text-2" id="text-org48ebeef">
-<ul class="org-ul">
-<li><a href="about.html">About This Site</a></li>
-<li><a href="license.html">LICENSE</a></li>
-</ul>
-</div>
-</div>
+
+<p>
+GNU Emacs provides this functionality through two commands:
+<code>fill-paragraph-semlf</code> and <code>fill-region-as-paragraph-semlf</code>.
+</p>
+
+<p>
+The command <code>fill-paragraph-semlf</code> fills a paragraph of text using
+semantic linefeeds, whereby a newline is inserted after every
+sentence.
+</p>
+
+<p>
+The command <code>fill-region-as-paragraph-semlf</code> fills a region of text
+using semantic linefeeds as if the region were a single paragraph.
+Users can set the variable <code>fill-region-as-paragraph-function</code> to the
+value <code>fill-region-as-paragraph-semlf</code> to enable functions like <code>M-q</code>
+(<code>fill-paragraph</code>) and <code>fill-region</code> to fill text using semantic
+linefeeds.
+</p>
+
+<p>
+Semantic linefeeds are usually used with markup languages that are not
+sensitive to newlines when exported to a different format (e.g. Org,
+Texinfo, Markdown).
+</p>
+
+<p>
+Let's say that we have the following paragraph in an Org document:
+</p>
+
+<pre class="example" id="org7cd5021">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.
+</pre>
+
+<p>
+After filling the paragraph using semantic linefeeds, the result is:
+</p>
+
+<pre class="example" id="org04425a4">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor.
+Incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+ut aliquip ex ea commodo consequat.
+</pre>
+
+<p>
+However, when exported, in both cases the result is:
+</p>
+
+<pre class="example" id="org9ef5200">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat.
+</pre>
+
+<p>
+So, what are the benefits?
+</p>
+
+<p>
+One benefit is that semantic linefeeds are "diff friendly".
+For example,
+</p>
+
+<pre class="example" id="org591e444">
+-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+-tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+-commodo consequat.
++Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
++eiusmod tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim
++ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
++aliquip ex ea commodo consequat.
+</pre>
+
+<p>
+Versus,
+</p>
+
+<pre class="example" id="org8baf4cd">
+-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+-tempor.
++Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
++eiusmod tempor.
+ Incididunt ut labore et dolore magna aliqua.
+ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+ ut aliquip ex ea commodo consequat.
+</pre>
+
+<p>
+Semantic linefeeds make easier to spot that the word <code>XXXXX</code> was added
+in the first line.
+</p>
+
+<p>
+Also, they are convenient during code reviews.
+Shorter diffs and separating ideas with newlines allow to be more
+accurate when adding comments.
+</p>
+
+<p>
+For more details about semantic linefeeds, see <a href="https://sembr.org/">https://sembr.org/</a>
+and <a href="https://rhodesmill.org/brandon/2012/one-sentence-per-line/">https://rhodesmill.org/brandon/2012/one-sentence-per-line/</a>.
+</p>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2024-05-28 Tue 00:00</p>
+<p class="date">Date: 2026-09-02 Wed 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-09-02 Wed 15:54</p>
+<p class="date">Created: 2026-09-02 Wed 16:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
