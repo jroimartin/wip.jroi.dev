@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-02 Wed 17:44 -->
+<!-- 2026-09-02 Wed 16:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Semantic Linefeed Filling</title>
@@ -239,7 +239,7 @@ Texinfo, Markdown).
 Let's say that we have the following paragraph in an Org document:
 </p>
 
-<pre class="example" id="org3a54814">
+<pre class="example" id="org7cd5021">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -250,7 +250,7 @@ commodo consequat.
 After filling the paragraph using semantic linefeeds, the result is:
 </p>
 
-<pre class="example" id="orgb28aace">
+<pre class="example" id="org04425a4">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor.
 Incididunt ut labore et dolore magna aliqua.
@@ -262,7 +262,7 @@ ut aliquip ex ea commodo consequat.
 However, when exported, in both cases the result is:
 </p>
 
-<pre class="example" id="org6315e30">
+<pre class="example" id="org9ef5200">
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
 veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -278,32 +278,30 @@ One benefit is that semantic linefeeds are "diff friendly".
 For example,
 </p>
 
-<div class="org-src-container">
-<pre class="src src-diff"><code><span style="color: #aa2222; background-color: #ffeeee;">-</span><span style="background-color: #ffeeee;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-</span><span style="color: #aa2222; background-color: #ffeeee;">-</span><span style="background-color: #ffeeee;">tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
-</span><span style="color: #aa2222; background-color: #ffeeee;">-</span><span style="background-color: #ffeeee;">veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-</span><span style="color: #aa2222; background-color: #ffeeee;">-</span><span style="background-color: #ffeeee;">commodo consequat.
-</span><span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
-</span><span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">eiusmod tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim
-</span><span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-</span>+aliquip ex ea commodo consequat.
-</code></pre>
-</div>
+<pre class="example" id="org591e444">
+-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+-tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
+-veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+-commodo consequat.
++Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
++eiusmod tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim
++ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
++aliquip ex ea commodo consequat.
+</pre>
 
 <p>
 Versus,
 </p>
 
-<div class="org-src-container">
-<pre class="src src-diff"><code><span style="color: #aa2222; background-color: #ffeeee;">-</span><span style="background-color: #ffeeee;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-</span><span style="color: #aa2222; background-color: #ffeeee;">-</span><span style="background-color: #ffeeee;">tempor.
-</span><span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
-</span><span style="color: #22aa22; background-color: #eeffee;">+</span><span style="background-color: #eeffee;">eiusmod tempor.
-</span> Incididunt ut labore et dolore magna aliqua.
+<pre class="example" id="org8baf4cd">
+-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+-tempor.
++Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
++eiusmod tempor.
+ Incididunt ut labore et dolore magna aliqua.
  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
  ut aliquip ex ea commodo consequat.
-</code></pre>
-</div>
+</pre>
 
 <p>
 Semantic linefeeds make easier to spot that the word <code>XXXXX</code> was added
@@ -324,7 +322,7 @@ and <a href="https://rhodesmill.org/brandon/2012/one-sentence-per-line/">https:/
 <div id="postamble" class="status">
 <p class="date">Date: 2026-09-02 Wed 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-09-02 Wed 17:44</p>
+<p class="date">Created: 2026-09-02 Wed 16:01</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

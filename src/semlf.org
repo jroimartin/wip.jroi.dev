@@ -59,7 +59,7 @@ So, what are the benefits?
 One benefit is that semantic linefeeds are "diff friendly".
 For example,
 
-#+begin_src diff
+#+begin_example
 -Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 -tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim ad minim
 -veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -68,11 +68,11 @@ For example,
 +eiusmod tempor.  Incididunt ut labore et dolore magna aliqua.  Ut enim
 +ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
 +aliquip ex ea commodo consequat.
-#+end_src
+#+end_example
 
 Versus,
 
-#+begin_src diff
+#+begin_example
 -Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
 -tempor.
 +Lorem ipsum dolor sit amet, XXXXX consectetur adipiscing elit, sed do
@@ -80,7 +80,7 @@ Versus,
  Incididunt ut labore et dolore magna aliqua.
  Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
  ut aliquip ex ea commodo consequat.
-#+end_src
+#+end_example
 
 Semantic linefeeds make easier to spot that the word =XXXXX= was added
 in the first line.
