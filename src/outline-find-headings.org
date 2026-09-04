@@ -1,13 +1,14 @@
-#+title: Outline-xref
+#+title: Outline-find-headings
 #+author: Roi Martin
-#+date: <2026-08-31 Mon>
+#+date: <2026-09-08 Tue>
 #+options: num:nil toc:nil
 #+html_link_up: /
 
-Outline-xref---initially named Outline-occur---is a GNU Emacs feature
-that allows you to navigate the current buffer's outline using Xref.
-As the name suggests, Outline-xref uses two pieces of the built-in GNU
-Emacs infrastructure to provide this functionality---Outline and Xref.
+Outline-find-headings---initially named outline-occur and later
+outline-xref---is a GNU Emacs feature that allows you to navigate the
+current buffer's outline using Xref.
+Outline-find-headings uses two pieces of the built-in GNU Emacs
+infrastructure to provide this functionality: Outline and Xref.
 
 Outline is specialized in editing outlines, which are defined by
 "headings".
@@ -20,26 +21,27 @@ Xref provides generic infrastructure for cross-referencing commands.
 It can be used to present a variety of results like search matches,
 references to identifiers, etc.
 
-The idea behind Outline-xref is to leverage Outline to identify the
-headings in a given buffer and use Xref to display them.
+The idea behind outline-find-headings is to leverage Outline to
+identify the headings in a given buffer and use Xref to display them.
 That provides a nice quick overview of the working document and makes
 it easy to jump around the relevant sections.
 
 * Usage
 
-There is a single entry point, which is the ~outline-xref~ command.
+There is a single entry point, which is the ~outline-find-headings~
+command.
 I bind it to =M-s M-o= for easy access from any buffer (assuming the
 default =M-s= binding for ~search-map~):
 
 #+begin_src emacs-lisp
-(keymap-set search-map "M-o" #'outline-xref)
+(keymap-set search-map "M-o" #'outline-find-headings)
 #+end_src
 
 When you execute this command, it will display an Xref buffer with the
 outline of the current buffer.
 The following screenshot shows it in action:
 
-[[file:assets/outline-xref/outline-xref.png]]
+[[file:assets/outline-find-headings/outline-find-headings.png]]
 
 In general, it just works and you don't have to configure anything.
 This is because major modes usually take care of setting the relevant
@@ -52,7 +54,7 @@ Remember to read their corresponding doc strings for more information.
 
 ** 2026-07-15
 
-Outline-xref starts as a tiny package named Outline-occur.
+Outline-find-headings starts as a tiny package named outline-occur.
 It is still available in the following read-only source code
 repository:
 
@@ -60,7 +62,7 @@ repository:
 
 ** 2026-08-04
 
-After announcing the Outline-occur package in the emacs-devel mailing
+After announcing the outline-occur package in the emacs-devel mailing
 list, we decided that it made sense to integrate it into GNU Emacs
 core.
 
@@ -71,7 +73,7 @@ If you would like to dig deeper, see the following commits:
 
 ** 2026-08-11
 
-Outline-occur is reimplemented using Xref and renamed to Outline-xref.
+Outline-occur is reimplemented using Xref and renamed to outline-xref.
 The reason is that Occur is designed around regular expressions, while
 Outline supports both regular expressions and custom search functions
 to find outline headings.
@@ -82,3 +84,15 @@ Xref is better suited for this task.
 If you are curious about the details, see the following commit:
 
 - [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=fcee0b4ff1d8f1039871d46932a0b1bb72b5687f][fcee0b4ff1d8]] "Reimplement `outline-occur' using Xref and match Outline headings"
+
+** 2026-09-08
+
+Outline-xref is renamed to outline-find-headings.
+The new name avoids exposing the command's implementation details and
+makes it less confusing for users who associate Xref strictly with
+cross-references, as outline-find-headings uses Xref as a user
+interface.
+
+See the following commit for more information:
+
+- [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=e33b54d938668dfc1889127d7452524c92cbcd5d][e33b54d93866]] "Rename `outline-xref' command to `outline-find-headings'"

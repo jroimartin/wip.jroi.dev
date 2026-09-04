@@ -6,6 +6,27 @@
 #+description: My forever-work-in-progress notes
 #+rss_image_url: https://wip.jroi.dev/images/wip.png
 
+* Outline-xref renamed to outline-find-headings
+:PROPERTIES:
+:CUSTOM_ID: 20260908-outline-xref-renamed-to-outline-find-headings
+:ID:       fb27c721-b655-49c7-8a0b-54f7a6724626
+:PUBDATE:  2026-09-09 Wed 15:58
+:END:
+
+/2026-09-08/
+
+The new name avoids exposing the command's implementation details and
+makes it less confusing for users who associate Xref strictly with
+cross-references, as outline-find-headings uses Xref as a user
+interface.
+
+I also wrote a bit about this feature in [[file:outline-find-headings.org]].
+
+If you are curious about it, here is the commit that implemented this
+change:
+
+- [[https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=e33b54d938668dfc1889127d7452524c92cbcd5d][e33b54d93866]] "Rename `outline-xref' command to `outline-find-headings'"
+
 * ERT Erts-file Test Results
 :PROPERTIES:
 :CUSTOM_ID: 20260902-ert-erts-file-test-results

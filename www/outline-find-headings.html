@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-09-02 Wed 15:26 -->
+<!-- 2026-09-09 Wed 15:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Outline-xref</title>
+<title>Outline-find-headings</title>
 <meta name="author" content="Roi Martin" />
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
@@ -202,12 +202,13 @@
  |
  <a accesskey="H" href="https://wip.jroi.dev/"> HOME </a>
 </div><div id="content" class="content">
-<h1 class="title">Outline-xref</h1>
+<h1 class="title">Outline-find-headings</h1>
 <p>
-Outline-xref&mdash;initially named Outline-occur&mdash;is a GNU Emacs feature
-that allows you to navigate the current buffer's outline using Xref.
-As the name suggests, Outline-xref uses two pieces of the built-in GNU
-Emacs infrastructure to provide this functionality&mdash;Outline and Xref.
+Outline-find-headings&mdash;initially named outline-occur and later
+outline-xref&mdash;is a GNU Emacs feature that allows you to navigate the
+current buffer's outline using Xref.
+Outline-find-headings uses two pieces of the built-in GNU Emacs
+infrastructure to provide this functionality: Outline and Xref.
 </p>
 
 <p>
@@ -226,22 +227,23 @@ references to identifiers, etc.
 </p>
 
 <p>
-The idea behind Outline-xref is to leverage Outline to identify the
-headings in a given buffer and use Xref to display them.
+The idea behind outline-find-headings is to leverage Outline to
+identify the headings in a given buffer and use Xref to display them.
 That provides a nice quick overview of the working document and makes
 it easy to jump around the relevant sections.
 </p>
-<div id="outline-container-org245ee31" class="outline-2">
-<h2 id="org245ee31">Usage</h2>
-<div class="outline-text-2" id="text-org245ee31">
+<div id="outline-container-org0f79003" class="outline-2">
+<h2 id="org0f79003">Usage</h2>
+<div class="outline-text-2" id="text-org0f79003">
 <p>
-There is a single entry point, which is the <code>outline-xref</code> command.
+There is a single entry point, which is the <code>outline-find-headings</code>
+command.
 I bind it to <code>M-s M-o</code> for easy access from any buffer (assuming the
 default <code>M-s</code> binding for <code>search-map</code>):
 </p>
 
 <div class="org-src-container">
-<pre class="src src-emacs-lisp"><code>(keymap-set search-map <span style="color: #8b2252;">"M-o"</span> #'outline-xref)
+<pre class="src src-emacs-lisp"><code>(keymap-set search-map <span style="color: #8b2252;">"M-o"</span> #'outline-find-headings)
 </code></pre>
 </div>
 
@@ -252,8 +254,8 @@ The following screenshot shows it in action:
 </p>
 
 
-<div id="org79e84a9" class="figure">
-<p><img src="assets/outline-xref/outline-xref.png" alt="outline-xref.png" />
+<div id="org450e985" class="figure">
+<p><img src="assets/outline-find-headings/outline-find-headings.png" alt="outline-find-headings.png" />
 </p>
 </div>
 
@@ -267,15 +269,15 @@ Remember to read their corresponding doc strings for more information.
 </p>
 </div>
 </div>
-<div id="outline-container-org83185fc" class="outline-2">
-<h2 id="org83185fc">History</h2>
-<div class="outline-text-2" id="text-org83185fc">
+<div id="outline-container-org293bd80" class="outline-2">
+<h2 id="org293bd80">History</h2>
+<div class="outline-text-2" id="text-org293bd80">
 </div>
-<div id="outline-container-org5c73a32" class="outline-3">
-<h3 id="org5c73a32">2026-07-15</h3>
-<div class="outline-text-3" id="text-org5c73a32">
+<div id="outline-container-org4a0aea6" class="outline-3">
+<h3 id="org4a0aea6">2026-07-15</h3>
+<div class="outline-text-3" id="text-org4a0aea6">
 <p>
-Outline-xref starts as a tiny package named Outline-occur.
+Outline-find-headings starts as a tiny package named outline-occur.
 It is still available in the following read-only source code
 repository:
 </p>
@@ -285,11 +287,11 @@ repository:
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf713765" class="outline-3">
-<h3 id="orgf713765">2026-08-04</h3>
-<div class="outline-text-3" id="text-orgf713765">
+<div id="outline-container-orgf4f8050" class="outline-3">
+<h3 id="orgf4f8050">2026-08-04</h3>
+<div class="outline-text-3" id="text-orgf4f8050">
 <p>
-After announcing the Outline-occur package in the emacs-devel mailing
+After announcing the outline-occur package in the emacs-devel mailing
 list, we decided that it made sense to integrate it into GNU Emacs
 core.
 </p>
@@ -304,11 +306,11 @@ If you would like to dig deeper, see the following commits:
 </ul>
 </div>
 </div>
-<div id="outline-container-org01fa921" class="outline-3">
-<h3 id="org01fa921">2026-08-11</h3>
-<div class="outline-text-3" id="text-org01fa921">
+<div id="outline-container-org64ab9e6" class="outline-3">
+<h3 id="org64ab9e6">2026-08-11</h3>
+<div class="outline-text-3" id="text-org64ab9e6">
 <p>
-Outline-occur is reimplemented using Xref and renamed to Outline-xref.
+Outline-occur is reimplemented using Xref and renamed to outline-xref.
 The reason is that Occur is designed around regular expressions, while
 Outline supports both regular expressions and custom search functions
 to find outline headings.
@@ -326,12 +328,32 @@ If you are curious about the details, see the following commit:
 </ul>
 </div>
 </div>
+<div id="outline-container-orge094de7" class="outline-3">
+<h3 id="orge094de7">2026-09-08</h3>
+<div class="outline-text-3" id="text-orge094de7">
+<p>
+Outline-xref is renamed to outline-find-headings.
+The new name avoids exposing the command's implementation details and
+makes it less confusing for users who associate Xref strictly with
+cross-references, as outline-find-headings uses Xref as a user
+interface.
+</p>
+
+<p>
+See the following commit for more information:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=e33b54d938668dfc1889127d7452524c92cbcd5d">e33b54d93866</a> "Rename `outline-xref' command to `outline-find-headings'"</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div id="postamble" class="status">
-<p class="date">Date: 2026-08-31 Mon 00:00</p>
+<p class="date">Date: 2026-09-08 Tue 00:00</p>
 <p class="author">Author: Roi Martin</p>
-<p class="date">Created: 2026-09-02 Wed 15:26</p>
+<p class="date">Created: 2026-09-09 Wed 15:58</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

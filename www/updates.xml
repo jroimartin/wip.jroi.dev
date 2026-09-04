@@ -14,8 +14,8 @@
   <link>https://wip.jroi.dev/</link>
   <description><![CDATA[My forever-work-in-progress notes]]></description>
   <language>en</language>
-  <pubDate>Wed, 02 Sep 2026 19:18:46 +0200</pubDate>
-  <lastBuildDate>Wed, 02 Sep 2026 19:18:46 +0200</lastBuildDate>
+  <pubDate>Wed, 09 Sep 2026 15:58:41 +0200</pubDate>
+  <lastBuildDate>Wed, 09 Sep 2026 15:58:41 +0200</lastBuildDate>
   <generator>Emacs 32.0 Org-mode 9.8.7</generator>
   <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
   <image>
@@ -24,6 +24,38 @@
     <link>https://wip.jroi.dev/</link>
   </image>
 
+  <item>
+    <title>Outline-xref renamed to outline-find-headings</title>
+    <link>https://wip.jroi.dev/updates.html#20260908-outline-xref-renamed-to-outline-find-headings</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/updates.html#20260908-outline-xref-renamed-to-outline-find-headings</guid>
+    <pubDate>Wed, 09 Sep 2026 15:58:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2026-09-08</i>
+</p>
+
+<p>
+The new name avoids exposing the command's implementation details and
+makes it less confusing for users who associate Xref strictly with
+cross-references, as outline-find-headings uses Xref as a user
+interface.
+</p>
+
+<p>
+I also wrote a bit about this feature in <a href="https://wip.jroi.dev/outline-find-headings.html">https://wip.jroi.dev/outline-find-headings.html</a>.
+</p>
+
+<p>
+If you are curious about it, here is the commit that implemented this
+change:
+</p>
+
+<ul class="org-ul">
+<li><a href="https://cgit.git.savannah.gnu.org/cgit/emacs.git/commit/?id=e33b54d938668dfc1889127d7452524c92cbcd5d">e33b54d93866</a> "Rename `outline-xref' command to `outline-find-headings'"</li>
+</ul>
+]]></description>
+  </item>
   <item>
     <title>ERT Erts-file Test Results</title>
     <link>https://wip.jroi.dev/updates.html#20260902-ert-erts-file-test-results</link>
