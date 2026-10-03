@@ -6,6 +6,17 @@
 #+description: My forever-work-in-progress notes
 #+rss_image_url: https://wip.jroi.dev/images/wip.png
 
+* /home/n/links adapted for RSS feed generation
+:PROPERTIES:
+:CUSTOM_ID: 20261003--home-n-links-adapted-for-rss-feed-generation
+:ID:       fcb53269-93db-454e-8f59-cb4c4fa54592
+:PUBDATE:  2026-10-03 Sat 23:57
+:END:
+
+/2026-10-03/
+
+I reworked the [[file:home-n-links.org][/home/n/links]] page to generate an [[https://wip.jroi.dev/home-n-links.xml][RSS feed]].
+
 * Outline-xref renamed to outline-find-headings
 :PROPERTIES:
 :CUSTOM_ID: 20260908-outline-xref-renamed-to-outline-find-headings

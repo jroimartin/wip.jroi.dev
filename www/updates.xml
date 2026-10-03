@@ -14,8 +14,8 @@
   <link>https://wip.jroi.dev/</link>
   <description><![CDATA[My forever-work-in-progress notes]]></description>
   <language>en</language>
-  <pubDate>Sat, 03 Oct 2026 22:47:24 +0200</pubDate>
-  <lastBuildDate>Sat, 03 Oct 2026 22:47:24 +0200</lastBuildDate>
+  <pubDate>Sat, 03 Oct 2026 23:57:14 +0200</pubDate>
+  <lastBuildDate>Sat, 03 Oct 2026 23:57:14 +0200</lastBuildDate>
   <generator>Emacs 32.0 Org-mode 9.8.10</generator>
   <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
   <image>
@@ -24,6 +24,22 @@
     <link>https://wip.jroi.dev/</link>
   </image>
 
+  <item>
+    <title>/home/n/links adapted for RSS feed generation</title>
+    <link>https://wip.jroi.dev/updates.html#20261003--home-n-links-adapted-for-rss-feed-generation</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/updates.html#20261003--home-n-links-adapted-for-rss-feed-generation</guid>
+    <pubDate>Sat, 03 Oct 2026 23:57:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2026-10-03</i>
+</p>
+
+<p>
+I reworked the <a href="https://wip.jroi.dev/home-n-links.html">/home/n/links</a> page to generate an <a href="https://wip.jroi.dev/home-n-links.xml">RSS feed</a>.
+</p>
+]]></description>
+  </item>
   <item>
     <title>Outline-xref renamed to outline-find-headings</title>
     <link>https://wip.jroi.dev/updates.html#20260908-outline-xref-renamed-to-outline-find-headings</link>
