@@ -38,7 +38,7 @@ Eval the following Emacs Lisp snippet to build the site.
                                      :publishing-directory "./www"
                                      :publishing-function org-rss-publish-to-rss
                                      :exclude ".*"
-                                     :include ("updates.org")
+                                     :include ("updates.org" "home-n-links.org")
                                      :html-link-home ,html-link-home
                                      :html-head ,html-head
                                      :html-link-use-abs-url t)))
@@ -49,4 +49,4 @@ Eval the following Emacs Lisp snippet to build the site.
 #+end_src
 
 #+results:
-: Last update: Wed Sep  9 17:00:04 2026
+: Last update: Sat Oct  3 23:15:33 2026

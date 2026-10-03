@@ -3,106 +3,507 @@
 #+author: Roi Martin
 #+options: toc:nil num:nil
 #+html_link_up: /
+#+description: Links to content I liked
+#+rss_image_url: https://wip.jroi.dev/images/lambda.png
 
 In October 2018 I started a Telegram channel named */home/n/links* to
-share interesting links with my friends.  However, I never really
-liked that way of sharing content.  So, I decided to close the
-Telegram channel and start using this page.
+share interesting links with my friends.
+However, I never really liked that way of sharing content.
+So, I decided to close the Telegram channel and start using this page.
 
-* September 2024
+Subscribe to this [[https://wip.jroi.dev/home-n-links.xml][RSS feed]] to stay updated every time I add a new
+link.
 
-- [[https://youtu.be/IroPQ150F6c][Practical Data Oriented Design]] by Andrew Kelley
-- [[https://youtu.be/rX0ItVEVjHc][Data-Oriented Design and C++]] by Mike Acton
+* "Spritely: Infrastructure for the Future of the Internet" by Christine Lemmer-Webber and David Thompson
+:PROPERTIES:
+:CUSTOM_ID: 20261003--spritely--infrastructure-for-the-future-of-the-internet--by-christine-lemmer-webber-and-david-thompson
+:ID:       082faf7b-fef1-49ff-ab39-8b11a1fb7349
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
+/2026-10-03/
 
-* June 2024
+[[https://www.infoq.com/presentations/spritely-decentralized-architecture/]]
 
-- [[https://youtu.be/vMDHpPN_p08][From Here To Lambda And Back Again]] by Douglas Crockford
-- [[https://queue.acm.org/detail.cfm?id=1039523][A Conversation with Alan Kay]] in ACM Queue Volume 2, issue 9
-- [[https://youtu.be/umSuLpjFUf8][Concatenative programming and stack-based languages]] by Douglas Creager
+* "Practical Data Oriented Design" by Andrew Kelley
+:PROPERTIES:
+:CUSTOM_ID: 20240901--practical-data-oriented-design--by-andrew-kelley
+:ID:       3d3c8e8c-2794-497a-ac94-9a1274d52516
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-* May 2024
+/2024-09-01/
 
-- [[https://youtu.be/DDROSL-gGOo][Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour]] by Christine Lemmer-Webber
-- [[https://spritely.institute/static/papers/scheme-primer.html][A Scheme Primer]] by Christine Lemmer-Webber and the Spritely Institute
+[[https://youtu.be/IroPQ150F6c]]
 
-* December 2023
+* "Data-Oriented Design and C++" by Mike Acton
+:PROPERTIES:
+:CUSTOM_ID: 20240901--data-oriented-design-and-c----by-mike-acton
+:ID:       a50bd434-92bf-4992-9cfe-0e131b146ed7
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-- [[https://commandcenter.blogspot.com/2023/12/simplicity.html][Simplicity]] by Rob Pike
-- [[https://youtu.be/6H-V-0oQvCA][Open Source Supply Chain Security at Google]] by Russ Cox
+/2024-09-01/
 
-* October 2023
+[[https://youtu.be/rX0ItVEVjHc]]
 
-- [[https://journal.stuffwithstuff.com/2023/10/19/does-go-have-subtyping/][Does Go Have Subtyping?]] by Robert Nystrom
+* "From Here To Lambda And Back Again" by Douglas Crockford
+:PROPERTIES:
+:CUSTOM_ID: 20240601--from-here-to-lambda-and-back-again--by-douglas-crockford
+:ID:       a6f2e2bf-96db-454d-8556-4fd5832dffdc
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-* July 2023
+/2024-06-01/
 
-- [[https://research.swtch.com/pcdata][Storing Data in Control Flow]] by Russ Cox
-- [[https://research.swtch.com/coro][Coroutines for Go]] by Russ Cox
+[[https://youtu.be/vMDHpPN_p08]]
 
-* February 2023
+* "A Conversation with Alan Kay" in ACM Queue Volume 2, issue 9
+:PROPERTIES:
+:CUSTOM_ID: 20240601--a-conversation-with-alan-kay--in-acm-queue-volume-2--issue-9
+:ID:       8896df3c-fbd1-449e-a9f5-d9b7353cab7a
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-- [[https://youtu.be/1I1WmeSjRSw][Pardon the Interruption: Loop Preemption in Go 1.14]] by Austin Clements
-- [[https://youtube.com/playlist?list=PLxNYxgaZ8Rsf8PLPWeUPRA3iZoK9uu3lU][Go Day 2022]] on Google Open Source Live
+/2024-06-01/
 
-* December 2022
+[[https://queue.acm.org/detail.cfm?id=1039523]]
 
-- [[https://youtu.be/g4SYTOc8fL0][Procedural Macros vs Sliced Bread]] by Alex Crichton
+* "Concatenative programming and stack-based languages" by Douglas Creager
+:PROPERTIES:
+:CUSTOM_ID: 20240601--concatenative-programming-and-stack-based-languages--by-douglas-creager
+:ID:       daeb1823-c68b-4c2b-9e98-8fa38befcf29
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-* November 2022
+/2024-06-01/
 
-- [[https://youtu.be/RqubKSF3wig][SQLite and Go]] by David Crawshaw
-- [[https://craftinginterpreters.com/][Crafting Interpreters]] by Robert Nystrom ([[https://craftinginterpreters.com/contents.html][Read online]], [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/][Crafting "Crafting Interpreters"]])
+[[https://youtu.be/umSuLpjFUf8]]
 
-* October 2022
+* "Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour" by Christine Lemmer-Webber
+:PROPERTIES:
+:CUSTOM_ID: 20240501--unlock-lisp---scheme-s-magic--beginner-to-scheme-in-scheme-in-one-hour--by-christine-lemmer-webber
+:ID:       2d48d391-c020-498f-a3ac-d900cdb8c453
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-- [[https://youtu.be/v24wrd3RwGo][Compatibility: How Go Programs Keep Working]] by Russ Cox
+/2024-05-01/
 
-* September 2022
+[[https://youtu.be/DDROSL-gGOo]]
 
-- [[https://youtu.be/T4rKaqjUXXs][Hash Salehi Outsmarts His Smart Meter]] on Remoticon 2021
-- [[https://youtu.be/XmaT8bMssyQ][Uri Shaked Reverse Engineers ESP32 WiFi]] on Remoticon 2021
+* "A Scheme Primer" by Christine Lemmer-Webber and the Spritely Institute
+:PROPERTIES:
+:CUSTOM_ID: 20240501--a-scheme-primer--by-christine-lemmer-webber-and-the-spritely-institute
+:ID:       59d751f3-ac96-4a4f-bc7e-13bd6d7b2e4d
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-* August 2022
+/2024-05-01/
 
-- [[https://blog.benjojo.co.uk/post/bgp-battleships][Playing battleships over BGP]] by Ben Cox
-- [[https://youtu.be/30jNsCVLpAE][Debugging Under Fire: Keep your Head when Systems have Lost their Mind]] by Bryan Cantrill
-- [[https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html][A Regular Expression Matcher]] by Rob Pike and Brian Kernighan
+[[https://spritely.institute/static/papers/scheme-primer.html]]
 
-* July 2022
+* "Simplicity" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20231201--simplicity--by-rob-pike
+:ID:       c9070515-14f4-4bf3-b51f-60811d02de90
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-- [[https://youtu.be/_2NI6t2r_Hs][The History of Unix]] by Rob Pike
-- [[https://youtube.com/playlist?list=PLrwpzH1_9ufMLOB6BAdzO08Qx-9jHGfGg]["Unusual" solutions to Advent of Code]] by Russ Cox
-- [[https://youtu.be/oV9rvDllKEg][Concurrency is not Parallelism]] by Rob Pike
-- [[https://go.dev/blog/supply-chain][How Go Mitigates Supply Chain Attacks]] by Filippo Valsorda
+/2023-12-01/
 
-* June 2022
+[[https://commandcenter.blogspot.com/2023/12/simplicity.html]]
 
-- [[https://youtu.be/HxaD_trXwRE][Lexical Scanning in Go]] by Rob Pike ([[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/][CL]])
-- [[https://mazzo.li/posts/fast-pipes.html][How fast are Linux pipes anyway?]] by Francesco Mazzoli
-- [[https://research.swtch.com/mm][Memory Models]] by Russ Cox
-- [[https://youtu.be/xxDZuPEgbBU][Profiling & Optimizing in Go]] by Brad Fitzpatrick
-- [[https://youtu.be/EY6q5dv_B-o][Brian Kernighan interviews Ken Thompson]]
+* "Open Source Supply Chain Security at Google" by Russ Cox
+:PROPERTIES:
+:CUSTOM_ID: 20231201--open-source-supply-chain-security-at-google--by-russ-cox
+:ID:       74021fb4-41a1-420e-a942-5653d98963b5
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-* June 2019
+/2023-12-01/
 
-- [[https://youtu.be/ZmZ_tvbhJ0I][A Keynote in Praise of Junk Hacking]] by Travis Goodspeed
+[[https://youtu.be/6H-V-0oQvCA]]
 
-* January 2019
+* "Does Go Have Subtyping?" by Robert Nystrom
+:PROPERTIES:
+:CUSTOM_ID: 20231001--does-go-have-subtyping---by-robert-nystrom
+:ID:       38242299-7cfd-405b-b2fb-1a2965a1d518
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-- Detecting integer constant expressions in macros ([[https://lkml.org/lkml/2018/3/20/805][Mail-1]], [[https://lkml.org/lkml/2018/3/20/845][Mail-2]])
-- [[https://youtu.be/RIvL2ONhFBI][Go 2 Draft Specifications]] by Rob Pike
+/2023-10-01/
 
-* November 2018
+[[https://journal.stuffwithstuff.com/2023/10/19/does-go-have-subtyping/]]
 
-- [[https://youtu.be/_eSAF_qT_FY][GOD MODE UNLOCKED - Hardware Backdoors in x86 CPUs]] by Christopher Domas
+* "Storing Data in Control Flow" by Russ Cox
+:PROPERTIES:
+:CUSTOM_ID: 20230701--storing-data-in-control-flow--by-russ-cox
+:ID:       18d17698-3945-4472-9fcd-839d2a434d25
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
 
-* October 2018
+/2023-07-01/
 
-- [[https://youtu.be/rFejpH_tAHM][Simplicity is Complicated]] by Rob Pike ([[https://talks.golang.org/2015/simplicity-is-complicated.slide][Slides]])
-- [[https://www.youtube.com/watch?v=OyfBQmvr2Hc][The Most Beautiful Program Ever Written]] by William Byrd
-- [[https://youtu.be/KINIAgRpkDA][The Design of the Go Assembler]] by Rob Pike ([[https://talks.golang.org/2016/asm.slide][Slides]])
-- [[https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html][Error handling in Upspin]] by Rob Pike
-- [[http://doc.cat-v.org/bell_labs/good_bad_ugly/slides.pdf][The Good, the Bad, and the Ugly: The Unix Legacy]] by Rob Pike
-- [[https://youtu.be/FITJMJjASUs][Y Not- Adventures in Functional Programming]] by Jim Weirich
-- [[https://lkml.org/lkml/2017/11/21/356][On hardening]] by Linus Torvalds
+[[https://research.swtch.com/pcdata]]
+
+* "Coroutines for Go" by Russ Cox
+:PROPERTIES:
+:CUSTOM_ID: 20230701--coroutines-for-go--by-russ-cox
+:ID:       60bced6b-226d-49cf-abfe-a5973087b428
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2023-07-01/
+
+[[https://research.swtch.com/coro]]
+
+* "Pardon the Interruption: Loop Preemption in Go 1.14" by Austin Clements
+:PROPERTIES:
+:CUSTOM_ID: 20230201--pardon-the-interruption--loop-preemption-in-go-1-14--by-austin-clements
+:ID:       6214e9bc-8b6c-4e03-a342-b8271b0f6f35
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2023-02-01/
+
+[[https://youtu.be/1I1WmeSjRSw]]
+
+* "Go Day 2022" on Google Open Source Live
+:PROPERTIES:
+:CUSTOM_ID: 20230201--go-day-2022--on-google-open-source-live
+:ID:       c2a4a6bd-c4ce-4fe1-b62b-482ecaa3532f
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2023-02-01/
+
+[[https://youtube.com/playlist?list=PLxNYxgaZ8Rsf8PLPWeUPRA3iZoK9uu3lU]]
+
+* "Procedural Macros vs Sliced Bread" by Alex Crichton
+:PROPERTIES:
+:CUSTOM_ID: 20221201--procedural-macros-vs-sliced-bread--by-alex-crichton
+:ID:       dac798f3-3638-43d1-9e18-e35e1d10d3ed
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-12-01/
+
+[[https://youtu.be/g4SYTOc8fL0]]
+
+* "SQLite and Go" by David Crawshaw
+:PROPERTIES:
+:CUSTOM_ID: 20221101--sqlite-and-go--by-david-crawshaw
+:ID:       f546e069-3194-4690-a13e-7d2a1ba678ec
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-11-01/
+
+[[https://youtu.be/RqubKSF3wig]]
+
+* "Crafting Interpreters" by Robert Nystrom
+:PROPERTIES:
+:CUSTOM_ID: 20221101--crafting-interpreters--by-robert-nystrom
+:ID:       7e5225b0-f755-43ad-8137-6cdef0789653
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-11-01/
+
+[[https://craftinginterpreters.com/]]
+
+- Read online: [[https://craftinginterpreters.com/contents.html]]
+- Crafting "Crafting Interpreters": [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/]]
+
+* "Compatibility: How Go Programs Keep Working" by Russ Cox
+:PROPERTIES:
+:CUSTOM_ID: 20221001--compatibility--how-go-programs-keep-working--by-russ-cox
+:ID:       fc87a797-a680-43a6-8589-5bb208462727
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-10-01/
+
+[[https://youtu.be/v24wrd3RwGo]]
+
+* "Hash Salehi Outsmarts His Smart Meter" at Remoticon 2021
+:PROPERTIES:
+:CUSTOM_ID: 20220901--hash-salehi-outsmarts-his-smart-meter--at-remoticon-2021
+:ID:       d0ea3431-b37f-4c9b-932a-dd3e4eb789a6
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-09-01/
+
+[[https://youtu.be/T4rKaqjUXXs]]
+
+* "Uri Shaked Reverse Engineers ESP32 WiFi" at Remoticon 2021
+:PROPERTIES:
+:CUSTOM_ID: 20220901--uri-shaked-reverse-engineers-esp32-wifi--at-remoticon-2021
+:ID:       63152c33-e5e1-4933-a760-9b25bda8fd11
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-09-01/
+
+[[https://youtu.be/XmaT8bMssyQ]]
+
+* "Playing battleships over BGP" by Ben Cox
+:PROPERTIES:
+:CUSTOM_ID: 20220801--playing-battleships-over-bgp--by-ben-cox
+:ID:       a3ae3c12-6d59-49e8-b3ce-f0fee7e01b04
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-08-01/
+
+[[https://blog.benjojo.co.uk/post/bgp-battleships]]
+
+* "Debugging Under Fire: Keep your Head when Systems have Lost their Mind" by Bryan Cantrill
+:PROPERTIES:
+:CUSTOM_ID: 20220801--debugging-under-fire--keep-your-head-when-systems-have-lost-their-mind--by-bryan-cantrill
+:ID:       5050ac40-de01-4c32-9742-1427c679939a
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-08-01/
+
+[[https://youtu.be/30jNsCVLpAE]]
+
+* "A Regular Expression Matcher" by Rob Pike and Brian Kernighan
+:PROPERTIES:
+:CUSTOM_ID: 20220801--a-regular-expression-matcher--by-rob-pike-and-brian-kernighan
+:ID:       00611b5c-555c-428f-9bb4-b413a220ac46
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-08-01/
+
+[[https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html]]
+
+* "The History of Unix" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20220701--the-history-of-unix--by-rob-pike
+:ID:       ba26e07e-c73a-4997-ade9-25dea5f30e19
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-07-01/
+
+[[https://youtu.be/_2NI6t2r_Hs]]
+
+* "Unusual" solutions to Advent of Code by Russ Cox
+:PROPERTIES:
+:CUSTOM_ID: 20220701--unusual--solutions-to-advent-of-code-by-russ-cox
+:ID:       dc949c3f-6f54-4c90-a8b4-79773cfb83c9
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-07-01/
+
+[[https://youtube.com/playlist?list=PLrwpzH1_9ufMLOB6BAdzO08Qx-9jHGfGg]]
+
+* "Concurrency is not Parallelism" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20220701--concurrency-is-not-parallelism--by-rob-pike
+:ID:       6d397c9f-2065-4e0e-adbc-f537b7aa20d2
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-07-01/
+
+[[https://youtu.be/oV9rvDllKEg]]
+
+* "How Go Mitigates Supply Chain Attacks" by Filippo Valsorda
+:PROPERTIES:
+:CUSTOM_ID: 20220701--how-go-mitigates-supply-chain-attacks--by-filippo-valsorda
+:ID:       7df88c3e-c8dd-4921-9042-3c5f8b561907
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-07-01/
+
+[[https://go.dev/blog/supply-chain]]
+
+* "Lexical Scanning in Go" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20220601--lexical-scanning-in-go--by-rob-pike
+:ID:       f50e010d-4b0f-4b96-ae00-e6c2604e54be
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-06-01/
+
+[[https://youtu.be/HxaD_trXwRE]]
+
+- CL: [[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/]]
+
+* "How fast are Linux pipes anyway?" by Francesco Mazzoli
+:PROPERTIES:
+:CUSTOM_ID: 20220601--how-fast-are-linux-pipes-anyway---by-francesco-mazzoli
+:ID:       c028c06b-fa90-49f0-a884-9fb564c94ab2
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-06-01/
+
+[[https://mazzo.li/posts/fast-pipes.html]]
+
+* "Memory Models" by Russ Cox
+:PROPERTIES:
+:CUSTOM_ID: 20220601--memory-models--by-russ-cox
+:ID:       f98ced19-c5ac-482d-835e-39d5462ad940
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-06-01/
+
+[[https://research.swtch.com/mm]]
+
+* "Profiling & Optimizing in Go" by Brad Fitzpatrick
+:PROPERTIES:
+:CUSTOM_ID: 20220601--profiling---optimizing-in-go--by-brad-fitzpatrick
+:ID:       e6313c0e-5a04-46dc-b9c7-900b0808b71a
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-06-01/
+
+[[https://youtu.be/xxDZuPEgbBU]]
+
+* Brian Kernighan interviews Ken Thompson
+:PROPERTIES:
+:CUSTOM_ID: 20220601-brian-kernighan-interviews-ken-thompson
+:ID:       a96981b7-98cf-479d-9829-26d64a4cd189
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2022-06-01/
+
+[[https://youtu.be/EY6q5dv_B-o]]
+
+* "A Keynote in Praise of Junk Hacking" by Travis Goodspeed
+:PROPERTIES:
+:CUSTOM_ID: 20190601--a-keynote-in-praise-of-junk-hacking--by-travis-goodspeed
+:ID:       11590b1c-3776-4545-8207-32c13f953f26
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2019-06-01/
+
+[[https://youtu.be/ZmZ_tvbhJ0I]]
+
+* "Detecting integer constant expressions in macros" on LKML
+:PROPERTIES:
+:CUSTOM_ID: 20190101--detecting-integer-constant-expressions-in-macros--on-lkml
+:ID:       eb2f8ca2-7dc3-48bb-81d2-1a0c0de5500c
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2019-01-01/
+
+- Mail 1: [[https://lkml.org/lkml/2018/3/20/805]]
+- Mail 2: [[https://lkml.org/lkml/2018/3/20/845]]
+ 
+* "Go 2 Draft Specifications" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20190101--go-2-draft-specifications--by-rob-pike
+:ID:       666cd8ed-8f1b-49d2-ba91-bfcd95be549b
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2019-01-01/
+
+[[https://youtu.be/RIvL2ONhFBI]]
+
+* "GOD MODE UNLOCKED - Hardware Backdoors in x86 CPUs" by Christopher Domas
+:PROPERTIES:
+:CUSTOM_ID: 20181101--god-mode-unlocked---hardware-backdoors-in-x86-cpus--by-christopher-domas
+:ID:       a46549c1-1831-4733-b68d-82a886f75cd5
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-11-01/
+
+[[https://youtu.be/_eSAF_qT_FY]]
+
+* "Simplicity is Complicated" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20181001--simplicity-is-complicated--by-rob-pike
+:ID:       a6be131d-f4f5-4198-961b-6b9744d55a66
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[https://youtu.be/rFejpH_tAHM]]
+
+- Slides: [[https://talks.golang.org/2015/simplicity-is-complicated.slide]]
+
+* "The Most Beautiful Program Ever Written" by William Byrd
+:PROPERTIES:
+:CUSTOM_ID: 20181001--the-most-beautiful-program-ever-written--by-william-byrd
+:ID:       80d1a1e2-ac61-4c32-bf79-00cdd18ab2ee
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[https://youtu.be/OyfBQmvr2Hc]]
+
+* "The Design of the Go Assembler" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20181001--the-design-of-the-go-assembler--by-rob-pike
+:ID:       9d61dd5f-5ecd-4cae-a959-bf6ce7af521f
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[https://youtu.be/KINIAgRpkDA]]
+
+- Slides: [[https://talks.golang.org/2016/asm.slide]]
+
+* "Error handling in Upspin" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20181001--error-handling-in-upspin--by-rob-pike
+:ID:       b273779d-e11b-45b7-9e29-117777ffab27
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html]]
+
+* "The Good, the Bad, and the Ugly: The Unix Legacy" by Rob Pike
+:PROPERTIES:
+:CUSTOM_ID: 20181001--the-good--the-bad--and-the-ugly--the-unix-legacy--by-rob-pike
+:ID:       e0d25654-e909-4dac-b468-b20dba650df5
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[http://doc.cat-v.org/bell_labs/good_bad_ugly/slides.pdf]]
+
+* "Y Not Adventures in Functional Programming" by Jim Weirich
+:PROPERTIES:
+:CUSTOM_ID: 20181001--y-not-adventures-in-functional-programming--by-jim-weirich
+:ID:       1f4804f2-8a19-4d40-958c-3d9dfae7ee80
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[https://youtu.be/FITJMJjASUs]]
+
+* Linus Torvalds on hardening
+:PROPERTIES:
+:CUSTOM_ID: 20181001-linus-torvalds-on-hardening
+:ID:       d4557f1a-5097-4efd-aef9-a376e90e1349
+:PUBDATE:  2026-10-03 Sat 22:47
+:END:
+
+/2018-10-01/
+
+[[https://lkml.org/lkml/2017/11/21/356]]

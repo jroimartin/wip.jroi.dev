@@ -1,0 +1,761 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"
+     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+     xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+     xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     xmlns:georss="http://www.georss.org/georss"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:media="http://search.yahoo.com/mrss/"><channel>
+  <title>/home/n/links</title>
+  <atom:link href="https://wip.jroi.dev/home-n-links.xml" rel="self" type="application/rss+xml" />
+  <link>https://wip.jroi.dev/</link>
+  <description><![CDATA[Links to content I liked]]></description>
+  <language>en</language>
+  <pubDate>Sat, 03 Oct 2026 23:15:32 +0200</pubDate>
+  <lastBuildDate>Sat, 03 Oct 2026 23:15:32 +0200</lastBuildDate>
+  <generator>Emacs 32.0 Org-mode 9.8.10</generator>
+  <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
+  <image>
+    <url>https://wip.jroi.dev/images/lambda.png</url>
+    <title>/home/n/links</title>
+    <link>https://wip.jroi.dev/</link>
+  </image>
+
+  <p>
+    In October 2018 I started a Telegram channel named <b>/home/n/links</b> to
+    share interesting links with my friends.
+    However, I never really liked that way of sharing content.
+    So, I decided to close the Telegram channel and start using this page.
+  </p>
+
+  <p>
+    Subscribe to this <a href="https://wip.jroi.dev/home-n-links.xml">RSS feed</a> to stay updated every time I add a new
+    link.
+  </p>
+  <item>
+    <title>"Spritely: Infrastructure for the Future of the Internet" by Christine Lemmer-Webber and David Thompson</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20261003--spritely--infrastructure-for-the-future-of-the-internet--by-christine-lemmer-webber-and-david-thompson</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20261003--spritely--infrastructure-for-the-future-of-the-internet--by-christine-lemmer-webber-and-david-thompson</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2026-10-03</i>
+</p>
+
+<p>
+<a href="https://www.infoq.com/presentations/spritely-decentralized-architecture/">https://www.infoq.com/presentations/spritely-decentralized-architecture/</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Practical Data Oriented Design" by Andrew Kelley</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240901--practical-data-oriented-design--by-andrew-kelley</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240901--practical-data-oriented-design--by-andrew-kelley</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-09-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/IroPQ150F6c">https://youtu.be/IroPQ150F6c</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Data-Oriented Design and C++" by Mike Acton</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240901--data-oriented-design-and-c----by-mike-acton</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240901--data-oriented-design-and-c----by-mike-acton</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-09-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/rX0ItVEVjHc">https://youtu.be/rX0ItVEVjHc</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"From Here To Lambda And Back Again" by Douglas Crockford</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240601--from-here-to-lambda-and-back-again--by-douglas-crockford</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240601--from-here-to-lambda-and-back-again--by-douglas-crockford</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-06-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/vMDHpPN_p08">https://youtu.be/vMDHpPN_p08</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"A Conversation with Alan Kay" in ACM Queue Volume 2, issue 9</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240601--a-conversation-with-alan-kay--in-acm-queue-volume-2--issue-9</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240601--a-conversation-with-alan-kay--in-acm-queue-volume-2--issue-9</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-06-01</i>
+</p>
+
+<p>
+<a href="https://queue.acm.org/detail.cfm?id=1039523">https://queue.acm.org/detail.cfm?id=1039523</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Concatenative programming and stack-based languages" by Douglas Creager</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240601--concatenative-programming-and-stack-based-languages--by-douglas-creager</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240601--concatenative-programming-and-stack-based-languages--by-douglas-creager</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-06-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/umSuLpjFUf8">https://youtu.be/umSuLpjFUf8</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Unlock Lisp / Scheme's magic: beginner to Scheme-in-Scheme in one hour" by Christine Lemmer-Webber</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240501--unlock-lisp---scheme-s-magic--beginner-to-scheme-in-scheme-in-one-hour--by-christine-lemmer-webber</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240501--unlock-lisp---scheme-s-magic--beginner-to-scheme-in-scheme-in-one-hour--by-christine-lemmer-webber</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-05-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/DDROSL-gGOo">https://youtu.be/DDROSL-gGOo</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"A Scheme Primer" by Christine Lemmer-Webber and the Spritely Institute</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20240501--a-scheme-primer--by-christine-lemmer-webber-and-the-spritely-institute</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20240501--a-scheme-primer--by-christine-lemmer-webber-and-the-spritely-institute</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2024-05-01</i>
+</p>
+
+<p>
+<a href="https://spritely.institute/static/papers/scheme-primer.html">https://spritely.institute/static/papers/scheme-primer.html</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Simplicity" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20231201--simplicity--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20231201--simplicity--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-12-01</i>
+</p>
+
+<p>
+<a href="https://commandcenter.blogspot.com/2023/12/simplicity.html">https://commandcenter.blogspot.com/2023/12/simplicity.html</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Open Source Supply Chain Security at Google" by Russ Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20231201--open-source-supply-chain-security-at-google--by-russ-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20231201--open-source-supply-chain-security-at-google--by-russ-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-12-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/6H-V-0oQvCA">https://youtu.be/6H-V-0oQvCA</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Does Go Have Subtyping?" by Robert Nystrom</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20231001--does-go-have-subtyping---by-robert-nystrom</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20231001--does-go-have-subtyping---by-robert-nystrom</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-10-01</i>
+</p>
+
+<p>
+<a href="https://journal.stuffwithstuff.com/2023/10/19/does-go-have-subtyping/">https://journal.stuffwithstuff.com/2023/10/19/does-go-have-subtyping/</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Storing Data in Control Flow" by Russ Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20230701--storing-data-in-control-flow--by-russ-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20230701--storing-data-in-control-flow--by-russ-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-07-01</i>
+</p>
+
+<p>
+<a href="https://research.swtch.com/pcdata">https://research.swtch.com/pcdata</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Coroutines for Go" by Russ Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20230701--coroutines-for-go--by-russ-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20230701--coroutines-for-go--by-russ-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-07-01</i>
+</p>
+
+<p>
+<a href="https://research.swtch.com/coro">https://research.swtch.com/coro</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Pardon the Interruption: Loop Preemption in Go 1.14" by Austin Clements</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20230201--pardon-the-interruption--loop-preemption-in-go-1-14--by-austin-clements</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20230201--pardon-the-interruption--loop-preemption-in-go-1-14--by-austin-clements</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-02-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/1I1WmeSjRSw">https://youtu.be/1I1WmeSjRSw</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Go Day 2022" on Google Open Source Live</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20230201--go-day-2022--on-google-open-source-live</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20230201--go-day-2022--on-google-open-source-live</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2023-02-01</i>
+</p>
+
+<p>
+<a href="https://youtube.com/playlist?list=PLxNYxgaZ8Rsf8PLPWeUPRA3iZoK9uu3lU">https://youtube.com/playlist?list=PLxNYxgaZ8Rsf8PLPWeUPRA3iZoK9uu3lU</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Procedural Macros vs Sliced Bread" by Alex Crichton</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20221201--procedural-macros-vs-sliced-bread--by-alex-crichton</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20221201--procedural-macros-vs-sliced-bread--by-alex-crichton</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-12-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/g4SYTOc8fL0">https://youtu.be/g4SYTOc8fL0</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"SQLite and Go" by David Crawshaw</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20221101--sqlite-and-go--by-david-crawshaw</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20221101--sqlite-and-go--by-david-crawshaw</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-11-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/RqubKSF3wig">https://youtu.be/RqubKSF3wig</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Crafting Interpreters" by Robert Nystrom</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20221101--crafting-interpreters--by-robert-nystrom</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20221101--crafting-interpreters--by-robert-nystrom</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-11-01</i>
+</p>
+
+<p>
+<a href="https://craftinginterpreters.com/">https://craftinginterpreters.com/</a>
+</p>
+
+<ul class="org-ul">
+<li>Read online: <a href="https://craftinginterpreters.com/contents.html">https://craftinginterpreters.com/contents.html</a></li>
+<li>Crafting "Crafting Interpreters": <a href="http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/">http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/</a></li>
+</ul>
+]]></description>
+  </item>
+  <item>
+    <title>"Compatibility: How Go Programs Keep Working" by Russ Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20221001--compatibility--how-go-programs-keep-working--by-russ-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20221001--compatibility--how-go-programs-keep-working--by-russ-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-10-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/v24wrd3RwGo">https://youtu.be/v24wrd3RwGo</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Hash Salehi Outsmarts His Smart Meter" at Remoticon 2021</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220901--hash-salehi-outsmarts-his-smart-meter--at-remoticon-2021</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220901--hash-salehi-outsmarts-his-smart-meter--at-remoticon-2021</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-09-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/T4rKaqjUXXs">https://youtu.be/T4rKaqjUXXs</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Uri Shaked Reverse Engineers ESP32 WiFi" at Remoticon 2021</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220901--uri-shaked-reverse-engineers-esp32-wifi--at-remoticon-2021</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220901--uri-shaked-reverse-engineers-esp32-wifi--at-remoticon-2021</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-09-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/XmaT8bMssyQ">https://youtu.be/XmaT8bMssyQ</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Playing battleships over BGP" by Ben Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220801--playing-battleships-over-bgp--by-ben-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220801--playing-battleships-over-bgp--by-ben-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-08-01</i>
+</p>
+
+<p>
+<a href="https://blog.benjojo.co.uk/post/bgp-battleships">https://blog.benjojo.co.uk/post/bgp-battleships</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Debugging Under Fire: Keep your Head when Systems have Lost their Mind" by Bryan Cantrill</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220801--debugging-under-fire--keep-your-head-when-systems-have-lost-their-mind--by-bryan-cantrill</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220801--debugging-under-fire--keep-your-head-when-systems-have-lost-their-mind--by-bryan-cantrill</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-08-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/30jNsCVLpAE">https://youtu.be/30jNsCVLpAE</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"A Regular Expression Matcher" by Rob Pike and Brian Kernighan</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220801--a-regular-expression-matcher--by-rob-pike-and-brian-kernighan</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220801--a-regular-expression-matcher--by-rob-pike-and-brian-kernighan</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-08-01</i>
+</p>
+
+<p>
+<a href="https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html">https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"The History of Unix" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220701--the-history-of-unix--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220701--the-history-of-unix--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-07-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/_2NI6t2r_Hs">https://youtu.be/_2NI6t2r_Hs</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Unusual" solutions to Advent of Code by Russ Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220701--unusual--solutions-to-advent-of-code-by-russ-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220701--unusual--solutions-to-advent-of-code-by-russ-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-07-01</i>
+</p>
+
+<p>
+<a href="https://youtube.com/playlist?list=PLrwpzH1_9ufMLOB6BAdzO08Qx-9jHGfGg">https://youtube.com/playlist?list=PLrwpzH1_9ufMLOB6BAdzO08Qx-9jHGfGg</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Concurrency is not Parallelism" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220701--concurrency-is-not-parallelism--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220701--concurrency-is-not-parallelism--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-07-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/oV9rvDllKEg">https://youtu.be/oV9rvDllKEg</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"How Go Mitigates Supply Chain Attacks" by Filippo Valsorda</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220701--how-go-mitigates-supply-chain-attacks--by-filippo-valsorda</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220701--how-go-mitigates-supply-chain-attacks--by-filippo-valsorda</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-07-01</i>
+</p>
+
+<p>
+<a href="https://go.dev/blog/supply-chain">https://go.dev/blog/supply-chain</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Lexical Scanning in Go" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220601--lexical-scanning-in-go--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220601--lexical-scanning-in-go--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-06-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/HxaD_trXwRE">https://youtu.be/HxaD_trXwRE</a>
+</p>
+
+<ul class="org-ul">
+<li>CL: <a href="https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/">https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/</a></li>
+</ul>
+]]></description>
+  </item>
+  <item>
+    <title>"How fast are Linux pipes anyway?" by Francesco Mazzoli</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220601--how-fast-are-linux-pipes-anyway---by-francesco-mazzoli</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220601--how-fast-are-linux-pipes-anyway---by-francesco-mazzoli</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-06-01</i>
+</p>
+
+<p>
+<a href="https://mazzo.li/posts/fast-pipes.html">https://mazzo.li/posts/fast-pipes.html</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Memory Models" by Russ Cox</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220601--memory-models--by-russ-cox</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220601--memory-models--by-russ-cox</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-06-01</i>
+</p>
+
+<p>
+<a href="https://research.swtch.com/mm">https://research.swtch.com/mm</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Profiling &amp; Optimizing in Go" by Brad Fitzpatrick</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220601--profiling---optimizing-in-go--by-brad-fitzpatrick</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220601--profiling---optimizing-in-go--by-brad-fitzpatrick</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-06-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/xxDZuPEgbBU">https://youtu.be/xxDZuPEgbBU</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>Brian Kernighan interviews Ken Thompson</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20220601-brian-kernighan-interviews-ken-thompson</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20220601-brian-kernighan-interviews-ken-thompson</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2022-06-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/EY6q5dv_B-o">https://youtu.be/EY6q5dv_B-o</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"A Keynote in Praise of Junk Hacking" by Travis Goodspeed</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20190601--a-keynote-in-praise-of-junk-hacking--by-travis-goodspeed</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20190601--a-keynote-in-praise-of-junk-hacking--by-travis-goodspeed</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2019-06-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/ZmZ_tvbhJ0I">https://youtu.be/ZmZ_tvbhJ0I</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Detecting integer constant expressions in macros" on LKML</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20190101--detecting-integer-constant-expressions-in-macros--on-lkml</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20190101--detecting-integer-constant-expressions-in-macros--on-lkml</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2019-01-01</i>
+</p>
+
+<ul class="org-ul">
+<li>Mail 1: <a href="https://lkml.org/lkml/2018/3/20/805">https://lkml.org/lkml/2018/3/20/805</a></li>
+<li>Mail 2: <a href="https://lkml.org/lkml/2018/3/20/845">https://lkml.org/lkml/2018/3/20/845</a></li>
+</ul>
+]]></description>
+  </item>
+  <item>
+    <title>"Go 2 Draft Specifications" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20190101--go-2-draft-specifications--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20190101--go-2-draft-specifications--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2019-01-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/RIvL2ONhFBI">https://youtu.be/RIvL2ONhFBI</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"GOD MODE UNLOCKED - Hardware Backdoors in x86 CPUs" by Christopher Domas</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181101--god-mode-unlocked---hardware-backdoors-in-x86-cpus--by-christopher-domas</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181101--god-mode-unlocked---hardware-backdoors-in-x86-cpus--by-christopher-domas</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-11-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/_eSAF_qT_FY">https://youtu.be/_eSAF_qT_FY</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Simplicity is Complicated" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001--simplicity-is-complicated--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001--simplicity-is-complicated--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/rFejpH_tAHM">https://youtu.be/rFejpH_tAHM</a>
+</p>
+
+<ul class="org-ul">
+<li>Slides: <a href="https://talks.golang.org/2015/simplicity-is-complicated.slide">https://talks.golang.org/2015/simplicity-is-complicated.slide</a></li>
+</ul>
+]]></description>
+  </item>
+  <item>
+    <title>"The Most Beautiful Program Ever Written" by William Byrd</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001--the-most-beautiful-program-ever-written--by-william-byrd</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001--the-most-beautiful-program-ever-written--by-william-byrd</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/OyfBQmvr2Hc">https://youtu.be/OyfBQmvr2Hc</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"The Design of the Go Assembler" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001--the-design-of-the-go-assembler--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001--the-design-of-the-go-assembler--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/KINIAgRpkDA">https://youtu.be/KINIAgRpkDA</a>
+</p>
+
+<ul class="org-ul">
+<li>Slides: <a href="https://talks.golang.org/2016/asm.slide">https://talks.golang.org/2016/asm.slide</a></li>
+</ul>
+]]></description>
+  </item>
+  <item>
+    <title>"Error handling in Upspin" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001--error-handling-in-upspin--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001--error-handling-in-upspin--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html">https://commandcenter.blogspot.com/2017/12/error-handling-in-upspin.html</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"The Good, the Bad, and the Ugly: The Unix Legacy" by Rob Pike</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001--the-good--the-bad--and-the-ugly--the-unix-legacy--by-rob-pike</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001--the-good--the-bad--and-the-ugly--the-unix-legacy--by-rob-pike</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="http://doc.cat-v.org/bell_labs/good_bad_ugly/slides.pdf">http://doc.cat-v.org/bell_labs/good_bad_ugly/slides.pdf</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>"Y Not Adventures in Functional Programming" by Jim Weirich</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001--y-not-adventures-in-functional-programming--by-jim-weirich</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001--y-not-adventures-in-functional-programming--by-jim-weirich</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="https://youtu.be/FITJMJjASUs">https://youtu.be/FITJMJjASUs</a>
+</p>
+]]></description>
+  </item>
+  <item>
+    <title>Linus Torvalds on hardening</title>
+    <link>https://wip.jroi.dev/home-n-links.html#20181001-linus-torvalds-on-hardening</link>
+    <author>jroi.martin@gmail.com (Roi Martin)</author>
+    <guid isPermaLink="false">https://wip.jroi.dev/home-n-links.html#20181001-linus-torvalds-on-hardening</guid>
+    <pubDate>Sat, 03 Oct 2026 22:47:00 +0200</pubDate>
+
+    <description><![CDATA[<p>
+<i>2018-10-01</i>
+</p>
+
+<p>
+<a href="https://lkml.org/lkml/2017/11/21/356">https://lkml.org/lkml/2017/11/21/356</a>
+</p>
+]]></description>
+  </item>
+</channel>
+</rss>
