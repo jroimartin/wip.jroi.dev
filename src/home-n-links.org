@@ -212,8 +212,10 @@ link.
 
 [[https://craftinginterpreters.com/]]
 
-- Read online: [[https://craftinginterpreters.com/contents.html]]
-- Crafting "Crafting Interpreters": [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/]]
+Related:
+
+- [[https://craftinginterpreters.com/contents.html][Read online]]
+- [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/][Crafting "Crafting Interpreters"]]
 
 * "Compatibility: How Go Programs Keep Working" by Russ Cox
 :PROPERTIES:
@@ -336,7 +338,9 @@ link.
 
 [[https://youtu.be/HxaD_trXwRE]]
 
-- CL: [[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/]]
+Related:
+
+- [[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/][CL]]
 
 * "How fast are Linux pipes anyway?" by Francesco Mazzoli
 :PROPERTIES:
@@ -402,8 +406,7 @@ link.
 
 /2019-01-01/
 
-- Mail 1: [[https://lkml.org/lkml/2018/3/20/805]]
-- Mail 2: [[https://lkml.org/lkml/2018/3/20/845]]
+[[https://lore.kernel.org/lkml/1521584015.31174.3.camel@med.uni-goettingen.de/T/#u]]
  
 * "Go 2 Draft Specifications" by Rob Pike
 :PROPERTIES:
@@ -438,7 +441,9 @@ link.
 
 [[https://youtu.be/rFejpH_tAHM]]
 
-- Slides: [[https://talks.golang.org/2015/simplicity-is-complicated.slide]]
+Related:
+
+- [[https://talks.golang.org/2015/simplicity-is-complicated.slide][Slides]]
 
 * "The Most Beautiful Program Ever Written" by William Byrd
 :PROPERTIES:
@@ -462,7 +467,9 @@ link.
 
 [[https://youtu.be/KINIAgRpkDA]]
 
-- Slides: [[https://talks.golang.org/2016/asm.slide]]
+Related:
+
+- [[https://talks.golang.org/2016/asm.slide][Slides]]
 
 * "Error handling in Upspin" by Rob Pike
 :PROPERTIES:

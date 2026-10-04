@@ -14,8 +14,8 @@
   <link>https://wip.jroi.dev/</link>
   <description><![CDATA[Links to content I liked]]></description>
   <language>en</language>
-  <pubDate>Sat, 03 Oct 2026 23:15:32 +0200</pubDate>
-  <lastBuildDate>Sat, 03 Oct 2026 23:15:32 +0200</lastBuildDate>
+  <pubDate>Sun, 04 Oct 2026 10:26:31 +0200</pubDate>
+  <lastBuildDate>Sun, 04 Oct 2026 10:26:31 +0200</lastBuildDate>
   <generator>Emacs 32.0 Org-mode 9.8.10</generator>
   <webMaster>jroi.martin@gmail.com (Roi Martin)</webMaster>
   <image>
@@ -322,9 +322,13 @@
 <a href="https://craftinginterpreters.com/">https://craftinginterpreters.com/</a>
 </p>
 
+<p>
+Related:
+</p>
+
 <ul class="org-ul">
-<li>Read online: <a href="https://craftinginterpreters.com/contents.html">https://craftinginterpreters.com/contents.html</a></li>
-<li>Crafting "Crafting Interpreters": <a href="http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/">http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/</a></li>
+<li><a href="https://craftinginterpreters.com/contents.html">Read online</a></li>
+<li><a href="http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/">Crafting "Crafting Interpreters"</a></li>
 </ul>
 ]]></description>
   </item>
@@ -503,8 +507,12 @@
 <a href="https://youtu.be/HxaD_trXwRE">https://youtu.be/HxaD_trXwRE</a>
 </p>
 
+<p>
+Related:
+</p>
+
 <ul class="org-ul">
-<li>CL: <a href="https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/">https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/</a></li>
+<li><a href="https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/">CL</a></li>
 </ul>
 ]]></description>
   </item>
@@ -599,10 +607,9 @@
 <i>2019-01-01</i>
 </p>
 
-<ul class="org-ul">
-<li>Mail 1: <a href="https://lkml.org/lkml/2018/3/20/805">https://lkml.org/lkml/2018/3/20/805</a></li>
-<li>Mail 2: <a href="https://lkml.org/lkml/2018/3/20/845">https://lkml.org/lkml/2018/3/20/845</a></li>
-</ul>
+<p>
+<a href="https://lore.kernel.org/lkml/1521584015.31174.3.camel@med.uni-goettingen.de/T/#u">https://lore.kernel.org/lkml/1521584015.31174.3.camel@med.uni-goettingen.de/T/#u</a>
+</p>
 ]]></description>
   </item>
   <item>
@@ -652,8 +659,12 @@
 <a href="https://youtu.be/rFejpH_tAHM">https://youtu.be/rFejpH_tAHM</a>
 </p>
 
+<p>
+Related:
+</p>
+
 <ul class="org-ul">
-<li>Slides: <a href="https://talks.golang.org/2015/simplicity-is-complicated.slide">https://talks.golang.org/2015/simplicity-is-complicated.slide</a></li>
+<li><a href="https://talks.golang.org/2015/simplicity-is-complicated.slide">Slides</a></li>
 </ul>
 ]]></description>
   </item>
@@ -688,8 +699,12 @@
 <a href="https://youtu.be/KINIAgRpkDA">https://youtu.be/KINIAgRpkDA</a>
 </p>
 
+<p>
+Related:
+</p>
+
 <ul class="org-ul">
-<li>Slides: <a href="https://talks.golang.org/2016/asm.slide">https://talks.golang.org/2016/asm.slide</a></li>
+<li><a href="https://talks.golang.org/2016/asm.slide">Slides</a></li>
 </ul>
 ]]></description>
   </item>
