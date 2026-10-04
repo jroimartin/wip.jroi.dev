@@ -3,6 +3,7 @@
 #+author: Roi Martin
 #+options: toc:nil num:nil
 #+html_link_up: /
+#+html_head_extra: <style type="text/css">a { line-break: anywhere; }</style>
 #+description: Links to content I liked
 #+rss_image_url: https://wip.jroi.dev/images/lambda.png
 
@@ -214,8 +215,8 @@ link.
 
 Related:
 
-- [[https://craftinginterpreters.com/contents.html][Read online]]
-- [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/][Crafting "Crafting Interpreters"]]
+- Read online: [[https://craftinginterpreters.com/contents.html]]
+- Crafting "Crafting Interpreters": [[http://journal.stuffwithstuff.com/2020/04/05/crafting-crafting-interpreters/]]
 
 * "Compatibility: How Go Programs Keep Working" by Russ Cox
 :PROPERTIES:
@@ -340,7 +341,7 @@ Related:
 
 Related:
 
-- [[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/][CL]]
+- CL: [[https://go.googlesource.com/go/+/0e45890c8bafbaeed18c22f462d5435e43705264%5E%21/]]
 
 * "How fast are Linux pipes anyway?" by Francesco Mazzoli
 :PROPERTIES:
@@ -443,7 +444,7 @@ Related:
 
 Related:
 
-- [[https://talks.golang.org/2015/simplicity-is-complicated.slide][Slides]]
+- Slides: [[https://talks.golang.org/2015/simplicity-is-complicated.slide]]
 
 * "The Most Beautiful Program Ever Written" by William Byrd
 :PROPERTIES:
@@ -469,7 +470,7 @@ Related:
 
 Related:
 
-- [[https://talks.golang.org/2016/asm.slide][Slides]]
+- Slides: [[https://talks.golang.org/2016/asm.slide]]
 
 * "Error handling in Upspin" by Rob Pike
 :PROPERTIES:
